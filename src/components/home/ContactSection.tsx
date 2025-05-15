@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -59,8 +58,7 @@ const ContactSection = () => {
             <div>
               <h3 className="text-lg font-medium mb-3">Часы работы</h3>
               <div className="space-y-2 text-muted-foreground">
-                <p>Пн-Пт: 9:00 - 20:00</p>
-                <p>Сб: 10:00 - 18:00</p>
+                <p>Пн-Сб: 10:00 - 20:00</p>
                 <p>Вс: выходной</p>
               </div>
             </div>
