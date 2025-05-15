@@ -42,9 +42,9 @@ const Navbar = () => {
         </nav>
 
         <div className="hidden md:flex items-center gap-4">
-          <a href="tel:+78001234567" className="flex items-center text-foreground hover:text-brand">
+          <a href="tel:+74957990926" className="flex items-center text-foreground hover:text-brand">
             <Phone className="mr-2 h-4 w-4" />
-            <span className="text-sm font-medium">8 (800) 123-45-67</span>
+            <span className="text-sm font-medium">+7 (495) 799-09-26</span>
           </a>
           <Button variant="default" size="sm">
             Заказать звонок
@@ -85,9 +85,9 @@ const Navbar = () => {
               {link.title}
             </Link>
           ))}
-          <a href="tel:+78001234567" className="flex items-center text-foreground hover:text-brand py-2">
+          <a href="tel:+74957990926" className="flex items-center text-foreground hover:text-brand py-2">
             <Phone className="mr-2 h-4 w-4" />
-            <span className="text-base font-medium">8 (800) 123-45-67</span>
+            <span className="text-base font-medium">+7 (495) 799-09-26</span>
           </a>
           <Button className="w-full mt-2">
             Заказать звонок
