@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -24,7 +25,7 @@ const ContactSection = () => {
               <div>
                 <h3 className="text-lg font-medium">Адрес</h3>
                 <address className="not-italic text-muted-foreground mt-1">
-                  ул. Примерная, д. 123<br />
+                  ул. Люблинская д. 100 кор. 2<br />
                   Москва, Россия
                 </address>
               </div>
