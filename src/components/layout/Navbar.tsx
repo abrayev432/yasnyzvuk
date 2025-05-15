@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Hearing, Menu, Phone, X } from "lucide-react";
+import { Headphones, Menu, Phone, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const Navbar = () => {
@@ -24,7 +24,7 @@ const Navbar = () => {
     <header className="sticky top-0 z-50 w-full bg-white shadow-sm">
       <div className="container flex h-16 items-center justify-between px-4 md:px-6">
         <Link to="/" className="flex items-center gap-2 text-brand">
-          <Hearing className="h-6 w-6" />
+          <Headphones className="h-6 w-6" />
           <span className="text-xl font-bold">Ясный звук</span>
         </Link>
 
