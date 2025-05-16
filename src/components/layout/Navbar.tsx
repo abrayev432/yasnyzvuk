@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Headphones, Menu, Phone, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,10 +52,16 @@ const Navbar = () => {
             <Link
               key={link.path}
               to={link.path}
-              className="text-sm font-medium text-foreground transition-colors hover:text-brand relative group"
+              className={cn(
+                "text-sm font-medium text-foreground transition-colors hover:text-brand relative group",
+                location.pathname === link.path && "text-brand"
+              )}
             >
               {link.title}
-              <span className="absolute inset-x-0 bottom-0 h-0.5 bg-brand transform scale-x-0 origin-left transition-transform group-hover:scale-x-100"></span>
+              <span className={cn(
+                "absolute inset-x-0 bottom-0 h-0.5 bg-brand transform origin-left transition-transform",
+                location.pathname === link.path ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+              )}></span>
             </Link>
           ))}
         </nav>
@@ -97,7 +104,10 @@ const Navbar = () => {
             <Link
               key={link.path}
               to={link.path}
-              className="py-2 text-base font-medium text-foreground hover:text-brand"
+              className={cn(
+                "py-2 text-base font-medium text-foreground hover:text-brand",
+                location.pathname === link.path && "text-brand"
+              )}
               onClick={() => setIsMenuOpen(false)}
             >
               {link.title}
