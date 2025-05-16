@@ -31,7 +31,7 @@ const HeroSection = () => {
           <div className="flex items-center justify-center">
             <div className="relative h-[350px] w-full max-w-[500px] rounded-2xl bg-white p-4 shadow-lg">
               <img
-                src="https://images.unsplash.com/photo-1584552604829-9af3e1a1f1ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                src="/assets/images/modern-hearing-aid.jpg"
                 alt="Современный слуховой аппарат"
                 className="h-full w-full rounded-xl object-cover"
               />

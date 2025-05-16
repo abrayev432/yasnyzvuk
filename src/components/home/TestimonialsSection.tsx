@@ -7,19 +7,19 @@ const testimonials = [
     name: "Анна Петрова",
     text: "Благодаря слуховому аппарату, подобранному специалистами магазина, я снова могу наслаждаться разговорами с близкими. Очень благодарна за внимательный подход и грамотную консультацию!",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&auto=format&fit=crop&w=250&q=80",
+    image: "/assets/images/testimonial-woman-1.jpg",
   },
   {
     name: "Иван Соколов",
     text: "Долго не решался на слуховой аппарат, но после консультации в 'Ясном звуке' понял, что зря откладывал. Аппарат почти незаметен, а качество звука превзошло все ожидания.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=250&q=80",
+    image: "/assets/images/testimonial-man-1.jpg",
   },
   {
     name: "Елена Николаева",
     text: "Удобно, что в магазине можно не только купить аппарат, но и пройти аудиометрию. Специалисты помогли подобрать модель точно под мои потребности. Очень довольна обслуживанием!",
     rating: 4,
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=250&q=80",
+    image: "/assets/images/testimonial-woman-2.jpg",
   },
 ];
 

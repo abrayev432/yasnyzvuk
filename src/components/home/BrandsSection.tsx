@@ -1,11 +1,11 @@
 
 const brands = [
-  { name: "Oticon", logo: "https://via.placeholder.com/200x80?text=Oticon" },
-  { name: "Phonak", logo: "https://via.placeholder.com/200x80?text=Phonak" },
-  { name: "Signia", logo: "https://via.placeholder.com/200x80?text=Signia" },
-  { name: "ReSound", logo: "https://via.placeholder.com/200x80?text=ReSound" },
-  { name: "Starkey", logo: "https://via.placeholder.com/200x80?text=Starkey" },
-  { name: "Widex", logo: "https://via.placeholder.com/200x80?text=Widex" },
+  { name: "Oticon", logo: "/assets/images/brands/oticon-logo.png" },
+  { name: "Phonak", logo: "/assets/images/brands/phonak-logo.png" },
+  { name: "Signia", logo: "/assets/images/brands/signia-logo.png" },
+  { name: "ReSound", logo: "/assets/images/brands/resound-logo.png" },
+  { name: "Starkey", logo: "/assets/images/brands/starkey-logo.png" },
+  { name: "Widex", logo: "/assets/images/brands/widex-logo.png" },
 ];
 
 const BrandsSection = () => {

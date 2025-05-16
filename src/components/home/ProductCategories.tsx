@@ -7,19 +7,19 @@ const categories = [
   {
     title: "Заушные слуховые аппараты",
     description: "Классические и мощные слуховые аппараты, располагающиеся за ухом",
-    image: "https://images.unsplash.com/photo-1598335624134-5bceb5de202d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "/assets/images/behind-ear-hearing-aid.jpg",
     path: "/catalog/behind-the-ear",
   },
   {
     title: "Внутриушные слуховые аппараты",
     description: "Компактные аппараты, размещающиеся в ушной раковине",
-    image: "https://images.unsplash.com/photo-1589779255516-f90bfaf01544?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "/assets/images/in-ear-hearing-aid.jpg",
     path: "/catalog/in-the-ear",
   },
   {
     title: "Внутриканальные слуховые аппараты",
     description: "Миниатюрные и практически незаметные аппараты внутри слухового канала",
-    image: "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "/assets/images/in-canal-hearing-aid.jpg",
     path: "/catalog/in-the-canal",
   },
 ];
