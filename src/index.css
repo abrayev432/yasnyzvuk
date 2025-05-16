@@ -92,13 +92,48 @@
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
 .hero-gradient {
-  background: linear-gradient(90deg, rgba(29, 174, 219, 0.15) 0%, rgba(229, 241, 255, 0.7) 100%);
+  background: linear-gradient(135deg, rgba(29, 174, 219, 0.05) 0%, rgba(229, 241, 255, 0.5) 100%);
 }
 
 .text-balance {
   text-wrap: balance;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s infinite;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }

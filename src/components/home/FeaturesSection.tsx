@@ -32,13 +32,13 @@ const features = [
 
 const FeaturesSection = () => {
   return (
-    <section className="bg-white py-16 md:py-24">
+    <section className="bg-gray-50 py-24">
       <div className="container px-4 md:px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold tracking-tighter md:text-4xl lg:text-5xl">
             Наши преимущества
           </h2>
-          <p className="mt-4 text-muted-foreground md:text-lg">
+          <p className="mt-4 text-muted-foreground md:text-lg max-w-2xl mx-auto">
             Почему клиенты выбирают магазин слуховых аппаратов "Ясный звук"
           </p>
         </div>
@@ -47,14 +47,14 @@ const FeaturesSection = () => {
             <div
               key={i}
               className={cn(
-                "rounded-xl border bg-card p-6 transition-all hover:shadow-md",
+                "group rounded-2xl border bg-white p-8 transition-all hover:shadow-xl",
                 i === 0 && "md:col-span-2 lg:col-span-1"
               )}
             >
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-brand/10">
-                <feature.icon className="h-6 w-6 text-brand" />
+              <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-brand/10 group-hover:bg-brand/20 transition-colors">
+                <feature.icon className="h-7 w-7 text-brand" />
               </div>
-              <h3 className="mb-2 text-xl font-bold">{feature.title}</h3>
+              <h3 className="mb-3 text-xl font-bold">{feature.title}</h3>
               <p className="text-muted-foreground">{feature.description}</p>
             </div>
           ))}

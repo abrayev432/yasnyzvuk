@@ -25,21 +25,22 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   return (
-    <section className="bg-gray-50 py-16 md:py-24">
+    <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-24">
       <div className="container px-4 md:px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold tracking-tighter md:text-4xl lg:text-5xl">
             Отзывы наших клиентов
           </h2>
-          <p className="mt-4 text-muted-foreground md:text-lg">
+          <p className="mt-4 text-muted-foreground md:text-lg max-w-2xl mx-auto">
             Узнайте, что говорят о нас люди, которые уже улучшили качество своей жизни
           </p>
         </div>
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-3">
           {testimonials.map((testimonial, i) => (
-            <Card key={i} className="border-none shadow-lg">
-              <CardContent className="p-6">
-                <div className="flex gap-2 mb-4">
+            <Card key={i} className="border-none shadow-xl overflow-hidden">
+              <div className="h-2 bg-brand" />
+              <CardContent className="p-8">
+                <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, index) => (
                     <Star
                       key={index}
@@ -47,15 +48,15 @@ const TestimonialsSection = () => {
                     />
                   ))}
                 </div>
-                <p className="mb-6 text-gray-600 italic">"{testimonial.text}"</p>
+                <p className="mb-6 text-gray-600 italic text-balance">&ldquo;{testimonial.text}&rdquo;</p>
                 <div className="flex items-center">
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
-                    className="h-12 w-12 rounded-full object-cover mr-4"
+                    className="h-14 w-14 rounded-full object-cover border-2 border-white shadow-md mr-4"
                   />
                   <div>
-                    <p className="font-medium">{testimonial.name}</p>
+                    <p className="font-semibold">{testimonial.name}</p>
                     <p className="text-sm text-muted-foreground">Клиент</p>
                   </div>
                 </div>
