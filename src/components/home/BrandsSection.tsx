@@ -10,13 +10,13 @@ const brands = [
 
 const BrandsSection = () => {
   return (
-    <section className="bg-white py-16">
+    <section className="bg-brand py-16">
       <div className="container px-4 md:px-6">
         <div className="text-center mb-10">
-          <h2 className="text-2xl font-bold tracking-tighter md:text-3xl">
+          <h2 className="text-2xl font-bold tracking-tighter md:text-3xl text-white">
             Работаем с ведущими производителями
           </h2>
-          <p className="mt-3 text-muted-foreground">
+          <p className="mt-3 text-white/80">
             Представляем слуховые аппараты от мировых лидеров в области аудиологии
           </p>
         </div>
@@ -24,7 +24,7 @@ const BrandsSection = () => {
           {brands.map((brand, i) => (
             <div
               key={i}
-              className="flex items-center justify-center rounded-lg bg-gray-50 p-6 transition-all hover:bg-gray-100"
+              className="flex items-center justify-center rounded-lg bg-white p-6 transition-all hover:bg-gray-100"
             >
               <img
                 src={brand.logo}
