@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -48,7 +47,7 @@ const Navbar = () => {
             <img 
               src="/lovable-uploads/b1890c18-869b-4cf8-815a-bc533a722e31.png" 
               alt="Ясный звук" 
-              className="h-10 w-auto"
+              className="h-14 w-auto"
             />
           </Link>
 

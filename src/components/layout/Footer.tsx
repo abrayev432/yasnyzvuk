@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Mail, MapPin, Phone, Clock } from "lucide-react";
 
@@ -12,7 +11,7 @@ const Footer = () => {
               <img 
                 src="/lovable-uploads/b1890c18-869b-4cf8-815a-bc533a722e31.png" 
                 alt="Ясный звук" 
-                className="h-10 w-auto bg-white p-1 rounded"
+                className="h-16 w-auto" // Increased height and removed bg-white, p-1, rounded
               />
             </Link>
             <p className="text-sm text-gray-300">
