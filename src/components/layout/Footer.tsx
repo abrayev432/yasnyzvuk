@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Headphones, Mail, MapPin, Phone, Clock } from "lucide-react";
+import { Mail, MapPin, Phone, Clock } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -8,9 +8,12 @@ const Footer = () => {
       <div className="container px-4 py-16 mx-auto md:px-6">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
-            <Link to="/" className="flex items-center gap-2 text-white">
-              <Headphones className="h-6 w-6 text-brand" />
-              <span className="text-xl font-bold">Ясный звук</span>
+            <Link to="/" className="flex items-center">
+              <img 
+                src="/lovable-uploads/b1890c18-869b-4cf8-815a-bc533a722e31.png" 
+                alt="Ясный звук" 
+                className="h-10 w-auto bg-white p-1 rounded"
+              />
             </Link>
             <p className="text-sm text-gray-300">
               Специализированный магазин слуховых аппаратов с профессиональной консультацией и подбором.

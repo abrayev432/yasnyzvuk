@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Headphones, Menu, Phone, X } from "lucide-react";
+import { Menu, Phone, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import CallRequestForm from "@/components/CallRequestForm";
 
@@ -44,9 +44,12 @@ const Navbar = () => {
         isScrolled ? "bg-white/95 shadow-md backdrop-blur-md" : "bg-white"
       )}>
         <div className="container flex h-20 items-center justify-between px-4 md:px-6">
-          <Link to="/" className="flex items-center gap-2 text-brand">
-            <Headphones className="h-7 w-7" />
-            <span className="text-xl font-bold">Ясный звук</span>
+          <Link to="/" className="flex items-center">
+            <img 
+              src="/lovable-uploads/b1890c18-869b-4cf8-815a-bc533a722e31.png" 
+              alt="Ясный звук" 
+              className="h-10 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
