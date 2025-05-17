@@ -1,0 +1,123 @@
+
+import Layout from "@/components/layout/Layout";
+import ContactSection from "@/components/home/ContactSection";
+import { motion } from "framer-motion";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { useEffect } from "react";
+
+const Contacts = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return (
+    <Layout>
+      <div className="bg-gradient-to-b from-gray-50 to-white">
+        <div className="container px-4 py-16 md:py-24 md:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-3xl mx-auto text-center mb-16"
+          >
+            <h1 className="text-4xl font-bold tracking-tight md:text-5xl mb-6">
+              Наши контакты
+            </h1>
+            <p className="text-xl text-muted-foreground">
+              Мы всегда рады помочь вам выбрать правильный слуховой аппарат и ответить на все ваши вопросы.
+            </p>
+          </motion.div>
+
+          <div className="grid gap-8 md:grid-cols-2">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="bg-white rounded-xl p-8 shadow-md"
+            >
+              <h2 className="text-2xl font-bold mb-6">Как нас найти</h2>
+              
+              <div className="space-y-6">
+                <div className="flex items-start">
+                  <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-brand/10">
+                    <MapPin className="h-6 w-6 text-brand" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-medium">Наш адрес</h3>
+                    <address className="not-italic text-muted-foreground mt-1">
+                      ул. Люблинская д. 100 кор. 2<br />
+                      Москва, Россия
+                    </address>
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-brand/10">
+                    <Phone className="h-6 w-6 text-brand" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-medium">Телефон</h3>
+                    <p className="text-muted-foreground mt-1">
+                      <a href="tel:+74957990926" className="hover:text-brand transition-colors">
+                        +7 (495) 799-09-26
+                      </a>
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-brand/10">
+                    <Mail className="h-6 w-6 text-brand" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-medium">Email</h3>
+                    <p className="text-muted-foreground mt-1">
+                      <a href="mailto:info@yasnyzvuk.ru" className="hover:text-brand transition-colors">
+                        info@yasnyzvuk.ru
+                      </a>
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-brand/10">
+                    <Clock className="h-6 w-6 text-brand" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-medium">Часы работы</h3>
+                    <div className="space-y-1 text-muted-foreground mt-1">
+                      <p>Пн-Сб: 10:00 - 20:00</p>
+                      <p>Вс: выходной</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="bg-white rounded-xl overflow-hidden shadow-md h-[400px] md:h-auto"
+            >
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2246.1592008358577!2d37.75843506150572!3d55.67760080326659!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x414ab524136bf593%3A0x7d50456d7321a9dc!2z0JvRjtCx0LvQuNC90YHQutCw0Y8g0YPQuy4sIDEwMCDQutC-0YDQv9GD0YEgMiwg0JzQvtGB0LrQstCwLCAxMDk1NTM!5e0!3m2!1sru!2sru!4v1714923174805!5m2!1sru!2sru" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Карта расположения"
+              ></iframe>
+            </motion.div>
+          </div>
+        </div>
+        
+        <ContactSection />
+      </div>
+    </Layout>
+  );
+};
+
+export default Contacts;
