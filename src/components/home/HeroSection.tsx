@@ -33,7 +33,7 @@ const HeroSection = () => {
           <div className="flex items-center justify-center">
             <div className="relative h-[350px] w-full max-w-[500px] rounded-2xl bg-white p-4 shadow-lg shadow-gray-200/50 overflow-hidden">
               <img
-                src="/assets/images/modern-hearing-aid.jpg"
+                src="/src/assets/images/modern-hearing-aid.jpg"
                 alt="Современный слуховой аппарат"
                 className="h-full w-full rounded-xl object-cover transition-transform hover:scale-105 duration-700"
               />

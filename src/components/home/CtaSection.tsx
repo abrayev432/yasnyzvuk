@@ -35,7 +35,7 @@ const CtaSection = () => {
           <div className="flex justify-center order-first md:order-last">
             <div className="relative h-[350px] w-full max-w-[450px] overflow-hidden rounded-2xl shadow-2xl">
               <img
-                src="/assets/images/hearing-specialist.jpg"
+                src="/src/assets/images/hearing-specialist.jpg"
                 alt="Консультация специалиста"
                 className="h-full w-full object-cover"
               />
