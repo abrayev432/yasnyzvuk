@@ -29,7 +29,7 @@ const BrandsSection = () => {
               <HoverCardTrigger asChild>
                 <div className="flex items-center justify-center bg-white/95 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-white cursor-pointer h-32">
                   <img
-                    src={brand.logo}
+                    src={brand.logo.replace("/src", "")}
                     alt={`${brand.name} логотип`}
                     className="max-h-20 w-auto object-contain transition-all hover:scale-105"
                   />
