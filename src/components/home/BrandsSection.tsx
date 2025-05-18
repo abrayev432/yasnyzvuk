@@ -22,17 +22,16 @@ const BrandsSection = () => {
             Представляем слуховые аппараты от мировых лидеров в области аудиологии
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6">
+        
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6">
           {brands.map((brand, i) => (
             <HoverCard key={i}>
               <HoverCardTrigger asChild>
-                <div
-                  className="flex items-center justify-center rounded-lg bg-white/95 p-6 transition-all hover:bg-white cursor-pointer hover:shadow-xl shadow-lg"
-                >
+                <div className="flex items-center justify-center bg-white/95 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-white cursor-pointer h-32">
                   <img
                     src={brand.logo}
                     alt={`${brand.name} логотип`}
-                    className="max-h-12 w-auto grayscale transition hover:grayscale-0"
+                    className="max-h-20 w-auto object-contain transition-all hover:scale-105"
                   />
                 </div>
               </HoverCardTrigger>
