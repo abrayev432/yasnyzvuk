@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -45,9 +46,9 @@ const Navbar = () => {
         <div className="container flex h-20 items-center justify-between px-4 md:px-6">
           <Link to="/" className="flex items-center">
             <img 
-              src="/lovable-uploads/b1890c18-869b-4cf8-815a-bc533a722e31.png" 
+              src="/lovable-uploads/73734014-4b6a-42ea-ba93-6269c3768514.png" 
               alt="Ясный звук" 
-              className="h-14 w-auto"
+              className="h-16 w-auto" 
             />
           </Link>
 

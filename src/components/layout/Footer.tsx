@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { Mail, MapPin, Phone, Clock } from "lucide-react";
 
@@ -9,9 +10,9 @@ const Footer = () => {
           <div className="space-y-4">
             <Link to="/" className="flex items-center">
               <img 
-                src="/lovable-uploads/b1890c18-869b-4cf8-815a-bc533a722e31.png" 
+                src="/lovable-uploads/73734014-4b6a-42ea-ba93-6269c3768514.png" 
                 alt="Ясный звук" 
-                className="h-16 w-auto" // Increased height and removed bg-white, p-1, rounded
+                className="h-20 w-auto" 
               />
             </Link>
             <p className="text-sm text-gray-300">
