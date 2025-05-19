@@ -1,4 +1,3 @@
-
 import Layout from "@/components/layout/Layout";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,7 +13,7 @@ const Services = () => {
   
   const services = [
     {
-      title: "Диагностика слуха",
+      title: "Тест слуха",
       description: "Комплексное обследование слуха с использованием современного оборудования",
       details: [
         "Аудиометрия",
@@ -22,7 +21,7 @@ const Services = () => {
         "Отоакустическая эмиссия",
         "Консультация сурдолога"
       ],
-      image: "https://images.unsplash.com/photo-1516549655669-d2207ea40c02?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYiwcOPwT7Ri2DRNBJH0gEcZxthFt7jRNFPg&s"
     },
     {
       title: "Подбор слуховых аппаратов",
@@ -44,7 +43,7 @@ const Services = () => {
         "Коррекция настроек",
         "Обучение использованию"
       ],
-      image: "https://images.unsplash.com/photo-1610645156106-98e3c7ce5fc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+      image: "https://avatars.mds.yandex.net/i?id=136cae80191b5c986f9458b24065cb4cba4ac8d4-12473832-images-thumbs&n=13"
     },
     {
       title: "Сервисное обслуживание",
