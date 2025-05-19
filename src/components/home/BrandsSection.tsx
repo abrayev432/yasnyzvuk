@@ -2,12 +2,12 @@
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 
 const brands = [
-  { name: "Oticon", logo: "/src/assets/images/brands/oticon-logo.png", description: "Датский производитель с более чем 115-летним опытом разработки слуховых аппаратов" },
-  { name: "Phonak", logo: "/src/assets/images/brands/phonak-logo.png", description: "Швейцарский бренд, специализирующийся на высокотехнологичных решениях для слуха" },
-  { name: "Signia", logo: "/src/assets/images/brands/signia-logo.png", description: "Немецкое качество и инновационные технологии для естественного звучания" },
-  { name: "ReSound", logo: "/src/assets/images/brands/resound-logo.png", description: "Пионер в области беспроводных технологий для слуховых аппаратов" },
-  { name: "Starkey", logo: "/src/assets/images/brands/starkey-logo.png", description: "Американский производитель, известный своими индивидуальными решениями" },
-  { name: "Widex", logo: "/src/assets/images/brands/widex-logo.png", description: "Датский производитель с фокусом на естественное звучание и инновации" },
+  { name: "Oticon", logo: "https://avatars.mds.yandex.net/get-entity_search/5578182/576251644/S600xU", description: "Датский производитель с более чем 115-летним опытом разработки слуховых аппаратов" },
+  { name: "Phonak", logo: "/assets/images/brands/phonak-logo.png", description: "Швейцарский бренд, специализирующийся на высокотехнологичных решениях для слуха" },
+  { name: "Signia", logo: "/assets/images/brands/signia-logo.png", description: "Немецкое качество и инновационные технологии для естественного звучания" },
+  { name: "ReSound", logo: "/assets/images/brands/resound-logo.png", description: "Пионер в области беспроводных технологий для слуховых аппаратов" },
+  { name: "Starkey", logo: "/assets/images/brands/starkey-logo.png", description: "Американский производитель, известный своими индивидуальными решениями" },
+  { name: "Widex", logo: "/assets/images/brands/widex-logo.png", description: "Датский производитель с фокусом на естественное звучание и инновации" },
 ];
 
 const BrandsSection = () => {
