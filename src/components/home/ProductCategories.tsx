@@ -15,7 +15,7 @@ const categories = [
   {
     title: "Внутриушные слуховые аппараты",
     description: "Компактные аппараты, размещающиеся в ушной раковине",
-    image: "/src/assets/images/in-ear-hearing-aid.jpg",
+    image: "https://www.outsideclinic.co.uk/uploads/images/_large/Hearing-Aid-Styles-ITE-min.png",
     path: "/catalog/in-the-ear",
     badge: "Незаметные",
   },

@@ -1,4 +1,3 @@
-
 import Layout from "@/components/layout/Layout";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,14 +5,16 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { CheckCircle } from "lucide-react";
 import { useEffect } from "react";
+
 const Services = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  
   const services = [{
     title: "Тест слуха",
     description: "Комплексное обследование слуха с использованием современного оборудования",
-    details: ["Аудиометрия", "Тимпанометрия", "Отоакустическая эмиссия", "Консультация сурдолога"],
+    details: ["Тест слуха", "Тимпанометрия", "Отоакустическая эмиссия", "Консультация сурдолога"],
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYiwcOPwT7Ri2DRNBJH0gEcZxthFt7jRNFPg&s"
   }, {
     title: "Подбор слуховых аппаратов",
@@ -36,6 +37,7 @@ const Services = () => {
     details: ["Снятие слепка", "Изготовление вкладыша", "Примерка и коррекция", "Гарантийное обслуживание"],
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1nOZRtTkrdKyjS3MrpN7D5dWZY7PTO9msLQ&s"
   }];
+  
   return <Layout>
       <div className="bg-gradient-to-b from-gray-50 to-white">
         <div className="container px-4 py-16 md:py-24 md:px-6">
