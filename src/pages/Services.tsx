@@ -1,3 +1,4 @@
+
 import Layout from "@/components/layout/Layout";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -33,12 +34,7 @@ const Services = () => {
     title: "Изготовление индивидуальных вкладышей",
     description: "Создание индивидуальных ушных вкладышей для максимального комфорта и качества звука",
     details: ["Снятие слепка", "Изготовление вкладыша", "Примерка и коррекция", "Гарантийное обслуживание"],
-    image: "https://images.unsplash.com/photo-1598142982901-df6bb1c1d969?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
-  }, {
-    title: "Реабилитация слуха",
-    description: "Программы реабилитации для людей с нарушениями слуха и после кохлеарной имплантации",
-    details: ["Индивидуальные занятия", "Групповые тренинги", "Работа с логопедом", "Психологическая поддержка"],
-    image: "https://images.unsplash.com/photo-1615626381576-c6f02e964925?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1nOZRtTkrdKyjS3MrpN7D5dWZY7PTO9msLQ&s"
   }];
   return <Layout>
       <div className="bg-gradient-to-b from-gray-50 to-white">
