@@ -1,15 +1,11 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { HelpingHand, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import CallRequestForm from "@/components/CallRequestForm";
-
 const CtaSection = () => {
   const [isCallFormOpen, setIsCallFormOpen] = useState(false);
-
-  return (
-    <>
+  return <>
       <section className="bg-gradient-to-r from-brand to-brand-dark text-white py-20">
         <div className="container px-4 md:px-6">
           <div className="grid gap-8 md:grid-cols-2 md:gap-12 items-center">
@@ -26,11 +22,7 @@ const CtaSection = () => {
                 возможностях коррекции слуха
               </p>
               <div className="flex flex-col gap-3 sm:flex-row">
-                <Button 
-                  variant="outline" 
-                  className="bg-white text-brand border-white hover:bg-white/90 hover:text-brand rounded-full shadow-lg shadow-brand-dark/20"
-                  onClick={() => setIsCallFormOpen(true)}
-                >
+                <Button variant="outline" className="bg-white text-brand border-white hover:bg-white/90 hover:text-brand rounded-full shadow-lg shadow-brand-dark/20" onClick={() => setIsCallFormOpen(true)}>
                   <Phone className="mr-2 h-4 w-4" />
                   Связаться с нами
                 </Button>
@@ -41,15 +33,11 @@ const CtaSection = () => {
             </div>
             <div className="flex justify-center order-first md:order-last">
               <div className="relative h-[350px] w-full max-w-[450px] overflow-hidden rounded-2xl shadow-2xl">
-                <img
-                  src="/src/assets/images/hearing-specialist.jpg"
-                  alt="Консультация специалиста"
-                  className="h-full w-full object-cover"
-                />
+                <img src="/src/assets/images/hearing-specialist.jpg" alt="Консультация специалиста" className="h-full w-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent to-brand-dark/60" />
                 <div className="absolute bottom-6 left-6 right-6 rounded-xl bg-white/95 p-4 backdrop-blur shadow-lg">
                   <p className="font-medium text-brand">Бесплатная консультация</p>
-                  <p className="text-sm text-foreground">Проверка слуха и помощь в выборе аппарата</p>
+                  <p className="text-sm text-foreground">Тест слуха и помощь в выборе аппарата</p>
                 </div>
               </div>
             </div>
@@ -57,12 +45,7 @@ const CtaSection = () => {
         </div>
       </section>
 
-      <CallRequestForm 
-        open={isCallFormOpen} 
-        onOpenChange={setIsCallFormOpen}
-      />
-    </>
-  );
+      <CallRequestForm open={isCallFormOpen} onOpenChange={setIsCallFormOpen} />
+    </>;
 };
-
 export default CtaSection;
