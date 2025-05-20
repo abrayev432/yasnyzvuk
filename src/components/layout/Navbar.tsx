@@ -47,6 +47,9 @@ const Navbar = () => {
     >
       <div className="container flex items-center justify-between px-4 md:px-6">
         <Link to="/" className="flex items-center gap-2">
+          <div className="w-10 h-10 bg-brand rounded-full flex items-center justify-center">
+            <span className="text-white font-bold text-lg">Я</span>
+          </div>
           <span className="text-2xl font-bold tracking-tight text-brand">
             Ясный звук
           </span>

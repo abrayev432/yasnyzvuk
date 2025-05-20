@@ -1,5 +1,5 @@
-
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
@@ -11,6 +11,7 @@ import { ShoppingCart, Package } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useToast } from "@/hooks/use-toast";
 
+// Product database
 const products = [
   {
     id: 1,
@@ -21,6 +22,7 @@ const products = [
     brand: "ReSound",
     isNew: true,
     isBestseller: false,
+    slug: "resound-key-ke277"
   },
   {
     id: 2,
@@ -31,6 +33,7 @@ const products = [
     brand: "Oticon",
     isNew: false,
     isBestseller: true,
+    slug: "oticon-zircon-1"
   },
   {
     id: 3,
@@ -41,6 +44,7 @@ const products = [
     brand: "Oticon",
     isNew: true,
     isBestseller: false,
+    slug: "oticon-ruby-2"
   },
   {
     id: 4,
@@ -51,6 +55,7 @@ const products = [
     brand: "Starkey",
     isNew: false,
     isBestseller: false,
+    slug: "starkey-livio-edge"
   },
   {
     id: 5,
@@ -61,6 +66,7 @@ const products = [
     brand: "Oticon",
     isNew: false,
     isBestseller: true,
+    slug: "oticon-xceed-3"
   },
   {
     id: 6,
@@ -71,6 +77,7 @@ const products = [
     brand: "Widex",
     isNew: true,
     isBestseller: false,
+    slug: "widex-moment-440"
   },
 ];
 
@@ -222,19 +229,21 @@ const Catalog = () => {
                   {sortedProducts.map((product) => (
                     <Card key={product.id} className="overflow-hidden transition-all hover:shadow-md group">
                       <div className="relative">
-                        <img
-                          src={product.image}
-                          alt={product.name}
-                          className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                        {product.isNew && (
-                          <Badge className="absolute top-2 right-2 bg-brand text-white">Новинка</Badge>
-                        )}
-                        {product.isBestseller && (
-                          <Badge variant="outline" className="absolute top-2 right-2 border-brand bg-white text-brand">
-                            Хит продаж
-                          </Badge>
-                        )}
+                        <Link to={`/catalog/${product.slug}`}>
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                          {product.isNew && (
+                            <Badge className="absolute top-2 right-2 bg-brand text-white">Новинка</Badge>
+                          )}
+                          {product.isBestseller && (
+                            <Badge variant="outline" className="absolute top-2 right-2 border-brand bg-white text-brand">
+                              Хит продаж
+                            </Badge>
+                          )}
+                        </Link>
                       </div>
                       <CardContent className="p-4">
                         <div className="mb-2">
@@ -242,9 +251,11 @@ const Catalog = () => {
                             {product.brand}
                           </Badge>
                         </div>
-                        <h3 className="text-lg font-medium line-clamp-2 mb-1 group-hover:text-brand transition-colors">
-                          {product.name}
-                        </h3>
+                        <Link to={`/catalog/${product.slug}`}>
+                          <h3 className="text-lg font-medium line-clamp-2 mb-1 group-hover:text-brand transition-colors">
+                            {product.name}
+                          </h3>
+                        </Link>
                         <div className="text-sm text-muted-foreground mb-3">
                           {product.category === "behind-the-ear" && "Заушный"}
                           {product.category === "in-the-ear" && "Внутриушной"}
@@ -254,10 +265,16 @@ const Catalog = () => {
                           <div className="font-semibold">
                             {product.price.toLocaleString()} ₽
                           </div>
-                          <Button size="sm" className="gap-2" onClick={() => handleAddToCart(product)}>
-                            <ShoppingCart className="h-4 w-4" />
-                            В корзину
-                          </Button>
+                          <div className="flex gap-2">
+                            <Button size="sm" variant="outline" asChild>
+                              <Link to={`/catalog/${product.slug}`}>
+                                Подробнее
+                              </Link>
+                            </Button>
+                            <Button size="sm" onClick={() => handleAddToCart(product)}>
+                              <ShoppingCart className="h-4 w-4" />
+                            </Button>
+                          </div>
                         </div>
                       </CardContent>
                     </Card>

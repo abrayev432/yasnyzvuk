@@ -1,8 +1,11 @@
+
 import { Button } from "@/components/ui/button";
 import { Volume } from "lucide-react";
 import { Link } from "react-router-dom";
+
 const HeroSection = () => {
-  return <section className="bg-gradient-to-br from-brand/5 to-brand/20 py-20 md:py-28">
+  return (
+    <section className="bg-gradient-to-br from-brand/5 to-brand/20 py-20 md:py-28">
       <div className="container px-4 md:px-6">
         <div className="grid gap-10 md:grid-cols-2 md:gap-12 items-center">
           <div className="flex flex-col justify-center space-y-6">
@@ -38,6 +41,8 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default HeroSection;
