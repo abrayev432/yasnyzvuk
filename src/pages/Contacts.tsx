@@ -1,4 +1,3 @@
-
 import Layout from "@/components/layout/Layout";
 import ContactSection from "@/components/home/ContactSection";
 import { motion } from "framer-motion";
@@ -101,13 +100,12 @@ const Contacts = () => {
               className="bg-white rounded-xl overflow-hidden shadow-md h-[400px] md:h-auto"
             >
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2246.1592008358577!2d37.75843506150572!3d55.67760080326659!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x414ab524136bf593%3A0x7d50456d7321a9dc!2z0JvRjtCx0LvQuNC90YHQutCw0Y8g0YPQuy4sIDEwMCDQutC-0YDQv9GD0YEgMiwg0JzQvtGB0LrQstCwLCAxMDk1NTM!5e0!3m2!1sru!2sru!4v1714923174805!5m2!1sru!2sru" 
+                src="https://yandex.ru/map-widget/v1/?um=constructor%3A3a3ce100d7217bcfe93482f754056e1e697e4872e48b5907e5ba68030e961071&amp;source=constructor&amp;scroll=false"
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
                 allowFullScreen 
                 loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
                 title="Карта расположения"
               ></iframe>
             </motion.div>

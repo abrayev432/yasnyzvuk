@@ -8,6 +8,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Package } from "lucide-react";
+import { useCart } from "@/contexts/CartContext";
+import { useToast } from "@/hooks/use-toast";
 
 const products = [
   {
@@ -76,6 +78,8 @@ const Catalog = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [sortBy, setSortBy] = useState<string>("popular");
+  const { addToCart } = useCart();
+  const { toast } = useToast();
   
   const filteredProducts = products.filter((product) => {
     // Filter by category
@@ -109,6 +113,14 @@ const Catalog = () => {
         return 0;
     }
   });
+
+  const handleAddToCart = (product: any) => {
+    addToCart(product);
+    toast({
+      title: "Товар добавлен в корзину",
+      description: `${product.name} успешно добавлен в корзину.`,
+    });
+  };
 
   return (
     <Layout>
@@ -155,7 +167,11 @@ const Catalog = () => {
                 </div>
 
                 <div className="mb-6">
-                  <Button variant="outline" className="w-full">Сбросить фильтры</Button>
+                  <Button variant="outline" className="w-full" onClick={() => {
+                    setSelectedCategory("all");
+                    setSearchQuery("");
+                    setSortBy("popular");
+                  }}>Сбросить фильтры</Button>
                 </div>
 
                 <div className="pt-4 border-t">
@@ -238,7 +254,7 @@ const Catalog = () => {
                           <div className="font-semibold">
                             {product.price.toLocaleString()} ₽
                           </div>
-                          <Button size="sm" className="gap-2">
+                          <Button size="sm" className="gap-2" onClick={() => handleAddToCart(product)}>
                             <ShoppingCart className="h-4 w-4" />
                             В корзину
                           </Button>

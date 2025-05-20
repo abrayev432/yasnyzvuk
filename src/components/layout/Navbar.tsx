@@ -1,16 +1,15 @@
 
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { ArrowRight, Phone, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Menu, Phone, X } from "lucide-react";
-import { cn } from "@/lib/utils";
-import CallRequestForm from "@/components/CallRequestForm";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { CartModal } from "@/components/cart/CartModal";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isCallFormOpen, setIsCallFormOpen] = useState(false);
   const location = useLocation();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,131 +20,129 @@ const Navbar = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const navLinks = [
-    { title: "Главная", path: "/" },
-    { title: "Каталог", path: "/catalog" },
-    { title: "О нас", path: "/about" },
-    { title: "Услуги", path: "/services" },
-    { title: "Контакты", path: "/contacts" },
+  const navigation = [
+    { name: "Главная", href: "/" },
+    { name: "Каталог", href: "/catalog" },
+    { name: "Услуги", href: "/services" },
+    { name: "О нас", href: "/about" },
+    { name: "Контакты", href: "/contacts" },
   ];
 
+  const isActive = (path: string) => {
+    if (path === "/" && location.pathname !== "/") return false;
+    return location.pathname.startsWith(path);
+  };
+
   return (
-    <>
-      <header className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300",
-        isScrolled ? "bg-white/95 shadow-md backdrop-blur-md" : "bg-white"
-      )}>
-        <div className="container flex h-20 items-center justify-between px-4 md:px-6">
-          <Link to="/" className="flex items-center">
-            <img 
-              src="/lovable-uploads/73734014-4b6a-42ea-ba93-6269c3768514.png" 
-              alt="Ясный звук" 
-              className="h-16 w-auto" 
-            />
-          </Link>
+    <header
+      className={`sticky top-0 z-40 w-full transition-all ${
+        isScrolled ? "bg-white shadow-md py-2" : "bg-white/80 backdrop-blur-md py-4"
+      }`}
+    >
+      <div className="container flex items-center justify-between px-4 md:px-6">
+        <Link to="/" className="flex items-center gap-2">
+          <span className="text-2xl font-bold tracking-tight text-brand">
+            Ясный звук
+          </span>
+        </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={cn(
-                  "text-sm font-medium text-foreground transition-colors hover:text-brand relative group",
-                  location.pathname === link.path && "text-brand"
-                )}
-              >
-                {link.title}
-                <span className={cn(
-                  "absolute inset-x-0 bottom-0 h-0.5 bg-brand transform origin-left transition-transform",
-                  location.pathname === link.path ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-                )}></span>
-              </Link>
-            ))}
-          </nav>
-
-          <div className="hidden md:flex items-center gap-6">
-            <a href="tel:+74957990926" className="flex items-center text-foreground hover:text-brand transition-colors group">
-              <Phone className="mr-2 h-4 w-4 text-brand group-hover:scale-110 transition-transform" />
-              <span className="text-sm font-medium">+7 (495) 799-09-26</span>
-            </a>
-            <Button 
-              variant="default" 
-              size="sm" 
-              className="rounded-full shadow-sm"
-              onClick={() => setIsCallFormOpen(true)}
+        <nav className="hidden md:flex items-center space-x-6">
+          {navigation.map((item) => (
+            <Link
+              key={item.name}
+              to={item.href}
+              className={`text-sm font-medium transition-colors hover:text-brand ${
+                isActive(item.href)
+                  ? "text-brand"
+                  : "text-muted-foreground"
+              }`}
             >
-              Заказать звонок
-            </Button>
-          </div>
+              {item.name}
+            </Link>
+          ))}
+        </nav>
 
-          {/* Mobile menu button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={toggleMenu}
+        <div className="flex items-center gap-4">
+          <a
+            href="tel:+74957990926"
+            className="hidden md:flex items-center text-sm font-medium gap-2 hover:text-brand"
           >
-            {isMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
-            <span className="sr-only">Toggle menu</span>
+            <Phone className="h-4 w-4" />
+            +7 (495) 799-09-26
+          </a>
+
+          <CartModal />
+
+          <Button asChild size="sm" className="hidden md:inline-flex rounded-full">
+            <Link to="/contacts" className="gap-2">
+              Записаться на прием
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </Button>
-        </div>
 
-        {/* Mobile Navigation */}
-        <div
-          className={cn(
-            "fixed inset-x-0 top-20 z-50 bg-white/95 md:hidden transition-all duration-300 ease-in-out border-t backdrop-blur-md",
-            isMenuOpen ? "translate-y-0 opacity-100 shadow-lg" : "-translate-y-full opacity-0 pointer-events-none"
-          )}
-        >
-          <nav className="container flex flex-col p-6 space-y-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={cn(
-                  "py-2 text-base font-medium text-foreground hover:text-brand",
-                  location.pathname === link.path && "text-brand"
-                )}
-                onClick={() => setIsMenuOpen(false)}
+          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="md:hidden"
+                aria-label="Меню"
               >
-                {link.title}
-              </Link>
-            ))}
-            <a href="tel:+74957990926" className="flex items-center text-foreground hover:text-brand py-2">
-              <Phone className="mr-2 h-4 w-4 text-brand" />
-              <span className="text-base font-medium">+7 (495) 799-09-26</span>
-            </a>
-            <Button 
-              className="w-full mt-2 rounded-full"
-              onClick={() => {
-                setIsMenuOpen(false);
-                setIsCallFormOpen(true);
-              }}
-            >
-              Заказать звонок
-            </Button>
-          </nav>
+                <Menu className="h-6 w-6" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-full sm:w-80">
+              <div className="flex flex-col space-y-4 pt-6">
+                <div className="flex justify-between items-center mb-4">
+                  <span className="text-lg font-medium">Меню</span>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <X className="h-5 w-5" />
+                  </Button>
+                </div>
+                {navigation.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className={`py-2 ${
+                      isActive(item.href)
+                        ? "text-brand font-medium"
+                        : "text-muted-foreground"
+                    }`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+                <div className="pt-4">
+                  <Button asChild className="w-full rounded-full">
+                    <Link to="/contacts" onClick={() => setIsMobileMenuOpen(false)}>
+                      Записаться на прием
+                    </Link>
+                  </Button>
+                </div>
+                <a
+                  href="tel:+74957990926"
+                  className="flex items-center gap-2 py-2 text-muted-foreground"
+                >
+                  <Phone className="h-4 w-4" />
+                  +7 (495) 799-09-26
+                </a>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
-      </header>
-
-      <CallRequestForm 
-        open={isCallFormOpen} 
-        onOpenChange={setIsCallFormOpen} 
-      />
-    </>
+      </div>
+    </header>
   );
 };
 

@@ -22,7 +22,7 @@ const categories = [
   {
     title: "Внутриканальные слуховые аппараты",
     description: "Миниатюрные и практически незаметные аппараты внутри слухового канала",
-    image: "/src/assets/images/in-canal-hearing-aid.jpg",
+    image: "https://avatars.mds.yandex.net/i?id=6530ef747c881994cc1a243a48d0cc7e7c306653-9425828-images-thumbs&n=13",
     path: "/catalog/in-the-canal",
     badge: "Комфортные",
   },
