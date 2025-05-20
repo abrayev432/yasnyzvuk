@@ -1,5 +1,5 @@
 
-import { Instagram, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import ChatModal from "../chat/ChatModal";
@@ -76,25 +76,9 @@ const FloatingSocialButtons = () => {
         <Button
           variant="default"
           size="icon"
-          className="rounded-full bg-pink-600 hover:bg-pink-700 shadow-lg"
-          asChild
-        >
-          <a 
-            href="https://instagram.com/yasnyzvuk" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            aria-label="Связаться через Instagram"
-          >
-            <Instagram className="h-5 w-5" />
-          </a>
-        </Button>
-        
-        <Button
-          variant="default"
-          size="icon"
           className="rounded-full bg-brand hover:bg-brand/90 shadow-lg"
           onClick={() => setIsChatOpen(true)}
-          aria-label="Открыть чат с администратором"
+          aria-label="Открыть чат со специалистом"
         >
           <MessageCircle className="h-5 w-5" />
         </Button>

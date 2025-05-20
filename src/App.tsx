@@ -10,6 +10,7 @@ import Catalog from "./pages/Catalog";
 import About from "./pages/About";
 import Services from "./pages/Services";
 import Contacts from "./pages/Contacts";
+import Delivery from "./pages/Delivery";
 import ProductDetail from "./components/product/ProductDetail";
 import { CartProvider } from "./contexts/CartContext";
 import FloatingSocialButtons from "./components/common/FloatingSocialButtons";
@@ -31,6 +32,7 @@ const App = () => (
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/contacts" element={<Contacts />} />
+            <Route path="/delivery" element={<Delivery />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

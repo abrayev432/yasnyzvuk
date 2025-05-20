@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Send, Instagram, MessageCircle } from "lucide-react";
+import { Send, MessageCircle } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 
 interface ChatModalProps {
@@ -29,18 +29,18 @@ const ChatModal = ({ isOpen, onClose }: ChatModalProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md bg-white border-brand">
         <DialogHeader>
-          <DialogTitle>Чат с администратором</DialogTitle>
+          <DialogTitle className="text-xl font-medium text-brand">Чат со специалистом</DialogTitle>
         </DialogHeader>
         <div className="flex flex-col space-y-4">
-          <div className="bg-gray-50 p-4 rounded-lg">
-            <p className="text-gray-600">
-              Здравствуйте! Напишите ваш вопрос, и мы ответим вам в ближайшее время. 
+          <div className="bg-brand/5 p-4 rounded-lg border border-brand/10">
+            <p className="text-gray-700">
+              Здравствуйте! Напишите ваш вопрос, и наш специалист ответит вам в ближайшее время. 
               Также вы можете связаться с нами через мессенджеры:
             </p>
             <div className="flex space-x-2 mt-4">
-              <Button variant="outline" size="icon" asChild className="rounded-full">
+              <Button variant="outline" size="icon" asChild className="rounded-full hover:bg-green-50 border-green-600/30">
                 <a href="https://wa.me/74957990926" target="_blank" rel="noopener noreferrer">
                   <svg 
                     width="20" 
@@ -61,7 +61,7 @@ const ChatModal = ({ isOpen, onClose }: ChatModalProps) => {
                   </svg>
                 </a>
               </Button>
-              <Button variant="outline" size="icon" asChild className="rounded-full">
+              <Button variant="outline" size="icon" asChild className="rounded-full hover:bg-blue-50 border-blue-500/30">
                 <a href="https://t.me/yasnyzvuk" target="_blank" rel="noopener noreferrer">
                   <svg 
                     width="20" 
@@ -81,11 +81,6 @@ const ChatModal = ({ isOpen, onClose }: ChatModalProps) => {
                   </svg>
                 </a>
               </Button>
-              <Button variant="outline" size="icon" asChild className="rounded-full">
-                <a href="https://instagram.com/yasnyzvuk" target="_blank" rel="noopener noreferrer">
-                  <Instagram className="h-5 w-5 text-pink-600" />
-                </a>
-              </Button>
             </div>
           </div>
           
@@ -94,9 +89,9 @@ const ChatModal = ({ isOpen, onClose }: ChatModalProps) => {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Введите сообщение..."
-              className="flex-1"
+              className="flex-1 border-brand/30 focus-visible:ring-brand"
             />
-            <Button type="submit" disabled={!message.trim()}>
+            <Button type="submit" disabled={!message.trim()} className="bg-brand hover:bg-brand/90">
               <Send className="h-4 w-4 mr-2" />
               Отправить
             </Button>

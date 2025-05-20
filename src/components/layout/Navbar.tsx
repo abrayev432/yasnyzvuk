@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowRight, Phone, Menu, X, MessageCircle } from "lucide-react";
@@ -38,6 +39,9 @@ const Navbar = () => {
   }, {
     name: "Контакты",
     href: "/contacts"
+  }, {
+    name: "Доставка и оплата",
+    href: "/delivery"
   }];
   const isActive = (path: string) => {
     if (path === "/" && location.pathname !== "/") return false;
@@ -107,7 +111,7 @@ const Navbar = () => {
                 setIsChatOpen(true);
               }}>
                   <MessageCircle className="h-4 w-4" />
-                  Чат с администратором
+                  Чат со специалистом
                 </Button>
               </div>
             </SheetContent>

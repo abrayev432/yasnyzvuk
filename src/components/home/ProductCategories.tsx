@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -8,21 +9,21 @@ const categories = [
     title: "Заушные слуховые аппараты",
     description: "Классические и мощные слуховые аппараты, располагающиеся за ухом",
     image: "/lovable-uploads/91f6ae84-a749-4e86-85fb-537db46052c7.png",
-    path: "/catalog/behind-the-ear",
+    path: "/catalog?category=behind-the-ear",
     badge: "Популярное",
   },
   {
     title: "Внутриушные слуховые аппараты",
     description: "Компактные аппараты, размещающиеся в ушной раковине",
     image: "https://www.outsideclinic.co.uk/uploads/images/_large/Hearing-Aid-Styles-ITE-min.png",
-    path: "/catalog/in-the-ear",
+    path: "/catalog?category=in-the-ear",
     badge: "Незаметные",
   },
   {
     title: "Внутриканальные слуховые аппараты",
     description: "Миниатюрные и практически незаметные аппараты внутри слухового канала",
     image: "https://avatars.mds.yandex.net/i?id=6530ef747c881994cc1a243a48d0cc7e7c306653-9425828-images-thumbs&n=13",
-    path: "/catalog/in-the-canal",
+    path: "/catalog?category=in-the-canal",
     badge: "Комфортные",
   },
 ];
