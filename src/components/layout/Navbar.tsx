@@ -1,15 +1,17 @@
 
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ArrowRight, Phone, Menu, X } from "lucide-react";
+import { ArrowRight, Phone, Menu, X, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CartModal } from "@/components/cart/CartModal";
+import ChatModal from "../chat/ChatModal";
 
 const Navbar = () => {
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,12 +49,11 @@ const Navbar = () => {
     >
       <div className="container flex items-center justify-between px-4 md:px-6">
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-brand rounded-full flex items-center justify-center">
-            <span className="text-white font-bold text-lg">Я</span>
-          </div>
-          <span className="text-2xl font-bold tracking-tight text-brand">
-            Ясный звук
-          </span>
+          <img 
+            src="/lovable-uploads/d661252f-c37c-4eb0-8503-135afdf6f91b.png" 
+            alt="Ясный звук" 
+            className="h-10 w-auto" 
+          />
         </Link>
 
         <nav className="hidden md:flex items-center space-x-6">
@@ -79,6 +80,15 @@ const Navbar = () => {
             <Phone className="h-4 w-4" />
             +7 (495) 799-09-26
           </a>
+
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="hidden md:flex" 
+            onClick={() => setIsChatOpen(true)}
+          >
+            <MessageCircle className="h-5 w-5" />
+          </Button>
 
           <CartModal />
 
@@ -140,11 +150,23 @@ const Navbar = () => {
                   <Phone className="h-4 w-4" />
                   +7 (495) 799-09-26
                 </a>
+                <Button 
+                  variant="outline" 
+                  className="flex items-center gap-2"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    setIsChatOpen(true);
+                  }}
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  Чат с администратором
+                </Button>
               </div>
             </SheetContent>
           </Sheet>
         </div>
       </div>
+      <ChatModal isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
     </header>
   );
 };

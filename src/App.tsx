@@ -12,6 +12,7 @@ import Services from "./pages/Services";
 import Contacts from "./pages/Contacts";
 import ProductDetail from "./components/product/ProductDetail";
 import { CartProvider } from "./contexts/CartContext";
+import FloatingSocialButtons from "./components/common/FloatingSocialButtons";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <FloatingSocialButtons />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/catalog" element={<Catalog />} />
