@@ -50,7 +50,7 @@ const Navbar = () => {
   return <header className={`sticky top-0 z-40 w-full transition-all ${isScrolled ? "bg-white shadow-md py-2" : "bg-white/80 backdrop-blur-md py-4"}`}>
       <div className="container flex items-center justify-between px-4 md:px-6">
         <Link to="/" className="flex items-center gap-2">
-          <img src="/lovable-uploads/d661252f-c37c-4eb0-8503-135afdf6f91b.png" alt="Ясный звук" className="h-10 w-auto object-cover" />
+          <img src="/lovable-uploads/ae6363ba-daf5-4a6e-9562-0a86b85f4e56.png" alt="Ясный звук" className="h-10 w-auto object-cover" />
         </Link>
 
         <nav className="hidden md:flex items-center space-x-6">
