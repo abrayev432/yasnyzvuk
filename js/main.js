@@ -229,14 +229,12 @@ brandCards.forEach(card => {
 // Handle sticky header
 window.addEventListener('scroll', function() {
   const header = document.querySelector('.sticky-header');
-  if (header) {
-    if (window.scrollY > 10) {
-      header.style.padding = '0.5rem 0';
-      header.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';
-    } else {
-      header.style.padding = '1rem 0';
-      header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06)';
-    }
+  if (window.scrollY > 10) {
+    header.style.padding = '0.5rem 0';
+    header.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';
+  } else {
+    header.style.padding = '1rem 0';
+    header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06)';
   }
 });
 
