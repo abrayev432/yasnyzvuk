@@ -32,7 +32,7 @@ const HeroSection = () => {
           </div>
           <div className="flex items-center justify-center">
             <div className="relative h-[350px] w-full max-w-[500px] rounded-2xl bg-white p-4 shadow-lg shadow-gray-200/50 overflow-hidden">
-              <img alt="Современный слуховой аппарат" className="h-full w-full rounded-xl object-cover transition-transform hover:scale-105 duration-700" src="/lovable-uploads/d9416cbc-5ba5-460d-9eb1-d80d296aec7f.jpg" />
+              <img alt="Современный слуховой аппарат" className="h-full w-full rounded-xl object-cover transition-transform hover:scale-105 duration-700" src="/lovable-uploads/17037941-6a41-4e65-a096-b35c7729e230.png" />
               <div className="absolute bottom-8 left-8 right-8 rounded-xl bg-white/90 p-4 backdrop-blur shadow-lg">
                 <p className="font-medium text-brand">Новое поступление</p>
                 <h3 className="text-lg font-bold">Современные цифровые слуховые аппараты</h3>
