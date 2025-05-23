@@ -1,5 +1,5 @@
 
-import { Truck, CreditCard, Package, ShoppingCart } from "lucide-react";
+import { Truck, CreditCard, Package, ShoppingCart, Phone } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
