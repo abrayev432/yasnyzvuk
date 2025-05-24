@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
@@ -15,7 +16,7 @@ import { useToast } from "@/hooks/use-toast";
 const products = [
   {
     id: 1,
-    name: "ReSound KEY KE277-DWH",
+    name: "Слуховой аппарат ReSound KEY KE277-DWH",
     category: "behind-the-ear",
     price: 40500,
     image: "https://vitaurum.ru/wa-data/public/shop/products/16/74/127416/images/7816/7816.450x0.png",
@@ -26,7 +27,7 @@ const products = [
   },
   {
     id: 2,
-    name: "Oticon Zircon 1 miniRITE T",
+    name: "Слуховой аппарат Oticon Zircon 1 miniRITE T",
     category: "behind-the-ear",
     price: 122000,
     image: "https://avatars.mds.yandex.net/get-marketpic/7741417/picbeb707c76808c52998c2db5ab35d5b43/orig",
@@ -37,7 +38,7 @@ const products = [
   },
   {
     id: 3,
-    name: "Oticon Ruby 2 BTE PP 13",
+    name: "Слуховой аппарат Oticon Ruby 2 BTE PP 13",
     category: "behind-the-ear",
     price: 83000,
     image: "https://vitaurum.ru/wa-data/public/shop/products/68/73/127368/images/7136/7136.450x0.png",
@@ -48,7 +49,7 @@ const products = [
   },
   {
     id: 5,
-    name: "Oticon Xceed 3 BTE SP",
+    name: "Слуховой аппарат Oticon Xceed 3 BTE SP",
     category: "behind-the-ear",
     price: 80000,
     image: "https://vitaurum.ru/wa-data/public/shop/products/57/76/127657/images/7092/7092.450x0.jpg",
@@ -59,7 +60,7 @@ const products = [
   },
   {
     id: 6,
-    name: "Widex Moment 440",
+    name: "Слуховой аппарат Widex Moment 440",
     category: "in-the-ear",
     price: 178000,
     image: "/assets/images/in-ear-hearing-aid.jpg",
