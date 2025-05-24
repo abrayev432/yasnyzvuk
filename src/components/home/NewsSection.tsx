@@ -1,6 +1,7 @@
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Calendar, Megaphone, Package, CreditCard } from "lucide-react";
+import { Calendar, Megaphone, CreditCard, Brain, Heart } from "lucide-react";
 
 const newsItems = [
   {
@@ -22,11 +23,19 @@ const newsItems = [
   },
   {
     id: 3,
-    title: "Новое поступление",
-    description: "В наш магазин поступили последние модели слуховых аппаратов от ведущих мировых производителей.",
-    date: "12 апреля 2025",
-    icon: Package,
-    category: "Товары"
+    title: "Искусственный интеллект в слуховых аппаратах: революция в области аудиологии",
+    description: "Современные слуховые аппараты с ИИ автоматически адаптируются к окружающей среде, фильтруют шум и улучшают качество звука в режиме реального времени.",
+    date: "24 мая 2025",
+    icon: Brain,
+    category: "Технологии"
+  },
+  {
+    id: 4,
+    title: "Связь между потерей слуха и здоровьем сердца: новые исследования",
+    description: "Ученые обнаружили прямую связь между нарушениями слуха и сердечно-сосудистыми заболеваниями. Своевременное лечение потери слуха может снизить риск развития болезней сердца.",
+    date: "24 мая 2025",
+    icon: Heart,
+    category: "Здоровье"
   }
 ];
 
