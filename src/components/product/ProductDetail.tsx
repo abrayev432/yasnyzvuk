@@ -156,6 +156,35 @@ const productsDatabase: Record<string, ProductData> = {
       { name: "Защита от влаги и пыли", value: "IP68" },
       { name: "Гарантия", value: "12 месяцев" }
     ]
+  },
+  "phonak-audeo-p50": {
+    id: 6,
+    name: "Phonak Audeo P50-312",
+    category: "behind-the-ear",
+    price: 126000,
+    image: "https://www.radugazvukov.ru/upload/iblock/e73/wwa3mzrbty1e204dcruafye6h31fxlph/Phonak_Audeo_P-312.jpg",
+    brand: "Phonak",
+    isNew: true,
+    isBestseller: false,
+    description: "Phonak Audeo P50-312 — инновационный заушный слуховой аппарат с технологией Paradise, обеспечивающий превосходное качество звука, кристально чистую передачу речи и беспрецедентную связность с цифровыми устройствами.",
+    features: [
+      "Технология Paradise для более естественного и богатого звучания",
+      "Универсальная связность с любыми Bluetooth-устройствами",
+      "Улучшенное понимание речи в шумной обстановке",
+      "Автоматическое переключение между устройствами",
+      "Водостойкая конструкция для активного образа жизни",
+      "Совместимость с приложением myPhonak для персональных настроек"
+    ],
+    specs: [
+      { name: "Тип", value: "Заушный (RIC)" },
+      { name: "Класс", value: "Премиум" },
+      { name: "Каналы обработки", value: "16" },
+      { name: "Батарея", value: "312 тип" },
+      { name: "Степень потери слуха", value: "От легкой до средне-тяжелой" },
+      { name: "Беспроводное соединение", value: "Bluetooth 5.0" },
+      { name: "Защита от влаги и пыли", value: "IP68" },
+      { name: "Гарантия", value: "24 месяца" }
+    ]
   }
 };
 

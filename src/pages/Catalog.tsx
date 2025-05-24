@@ -60,14 +60,14 @@ const products = [
   },
   {
     id: 6,
-    name: "Слуховой аппарат Widex Moment 440",
-    category: "in-the-ear",
-    price: 178000,
-    image: "/assets/images/in-ear-hearing-aid.jpg",
-    brand: "Widex",
+    name: "Слуховой аппарат Phonak Audeo P50-312",
+    category: "behind-the-ear",
+    price: 126000,
+    image: "https://www.radugazvukov.ru/upload/iblock/e73/wwa3mzrbty1e204dcruafye6h31fxlph/Phonak_Audeo_P-312.jpg",
+    brand: "Phonak",
     isNew: true,
     isBestseller: false,
-    slug: "widex-moment-440"
+    slug: "phonak-audeo-p50"
   },
 ];
 
