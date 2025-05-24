@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Mail, MapPin, Phone, Clock, Facebook, Instagram, Youtube } from "lucide-react";
 
@@ -138,10 +137,30 @@ const Footer = () => {
           <p className="text-xs text-gray-500">
             © {new Date().getFullYear()} Ясный звук. Все права защищены.
           </p>
-          <div className="mt-4 md:mt-0">
-            <p className="text-xs text-gray-500">
+          <div className="mt-4 md:mt-0 flex flex-col items-center md:items-end">
+            <p className="text-xs text-gray-500 mb-2">
               Разработано с заботой о клиентах
             </p>
+            <div className="flex items-center space-x-2">
+              <span className="text-xs text-gray-500">Принимаем к оплате:</span>
+              <div className="flex space-x-2">
+                <img 
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/200px-MasterCard_Logo.svg.png" 
+                  alt="Mastercard" 
+                  className="h-6 w-auto"
+                />
+                <img 
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/200px-Visa_Inc._logo.svg.png" 
+                  alt="Visa" 
+                  className="h-6 w-auto"
+                />
+                <img 
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Mir-logo.svg/200px-Mir-logo.svg.png" 
+                  alt="Мир" 
+                  className="h-6 w-auto"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
