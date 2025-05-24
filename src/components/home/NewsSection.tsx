@@ -1,11 +1,20 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Calendar, Megaphone, Package, Users } from "lucide-react";
+import { Calendar, Megaphone, Package, Users, CreditCard } from "lucide-react";
 
 const newsItems = [
   {
     id: 1,
+    title: "Мы принимаем электронные сертификаты от социального фонда России",
+    description: "Теперь вы можете использовать электронные сертификаты от социального фонда России для приобретения слуховых аппаратов в нашем центре.",
+    date: "25 мая 2024",
+    icon: CreditCard,
+    category: "Сертификаты",
+    image: "https://avatars.mds.yandex.net/i?id=bc1626da9b2f22a21eb6c1d80f5ca345a324af44-5222019-images-thumbs&n=13"
+  },
+  {
+    id: 2,
     title: "Верни радость звука",
     description: "Новая программа реабилитации слуха для людей с нарушениями слуха. Индивидуальный подход и современные технологии.",
     date: "15 мая 2024",
@@ -13,7 +22,7 @@ const newsItems = [
     category: "Программа"
   },
   {
-    id: 2,
+    id: 3,
     title: "Новое поступление",
     description: "В наш магазин поступили последние модели слуховых аппаратов от ведущих мировых производителей.",
     date: "12 мая 2024",
@@ -21,20 +30,12 @@ const newsItems = [
     category: "Товары"
   },
   {
-    id: 3,
+    id: 4,
     title: "Объединение чатов в группу",
     description: "Мы объединили все каналы поддержки клиентов в единую группу для более быстрого и эффективного обслуживания.",
     date: "10 мая 2024",
     icon: Users,
     category: "Сервис"
-  },
-  {
-    id: 4,
-    title: "Бесплатная диагностика слуха",
-    description: "В течение мая проводим бесплатную диагностику слуха для всех желающих. Запишитесь на консультацию уже сегодня!",
-    date: "8 мая 2024",
-    icon: Calendar,
-    category: "Акция"
   }
 ];
 
@@ -62,6 +63,15 @@ const NewsSection = () => {
             {newsItems.map((item) => (
               <CarouselItem key={item.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
                 <Card className="h-full hover:shadow-lg transition-shadow duration-300">
+                  {item.image && (
+                    <div className="w-full h-48 overflow-hidden rounded-t-lg">
+                      <img 
+                        src={item.image} 
+                        alt={item.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
                   <CardHeader>
                     <div className="flex items-center gap-3 mb-2">
                       <div className="h-10 w-10 rounded-full bg-brand/10 flex items-center justify-center">
