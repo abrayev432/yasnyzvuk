@@ -102,33 +102,56 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 pt-8 border-t border-gray-800">
-          <div className="mb-8">
-            <h3 className="text-lg font-medium mb-4">Мы в социальных сетях</h3>
-            <div className="flex space-x-4">
-              <a 
-                href="https://facebook.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center justify-center w-10 h-10 bg-gray-800 hover:bg-brand transition-colors rounded-full"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a 
-                href="https://instagram.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center justify-center w-10 h-10 bg-gray-800 hover:bg-brand transition-colors rounded-full"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a 
-                href="https://youtube.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center justify-center w-10 h-10 bg-gray-800 hover:bg-brand transition-colors rounded-full"
-              >
-                <Youtube className="h-5 w-5" />
-              </a>
+          <div className="flex flex-col md:flex-row justify-between items-start mb-8">
+            <div className="mb-8 md:mb-0">
+              <h3 className="text-lg font-medium mb-4">Мы в социальных сетях</h3>
+              <div className="flex space-x-4">
+                <a 
+                  href="https://facebook.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-10 h-10 bg-gray-800 hover:bg-brand transition-colors rounded-full"
+                >
+                  <Facebook className="h-5 w-5" />
+                </a>
+                <a 
+                  href="https://instagram.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-10 h-10 bg-gray-800 hover:bg-brand transition-colors rounded-full"
+                >
+                  <Instagram className="h-5 w-5" />
+                </a>
+                <a 
+                  href="https://youtube.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-10 h-10 bg-gray-800 hover:bg-brand transition-colors rounded-full"
+                >
+                  <Youtube className="h-5 w-5" />
+                </a>
+              </div>
+            </div>
+            
+            <div className="flex flex-col items-start md:items-end">
+              <h3 className="text-lg font-medium mb-4">Принимаем к оплате</h3>
+              <div className="flex space-x-3">
+                <img 
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/200px-MasterCard_Logo.svg.png" 
+                  alt="Mastercard" 
+                  className="h-8 w-auto"
+                />
+                <img 
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/200px-Visa_Inc._logo.svg.png" 
+                  alt="Visa" 
+                  className="h-8 w-auto"
+                />
+                <img 
+                  src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Mir-logo.SVG.svg" 
+                  alt="Мир" 
+                  className="h-8 w-auto"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -137,30 +160,10 @@ const Footer = () => {
           <p className="text-xs text-gray-500">
             © {new Date().getFullYear()} Ясный звук. Все права защищены.
           </p>
-          <div className="mt-4 md:mt-0 flex flex-col items-center md:items-end">
-            <p className="text-xs text-gray-500 mb-2">
+          <div className="mt-4 md:mt-0">
+            <p className="text-xs text-gray-500">
               Разработано с заботой о клиентах
             </p>
-            <div className="flex items-center space-x-2">
-              <span className="text-xs text-gray-500">Принимаем к оплате:</span>
-              <div className="flex space-x-2">
-                <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/200px-MasterCard_Logo.svg.png" 
-                  alt="Mastercard" 
-                  className="h-6 w-auto"
-                />
-                <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/200px-Visa_Inc._logo.svg.png" 
-                  alt="Visa" 
-                  className="h-6 w-auto"
-                />
-                <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Mir-logo.svg/200px-Mir-logo.svg.png" 
-                  alt="Мир" 
-                  className="h-6 w-auto"
-                />
-              </div>
-            </div>
           </div>
         </div>
       </div>
