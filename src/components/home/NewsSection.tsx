@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Calendar, Megaphone, CreditCard, Brain, Heart } from "lucide-react";
+import { Calendar, Megaphone, CreditCard, Brain, Heart, Headphones } from "lucide-react";
 
 const newsItems = [
   {
@@ -23,6 +23,15 @@ const newsItems = [
   },
   {
     id: 3,
+    title: "Oticon Real™ - революция в мире слуховых аппаратов",
+    description: "Новая линейка слуховых аппаратов Oticon Real™ предлагает уникальную технологию Deep Neural Network (DNN), которая обучена на более чем 12 миллионах реальных звуковых сценариев. Это позволяет обеспечить более естественное и четкое восприятие звука в любых условиях.",
+    date: "24 мая 2025",
+    icon: Headphones,
+    category: "Новинки",
+    image: "https://i.ibb.co/b6SqRvL/oticon-logo.png"
+  },
+  {
+    id: 4,
     title: "Искусственный интеллект в слуховых аппаратах: революция в области аудиологии",
     description: "Современные слуховые аппараты с ИИ автоматически адаптируются к окружающей среде, фильтруют шум и улучшают качество звука в режиме реального времени.",
     date: "24 мая 2025",
@@ -30,7 +39,7 @@ const newsItems = [
     category: "Технологии"
   },
   {
-    id: 4,
+    id: 5,
     title: "Связь между потерей слуха и здоровьем сердца: новые исследования",
     description: "Ученые обнаружили прямую связь между нарушениями слуха и сердечно-сосудистыми заболеваниями. Своевременное лечение потери слуха может снизить риск развития болезней сердца.",
     date: "24 мая 2025",
