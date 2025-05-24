@@ -45,7 +45,7 @@ const productsDatabase: Record<string, ProductData> = {
     id: 2,
     name: "Oticon Zircon 1 miniRITE T",
     category: "behind-the-ear",
-    price: 175000,
+    price: 122000,
     image: "https://avatars.mds.yandex.net/get-marketpic/7741417/picbeb707c76808c52998c2db5ab35d5b43/orig",
     brand: "Oticon",
     isNew: false,

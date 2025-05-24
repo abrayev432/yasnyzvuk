@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
@@ -29,7 +28,7 @@ const products = [
     id: 2,
     name: "Oticon Zircon 1 miniRITE T",
     category: "behind-the-ear",
-    price: 175000,
+    price: 122000,
     image: "https://avatars.mds.yandex.net/get-marketpic/7741417/picbeb707c76808c52998c2db5ab35d5b43/orig",
     brand: "Oticon",
     isNew: false,
@@ -46,17 +45,6 @@ const products = [
     isNew: true,
     isBestseller: false,
     slug: "oticon-ruby-2"
-  },
-  {
-    id: 4,
-    name: "Starkey Livio Edge AI 2400",
-    category: "in-the-ear",
-    price: 195000,
-    image: "/assets/images/in-ear-hearing-aid.jpg",
-    brand: "Starkey",
-    isNew: false,
-    isBestseller: false,
-    slug: "starkey-livio-edge"
   },
   {
     id: 5,
