@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -41,7 +40,7 @@ const ChatModal = ({ isOpen, onClose }: ChatModalProps) => {
             </p>
             <div className="flex space-x-2 mt-4">
               <Button variant="outline" size="icon" asChild className="rounded-full hover:bg-green-50 border-green-600/30">
-                <a href="https://wa.me/74957990926" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/79647801130" target="_blank" rel="noopener noreferrer">
                   <svg 
                     width="20" 
                     height="20" 

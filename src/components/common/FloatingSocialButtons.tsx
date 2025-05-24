@@ -17,7 +17,7 @@ const FloatingSocialButtons = () => {
           asChild
         >
           <a 
-            href="https://wa.me/74957990926" 
+            href="https://wa.me/79647801130" 
             target="_blank" 
             rel="noopener noreferrer"
             aria-label="Связаться через WhatsApp"

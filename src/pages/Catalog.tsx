@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
@@ -30,7 +29,7 @@ const products = [
     name: "Слуховой аппарат Oticon Zircon 1 miniRITE T",
     category: "behind-the-ear",
     price: 122000,
-    image: "https://avatars.mds.yandex.net/get-marketpic/7741417/picbeb707c76808c52998c2db5ab35d5b43/orig",
+    image: "https://www.radugazvukov.ru/upload/iblock/8a5/7nnm96djgygm4qqeedewiy4dxbll18ea/Zircon_miniRITE_600.jpg",
     brand: "Oticon",
     isNew: false,
     isBestseller: true,
