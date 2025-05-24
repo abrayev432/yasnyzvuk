@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Mail, MapPin, Phone, Clock } from "lucide-react";
+import { Mail, MapPin, Phone, Clock, Facebook, Instagram, Youtube } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -94,7 +94,7 @@ const Footer = () => {
               <li className="flex">
                 <Clock className="mr-3 h-5 w-5 text-brand flex-shrink-0" />
                 <div className="text-gray-300">
-                  <p>пн.-сб.: 10:00-20:00</p>
+                  <p>пн.-сб.: 10:00-19:00</p>
                   <p>вс.: выходной</p>
                 </div>
               </li>
@@ -102,7 +102,39 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between mt-16 pt-8 border-t border-gray-800 md:flex-row">
+        <div className="mt-12 pt-8 border-t border-gray-800">
+          <div className="mb-8">
+            <h3 className="text-lg font-medium mb-4">Мы в социальных сетях</h3>
+            <div className="flex space-x-4">
+              <a 
+                href="https://facebook.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-10 h-10 bg-gray-800 hover:bg-brand transition-colors rounded-full"
+              >
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a 
+                href="https://instagram.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-10 h-10 bg-gray-800 hover:bg-brand transition-colors rounded-full"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a 
+                href="https://youtube.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-10 h-10 bg-gray-800 hover:bg-brand transition-colors rounded-full"
+              >
+                <Youtube className="h-5 w-5" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col items-center justify-between pt-8 border-t border-gray-800 md:flex-row">
           <p className="text-xs text-gray-500">
             © {new Date().getFullYear()} Ясный звук. Все права защищены.
           </p>

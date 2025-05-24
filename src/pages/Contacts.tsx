@@ -86,7 +86,7 @@ const Contacts = () => {
                   <div>
                     <h3 className="text-lg font-medium">Часы работы</h3>
                     <div className="space-y-1 text-muted-foreground mt-1">
-                      <p>Пн-Сб: 10:00 - 20:00</p>
+                      <p>Пн-Сб: 10:00 - 19:00</p>
                       <p>Вс: выходной</p>
                     </div>
                   </div>
