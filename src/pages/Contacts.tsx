@@ -1,6 +1,6 @@
-
 import Layout from "@/components/layout/Layout";
 import ContactSection from "@/components/home/ContactSection";
+import MapboxMap from "@/components/MapboxMap";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { useEffect } from "react";
@@ -98,17 +98,8 @@ const Contacts = () => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="bg-white rounded-xl overflow-hidden shadow-md h-[400px] md:h-auto"
             >
-              <iframe 
-                src="https://yandex.ru/map-widget/v1/?um=constructor%3A3a3ce100d7217bcfe93482f754056e1e697e4872e48b5907e5ba68030e961071&amp;source=constructor&amp;scroll=false"
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen 
-                loading="lazy" 
-                title="Карта расположения"
-              ></iframe>
+              <MapboxMap />
             </motion.div>
           </div>
         </div>
