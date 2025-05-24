@@ -1,14 +1,13 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Calendar, Megaphone, Package, Users, CreditCard } from "lucide-react";
+import { Calendar, Megaphone, Package, CreditCard } from "lucide-react";
 
 const newsItems = [
   {
     id: 1,
     title: "Мы принимаем электронные сертификаты от социального фонда России",
     description: "Теперь вы можете использовать электронные сертификаты от социального фонда России для приобретения слуховых аппаратов в нашем центре.",
-    date: "25 мая 2024",
+    date: "25 мая 2025",
     icon: CreditCard,
     category: "Сертификаты",
     image: "https://avatars.mds.yandex.net/i?id=bc1626da9b2f22a21eb6c1d80f5ca345a324af44-5222019-images-thumbs&n=13"
@@ -17,7 +16,7 @@ const newsItems = [
     id: 2,
     title: "Верни радость звука",
     description: "Новая программа реабилитации слуха для людей с нарушениями слуха. Индивидуальный подход и современные технологии.",
-    date: "15 мая 2024",
+    date: "15 мая 2025",
     icon: Megaphone,
     category: "Программа"
   },
@@ -25,17 +24,9 @@ const newsItems = [
     id: 3,
     title: "Новое поступление",
     description: "В наш магазин поступили последние модели слуховых аппаратов от ведущих мировых производителей.",
-    date: "12 мая 2024",
+    date: "12 апреля 2025",
     icon: Package,
     category: "Товары"
-  },
-  {
-    id: 4,
-    title: "Объединение чатов в группу",
-    description: "Мы объединили все каналы поддержки клиентов в единую группу для более быстрого и эффективного обслуживания.",
-    date: "10 мая 2024",
-    icon: Users,
-    category: "Сервис"
   }
 ];
 
