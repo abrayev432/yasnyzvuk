@@ -1,4 +1,3 @@
-
 import { Truck, CreditCard, Package, ShoppingCart, Phone } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -43,11 +42,11 @@ const Delivery = () => {
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start">
                       <span className="font-medium mr-2">Адрес:</span>
-                      <span>г. Москва, ул. Садовая-Кудринская, д. 11, стр. 1</span>
+                      <span>ул. Люблинская д. 100 кор. 2, Москва</span>
                     </li>
                     <li className="flex items-start">
                       <span className="font-medium mr-2">Время работы:</span>
-                      <span>Пн-Пт: 9:00-19:00, Сб: 10:00-16:00</span>
+                      <span>Пн-Сб: 10:00-19:00, Вс: выходной</span>
                     </li>
                     <li className="flex items-start">
                       <span className="font-medium mr-2">Стоимость:</span>
@@ -135,7 +134,7 @@ const Delivery = () => {
             </TabsContent>
 
             <TabsContent value="payment" className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-8 md:grid-cols-2">
                 <div className="bg-gray-50 p-6 rounded-lg border border-gray-100">
                   <div className="flex items-center mb-4">
                     <div className="bg-brand/10 p-3 rounded-full mr-4">
@@ -184,32 +183,6 @@ const Delivery = () => {
                     <li className="flex items-start">
                       <span className="font-medium mr-2">Комиссия:</span>
                       <span className="text-green-600 font-medium">Нет</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="bg-gray-50 p-6 rounded-lg border border-gray-100">
-                  <div className="flex items-center mb-4">
-                    <div className="bg-brand/10 p-3 rounded-full mr-4">
-                      <CreditCard className="h-6 w-6 text-brand" />
-                    </div>
-                    <h3 className="text-xl font-medium">Рассрочка</h3>
-                  </div>
-                  <p className="text-muted-foreground mb-4">
-                    Покупка в рассрочку через банки-партнеры.
-                  </p>
-                  <ul className="space-y-2 text-sm">
-                    <li className="flex items-start">
-                      <span className="font-medium mr-2">Банки:</span>
-                      <span>Тинькофф, Сбербанк, Альфа-банк</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="font-medium mr-2">Срок:</span>
-                      <span>до 12 месяцев</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="font-medium mr-2">Документы:</span>
-                      <span>Паспорт РФ</span>
                     </li>
                   </ul>
                 </div>
