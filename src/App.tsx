@@ -11,6 +11,7 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Contacts from "./pages/Contacts";
 import Delivery from "./pages/Delivery";
+import Checkout from "./pages/Checkout";
 import ProductDetail from "./components/product/ProductDetail";
 import { CartProvider } from "./contexts/CartContext";
 import FloatingSocialButtons from "./components/common/FloatingSocialButtons";
@@ -33,6 +34,7 @@ const App = () => (
             <Route path="/services" element={<Services />} />
             <Route path="/contacts" element={<Contacts />} />
             <Route path="/delivery" element={<Delivery />} />
+            <Route path="/checkout" element={<Checkout />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
