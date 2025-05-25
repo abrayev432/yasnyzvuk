@@ -57,27 +57,36 @@ const CallRequestForm = ({ open, onOpenChange }: CallRequestFormProps) => {
     setIsSubmitting(true);
 
     try {
-      const formData = new FormData();
-      Object.entries(data).forEach(([key, value]) => {
-        formData.append(key, value || "");
-      });
+      // Создаем mailto ссылку для отправки email
+      const subject = `Запрос на обратный звонок от ${data.name}`;
+      const body = `
+Имя: ${data.name}
+Телефон: ${data.phone}
+Удобное время для звонка: ${data.time || "Не указано"}
 
-      // Send data using a form action that will send an email
-      // This will be simulated with a timeout for now
-      await new Promise((resolve) => setTimeout(resolve, 800));
+${data.message ? `Комментарий: ${data.message}` : ""}
+
+---
+Отправлено с сайта yasnyzvuk.ru
+      `.trim();
+
+      const mailtoLink = `mailto:abrayev@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       
-      // Clear form and show success message
+      // Открываем почтовый клиент
+      window.location.href = mailtoLink;
+      
+      // Очищаем форму и закрываем диалог
       form.reset();
       onOpenChange(false);
       toast({
-        title: "Запрос отправлен",
-        description: "Мы свяжемся с вами в ближайшее время",
+        title: "Запрос подготовлен",
+        description: "Ваш почтовый клиент должен открыться для отправки запроса",
       });
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.error("Error preparing email:", error);
       toast({
         title: "Ошибка",
-        description: "Произошла ошибка при отправке запроса",
+        description: "Произошла ошибка при подготовке запроса",
         variant: "destructive",
       });
     } finally {
