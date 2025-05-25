@@ -143,16 +143,16 @@ const Delivery = () => {
                     <h3 className="text-xl font-medium">Банковской картой</h3>
                   </div>
                   <p className="text-muted-foreground mb-4">
-                    Оплата банковской картой на сайте или при получении.
+                    Оплата банковской картой только при самовывозе.
                   </p>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start">
-                      <span className="font-medium mr-2">Онлайн:</span>
+                      <span className="font-medium mr-2">Самовывоз:</span>
                       <span>Visa, MasterCard, МИР</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="font-medium mr-2">При получении:</span>
-                      <span>Платежный терминал у курьера</span>
+                      <span className="font-medium mr-2">Терминал:</span>
+                      <span>В центре слухопротезирования</span>
                     </li>
                     <li className="flex items-start">
                       <span className="font-medium mr-2">Комиссия:</span>
@@ -253,7 +253,7 @@ const Delivery = () => {
                 +7 (495) 799-09-26
               </a>
               <span className="hidden sm:inline text-muted-foreground">•</span>
-              <span className="text-muted-foreground">Пн-Пт: 9:00-19:00, Сб: 10:00-16:00</span>
+              <span className="text-muted-foreground">Пн-Сб: 10:00-19:00</span>
             </div>
           </div>
         </div>
