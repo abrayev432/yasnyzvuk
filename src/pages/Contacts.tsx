@@ -101,13 +101,13 @@ const Contacts = () => {
               className="bg-white rounded-xl overflow-hidden shadow-md h-[400px] md:h-auto"
             >
               <iframe 
-                src="https://yandex.ru/map-widget/v1/?text=ясный звук&sll=37.617700,55.755826&sspn=0.708771,0.347652&source=serp_navig"
+                src="https://yandex.ru/map-widget/v1/?text=ул.%20Люблинская%20д.%20100%20кор.%202%20Москва&sll=37.708122,55.676655&sspn=0.016935,0.008688&z=15&l=map"
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
                 allowFullScreen 
                 loading="lazy" 
-                title="Карта - Ясный звук"
+                title="Карта - Ясный звук, ул. Люблинская д. 100 кор. 2"
               ></iframe>
             </motion.div>
           </div>
