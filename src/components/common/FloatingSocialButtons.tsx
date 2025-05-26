@@ -49,9 +49,7 @@ const FloatingSocialButtons = () => {
           asChild
         >
           <a 
-            href="https://t.me/yasnyzvuk" 
-            target="_blank" 
-            rel="noopener noreferrer"
+            href="tel:+79629102391" 
             aria-label="Связаться через Telegram"
           >
             <svg 
