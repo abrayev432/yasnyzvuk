@@ -101,13 +101,13 @@ const Contacts = () => {
               className="bg-white rounded-xl overflow-hidden shadow-md h-[400px] md:h-auto"
             >
               <iframe 
-                src="https://yandex.ru/map-widget/v1/?um=constructor%3A3a3ce100d7217bcfe93482f754056e1e697e4872e48b5907e5ba68030e961071&amp;source=constructor&amp;scroll=false"
+                src="https://yandex.ru/map-widget/v1/?text=ясный звук&sll=37.617700,55.755826&sspn=0.708771,0.347652&source=serp_navig"
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
                 allowFullScreen 
                 loading="lazy" 
-                title="Карта расположения"
+                title="Карта - Ясный звук"
               ></iframe>
             </motion.div>
           </div>
