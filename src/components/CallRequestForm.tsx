@@ -70,7 +70,7 @@ ${data.message ? `Комментарий: ${data.message}` : ""}
 Отправлено с сайта yasnyzvuk.ru
       `.trim();
 
-      const mailtoLink = `mailto:abrayev@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const mailtoLink = `mailto:info@yasnyzvuk.ru?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       
       // Открываем почтовый клиент
       window.location.href = mailtoLink;

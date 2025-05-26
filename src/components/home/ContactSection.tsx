@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -58,7 +57,7 @@ ${data.message}
 Отправлено с сайта yasnyzvuk.ru
       `.trim();
 
-      const mailtoLink = `mailto:abrayev@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const mailtoLink = `mailto:info@yasnyzvuk.ru?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       
       // Открываем почтовый клиент
       window.location.href = mailtoLink;
@@ -126,8 +125,8 @@ ${data.message}
               <div>
                 <h3 className="text-lg font-medium">Email</h3>
                 <p className="text-muted-foreground mt-1">
-                  <a href="mailto:abrayev@gmail.com" className="hover:text-brand">
-                    abrayev@gmail.com
+                  <a href="mailto:info@yasnyzvuk.ru" className="hover:text-brand">
+                    info@yasnyzvuk.ru
                   </a>
                 </p>
               </div>
