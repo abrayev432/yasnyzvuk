@@ -1,6 +1,8 @@
 
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar, Megaphone, CreditCard, Brain, Heart, Headphones, Ear } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Calendar, Megaphone, CreditCard, Brain, Heart, Headphones, Ear, ChevronDown, ChevronUp } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 
 const newsItems = [
@@ -94,6 +96,18 @@ const newsItems = [
 ];
 
 const News = () => {
+  const [expandedItems, setExpandedItems] = useState<Set<number>>(new Set());
+
+  const toggleExpanded = (itemId: number) => {
+    const newExpanded = new Set(expandedItems);
+    if (newExpanded.has(itemId)) {
+      newExpanded.delete(itemId);
+    } else {
+      newExpanded.add(itemId);
+    }
+    setExpandedItems(newExpanded);
+  };
+
   return (
     <Layout>
       <div className="container px-4 md:px-6 py-20">
@@ -107,39 +121,68 @@ const News = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {newsItems.map((item) => (
-            <Card key={item.id} className="h-full hover:shadow-lg transition-shadow duration-300">
-              {item.image && (
-                <div className="w-full h-48 overflow-hidden rounded-t-lg">
-                  <img 
-                    src={item.image} 
-                    alt={item.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              )}
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="h-10 w-10 rounded-full bg-brand/10 flex items-center justify-center">
-                    <item.icon className="h-5 w-5 text-brand" />
+          {newsItems.map((item) => {
+            const isExpanded = expandedItems.has(item.id);
+            const hasFullText = item.fullText && item.fullText.length > item.description.length;
+            
+            return (
+              <Card key={item.id} className="h-full hover:shadow-lg transition-shadow duration-300">
+                {item.image && (
+                  <div className="w-full h-48 overflow-hidden rounded-t-lg">
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <span className="text-xs font-medium text-brand bg-brand/10 px-2 py-1 rounded-full">
-                    {item.category}
-                  </span>
-                </div>
-                <CardTitle className="text-lg leading-tight">{item.title}</CardTitle>
-                <CardDescription className="flex items-center gap-1 text-sm text-muted-foreground">
-                  <Calendar className="h-3 w-3" />
-                  {item.date}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {item.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
+                )}
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="h-10 w-10 rounded-full bg-brand/10 flex items-center justify-center">
+                      <item.icon className="h-5 w-5 text-brand" />
+                    </div>
+                    <span className="text-xs font-medium text-brand bg-brand/10 px-2 py-1 rounded-full">
+                      {item.category}
+                    </span>
+                  </div>
+                  <CardTitle className="text-lg leading-tight">{item.title}</CardTitle>
+                  <CardDescription className="flex items-center gap-1 text-sm text-muted-foreground">
+                    <Calendar className="h-3 w-3" />
+                    {item.date}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-sm text-muted-foreground leading-relaxed">
+                    {isExpanded && hasFullText ? (
+                      <div className="whitespace-pre-line">
+                        {item.fullText}
+                      </div>
+                    ) : (
+                      <p>{item.description}</p>
+                    )}
+                  </div>
+                  {hasFullText && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => toggleExpanded(item.id)}
+                      className="mt-3 p-0 h-auto font-normal text-brand hover:text-brand/80"
+                    >
+                      {isExpanded ? (
+                        <>
+                          Свернуть <ChevronUp className="h-4 w-4 ml-1" />
+                        </>
+                      ) : (
+                        <>
+                          Читать полностью <ChevronDown className="h-4 w-4 ml-1" />
+                        </>
+                      )}
+                    </Button>
+                  )}
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </Layout>
