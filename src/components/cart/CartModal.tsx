@@ -6,20 +6,16 @@ import { ShoppingCart, Trash2, Minus, Plus, X } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
 
 export function CartModal() {
   const { cart, removeFromCart, updateQuantity, clearCart, totalItems, totalPrice } = useCart();
-  const { toast } = useToast();
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   
   const handleCheckout = () => {
-    toast({
-      title: "Заказ оформлен",
-      description: "Спасибо за ваш заказ! Наш менеджер скоро свяжется с вами.",
-    });
-    clearCart();
     setOpen(false);
+    navigate('/checkout');
   };
 
   return (
