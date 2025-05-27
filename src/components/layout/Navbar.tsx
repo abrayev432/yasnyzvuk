@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowRight, Phone, Menu, X, MessageCircle } from "lucide-react";
@@ -6,11 +5,13 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CartModal } from "@/components/cart/CartModal";
 import ChatModal from "../chat/ChatModal";
+
 const Navbar = () => {
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -24,30 +25,45 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  const navigation = [{
-    name: "Главная",
-    href: "/"
-  }, {
-    name: "Каталог",
-    href: "/catalog"
-  }, {
-    name: "Услуги",
-    href: "/services"
-  }, {
-    name: "О нас",
-    href: "/about"
-  }, {
-    name: "Контакты",
-    href: "/contacts"
-  }, {
-    name: "Доставка и оплата",
-    href: "/delivery"
-  }];
+
+  const navigation = [
+    {
+      name: "Главная",
+      href: "/"
+    },
+    {
+      name: "Каталог",
+      href: "/catalog"
+    },
+    {
+      name: "Услуги",
+      href: "/services"
+    },
+    {
+      name: "О нас",
+      href: "/about"
+    },
+    {
+      name: "Контакты",
+      href: "/contacts"
+    },
+    {
+      name: "Доставка и оплата",
+      href: "/delivery"
+    },
+    {
+      name: "Новости",
+      href: "/news"
+    }
+  ];
+
   const isActive = (path: string) => {
     if (path === "/" && location.pathname !== "/") return false;
     return location.pathname.startsWith(path);
   };
-  return <header className={`sticky top-0 z-40 w-full transition-all ${isScrolled ? "bg-white shadow-md py-2" : "bg-white/80 backdrop-blur-md py-4"}`}>
+
+  return (
+    <header className={`sticky top-0 z-40 w-full transition-all ${isScrolled ? "bg-white shadow-md py-2" : "bg-white/80 backdrop-blur-md py-4"}`}>
       <div className="container flex items-center justify-between px-4 md:px-6">
         <Link to="/" className="flex items-center gap-2">
           <img src="/lovable-uploads/d661252f-c37c-4eb0-8503-135afdf6f91b.png" alt="Ясный звук" className="h-10 w-auto object-cover" />
@@ -119,6 +135,8 @@ const Navbar = () => {
         </div>
       </div>
       <ChatModal isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
-    </header>;
+    </header>
+  );
 };
+
 export default Navbar;
