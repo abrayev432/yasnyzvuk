@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { ArrowRight, Sparkles, Shield, Award } from "lucide-react";
+import { ArrowRight, Sparkles, Shield, Award, Heart } from "lucide-react";
 
 const bannerSlides = [
   {
@@ -43,6 +43,19 @@ const bannerSlides = [
     accentColor: "bg-orange-500",
     icon: Award,
     showSfrLogo: true
+  },
+  {
+    id: 4,
+    title: "С Днём Победы!",
+    subtitle: "9 мая - День памяти и славы",
+    description: "Поздравляем всех с великим праздником! Вечная память героям, защитившим нашу Родину",
+    image: "/lovable-uploads/d9416cbc-5ba5-460d-9eb1-d80d296aec7f.jpg",
+    buttonText: "О нас",
+    buttonLink: "/about",
+    bgGradient: "from-red-700/90 via-red-600/85 to-red-500/80",
+    accentColor: "bg-red-600",
+    icon: Heart,
+    isVictoryDay: true
   }
 ];
 
