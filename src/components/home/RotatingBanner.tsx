@@ -1,4 +1,3 @@
-
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -49,7 +48,7 @@ const bannerSlides = [
     title: "С Днём Победы!",
     subtitle: "9 мая - День памяти и славы",
     description: "Поздравляем всех с великим праздником! Вечная память героям, защитившим нашу Родину",
-    image: "/lovable-uploads/d9416cbc-5ba5-460d-9eb1-d80d296aec7f.jpg",
+    image: "https://avatars.mds.yandex.net/i?id=dc9dbfd2a865441abe71ab69c02e7c5d29d9d35c-12209413-images-thumbs&n=13",
     buttonText: "О нас",
     buttonLink: "/about",
     bgGradient: "from-red-700/90 via-red-600/85 to-red-500/80",
