@@ -17,7 +17,14 @@ import ProductDetail from "./components/product/ProductDetail";
 import { CartProvider } from "./contexts/CartContext";
 import FloatingSocialButtons from "./components/common/FloatingSocialButtons";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 1,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
