@@ -1,3 +1,4 @@
+
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -45,14 +46,14 @@ const bannerSlides = [
   },
   {
     id: 4,
-    title: "С Днём Победы!",
-    subtitle: "9 мая - День памяти и славы",
-    description: "Поздравляем всех с великим праздником! Вечная память героям, защитившим нашу Родину",
+    title: "",
+    subtitle: "",
+    description: "",
     image: "https://avatars.mds.yandex.net/i?id=dc9dbfd2a865441abe71ab69c02e7c5d29d9d35c-12209413-images-thumbs&n=13",
-    buttonText: "О нас",
+    buttonText: "",
     buttonLink: "/about",
-    bgGradient: "from-red-700/90 via-red-600/85 to-red-500/80",
-    accentColor: "bg-red-600",
+    bgGradient: "",
+    accentColor: "",
     icon: Heart,
     isVictoryDay: true
   }
@@ -95,6 +96,22 @@ const RotatingBanner = () => {
         <CarouselContent>
           {bannerSlides.map((slide, index) => {
             const IconComponent = slide.icon;
+            
+            // Special handling for Victory Day slide
+            if (slide.isVictoryDay) {
+              return (
+                <CarouselItem key={slide.id}>
+                  <div className="relative h-[280px] md:h-[320px] overflow-hidden rounded-2xl mx-4 my-8 shadow-2xl group">
+                    {/* Background image without overlay for Victory Day */}
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105"
+                      style={{ backgroundImage: `url(${slide.image})` }}
+                    />
+                  </div>
+                </CarouselItem>
+              );
+            }
+            
             return (
               <CarouselItem key={slide.id}>
                 <div className="relative h-[280px] md:h-[320px] overflow-hidden rounded-2xl mx-4 my-8 shadow-2xl group">
