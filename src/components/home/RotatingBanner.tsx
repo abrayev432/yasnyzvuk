@@ -27,8 +27,8 @@ const bannerSlides = [
     image: "/lovable-uploads/2a7c5336-f142-4b78-b148-b27a7cef94b6.jpg",
     buttonText: "Записаться",
     buttonLink: "/services",
-    bgGradient: "from-emerald-600/90 via-green-500/85 to-teal-500/80",
-    accentColor: "bg-emerald-500",
+    bgGradient: "from-cyan-400/90 via-cyan-500/85 to-teal-400/80",
+    accentColor: "bg-cyan-500",
     icon: Shield
   },
   {
