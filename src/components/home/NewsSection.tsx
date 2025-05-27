@@ -1,9 +1,17 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Calendar, Megaphone, CreditCard, Brain, Heart, Headphones } from "lucide-react";
+import { Calendar, Megaphone, CreditCard, Brain, Heart, Headphones, Ear } from "lucide-react";
 
 const newsItems = [
+  {
+    id: 6,
+    title: "Слуховые аппараты: возвращение в мир звуков",
+    description: "Слух – одно из важнейших чувств, позволяющее нам общаться, наслаждаться музыкой, ощущать безопасность и просто полноценно жить. Потеря слуха, к сожалению, затрагивает миллионы людей по всему миру, значительно снижая качество их жизни.",
+    date: "27 мая 2025",
+    icon: Ear,
+    category: "Образование"
+  },
   {
     id: 1,
     title: "Мы принимаем электронные сертификаты от социального фонда России",
