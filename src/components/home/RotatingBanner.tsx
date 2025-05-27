@@ -41,7 +41,8 @@ const bannerSlides = [
     buttonLink: "/services",
     bgGradient: "from-orange-600/90 via-amber-500/85 to-yellow-500/80",
     accentColor: "bg-orange-500",
-    icon: Award
+    icon: Award,
+    showSfrLogo: true
   }
 ];
 
@@ -100,6 +101,19 @@ const RotatingBanner = () => {
                       <IconComponent className="w-6 h-6 text-white" />
                     </div>
                   </div>
+
+                  {/* SFR Logo for certificate slide */}
+                  {slide.showSfrLogo && (
+                    <div className="absolute top-4 right-4">
+                      <div className="bg-white/90 backdrop-blur-sm rounded-xl p-3 shadow-lg">
+                        <img 
+                          src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Logo_SFR.svg/2458px-Logo_SFR.svg.png"
+                          alt="Логотип СФР"
+                          className="h-10 w-auto"
+                        />
+                      </div>
+                    </div>
+                  )}
 
                   {/* Content */}
                   <div className="relative h-full flex items-center justify-start px-8 md:px-12">
