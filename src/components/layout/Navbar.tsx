@@ -26,6 +26,10 @@ const Navbar = () => {
     };
   }, []);
 
+  const handleLogoClick = () => {
+    window.location.href = "/";
+  };
+
   const navigation = [
     {
       name: "Главная",
@@ -65,9 +69,9 @@ const Navbar = () => {
   return (
     <header className={`sticky top-0 z-40 w-full transition-all ${isScrolled ? "bg-white shadow-md py-2" : "bg-white/80 backdrop-blur-md py-4"}`}>
       <div className="container flex items-center justify-between px-4 md:px-6">
-        <Link to="/" className="flex items-center gap-2">
+        <button onClick={handleLogoClick} className="flex items-center gap-2 cursor-pointer">
           <img src="/lovable-uploads/d661252f-c37c-4eb0-8503-135afdf6f91b.png" alt="Ясный звук" className="h-10 w-auto object-cover" />
-        </Link>
+        </button>
 
         <nav className="hidden md:flex items-center space-x-6">
           {navigation.map(item => <Link key={item.name} to={item.href} className={`text-sm font-medium transition-colors hover:text-brand ${isActive(item.href) ? "text-brand" : "text-muted-foreground"}`}>
