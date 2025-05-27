@@ -24,7 +24,7 @@ const bannerSlides = [
     title: "Бесплатная консультация специалиста",
     subtitle: "Профессиональный подбор слуховых аппаратов",
     description: "Запишитесь на консультацию и получите индивидуальный план восстановления слуха",
-    image: "/lovable-uploads/2a7c5336-f142-4b78-b148-b27a7cef94b6.jpg",
+    image: "",
     buttonText: "Записаться",
     buttonLink: "/services",
     bgGradient: "from-cyan-400/90 via-cyan-500/85 to-teal-400/80",
@@ -101,12 +101,15 @@ const RotatingBanner = () => {
             if (slide.isVictoryDay) {
               return (
                 <CarouselItem key={slide.id}>
-                  <div className="relative h-[280px] md:h-[320px] overflow-hidden rounded-2xl mx-4 my-8 shadow-2xl group">
-                    {/* Background image without overlay for Victory Day */}
-                    <div 
-                      className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105"
-                      style={{ backgroundImage: `url(${slide.image})` }}
-                    />
+                  <div className="relative h-[280px] md:h-[320px] overflow-hidden rounded-2xl mx-4 my-8 shadow-2xl group flex items-center justify-center bg-gradient-to-br from-slate-50 to-gray-100">
+                    {/* Centered and scaled image for Victory Day */}
+                    <div className="relative">
+                      <img 
+                        src={slide.image}
+                        alt="День Победы"
+                        className="max-h-48 md:max-h-56 w-auto object-contain transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
                   </div>
                 </CarouselItem>
               );
@@ -115,14 +118,22 @@ const RotatingBanner = () => {
             return (
               <CarouselItem key={slide.id}>
                 <div className="relative h-[280px] md:h-[320px] overflow-hidden rounded-2xl mx-4 my-8 shadow-2xl group">
-                  {/* Background image with overlay */}
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105"
-                    style={{ backgroundImage: `url(${slide.image})` }}
-                  />
+                  {/* Background image with overlay - only if image exists */}
+                  {slide.image && (
+                    <>
+                      <div 
+                        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105"
+                        style={{ backgroundImage: `url(${slide.image})` }}
+                      />
+                      {/* Modern gradient overlay */}
+                      <div className={`absolute inset-0 bg-gradient-to-r ${slide.bgGradient} backdrop-blur-[0.5px]`} />
+                    </>
+                  )}
                   
-                  {/* Modern gradient overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-r ${slide.bgGradient} backdrop-blur-[0.5px]`} />
+                  {/* If no image, just use gradient background */}
+                  {!slide.image && (
+                    <div className={`absolute inset-0 bg-gradient-to-r ${slide.bgGradient}`} />
+                  )}
                   
                   {/* Decorative elements */}
                   <div className="absolute top-4 left-4">
