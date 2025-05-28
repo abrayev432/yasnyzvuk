@@ -1,9 +1,16 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Calendar, Megaphone, CreditCard, Brain, Heart, Headphones, Ear } from "lucide-react";
+import { Calendar, Megaphone, CreditCard, Brain, Heart, Headphones, Ear, Volume2 } from "lucide-react";
 
 const newsItems = [
+  {
+    id: 7,
+    title: "Современные слуховые аппараты: технологии будущего уже сегодня",
+    description: "Узнайте о революционных функциях современных слуховых аппаратов: от беспроводной связи до искусственного интеллекта, которые делают жизнь людей с нарушениями слуха более комфортной и полноценной.",
+    date: "28 мая 2025",
+    icon: Volume2,
+    category: "Технологии"
+  },
   {
     id: 6,
     title: "Слуховые аппараты: возвращение в мир звуков",
