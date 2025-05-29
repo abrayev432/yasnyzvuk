@@ -1,5 +1,6 @@
 
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { memo, useState } from "react";
 
 const brands = [
   { name: "Oticon", logo: "https://avatars.mds.yandex.net/get-entity_search/5578182/576251644/S600xU", description: "Датский производитель с более чем 115-летним опытом разработки слуховых аппаратов" },
@@ -9,7 +10,40 @@ const brands = [
   { name: "Widex", logo: "https://upload.wikimedia.org/wikipedia/commons/6/6d/Widex_logo.png", description: "Датский производитель с фокусом на естественное звучание и инновации" },
 ];
 
-const BrandsSection = () => {
+const BrandCard = memo(({ brand, index }: { brand: typeof brands[0], index: number }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  return (
+    <HoverCard>
+      <HoverCardTrigger asChild>
+        <div className="flex items-center justify-center bg-white/95 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-white cursor-pointer h-32">
+          {!imageLoaded && (
+            <div className="max-h-20 w-20 bg-gray-200 animate-pulse rounded"></div>
+          )}
+          <img
+            src={brand.logo}
+            alt={`${brand.name} логотип`}
+            className={`max-h-20 w-auto object-contain transition-all ${
+              imageLoaded ? 'opacity-100 hover:scale-105' : 'opacity-0'
+            }`}
+            loading="lazy"
+            onLoad={() => setImageLoaded(true)}
+          />
+        </div>
+      </HoverCardTrigger>
+      <HoverCardContent className="w-80">
+        <div className="space-y-2">
+          <h4 className="text-lg font-semibold">{brand.name}</h4>
+          <p className="text-sm text-muted-foreground">{brand.description}</p>
+        </div>
+      </HoverCardContent>
+    </HoverCard>
+  );
+});
+
+BrandCard.displayName = "BrandCard";
+
+const BrandsSection = memo(() => {
   return (
     <section className="bg-gradient-to-br from-brand to-brand-dark py-20">
       <div className="container px-4 md:px-6">
@@ -24,28 +58,14 @@ const BrandsSection = () => {
         
         <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5">
           {brands.map((brand, i) => (
-            <HoverCard key={i}>
-              <HoverCardTrigger asChild>
-                <div className="flex items-center justify-center bg-white/95 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-white cursor-pointer h-32">
-                  <img
-                    src={brand.logo}
-                    alt={`${brand.name} логотип`}
-                    className="max-h-20 w-auto object-contain transition-all hover:scale-105"
-                  />
-                </div>
-              </HoverCardTrigger>
-              <HoverCardContent className="w-80">
-                <div className="space-y-2">
-                  <h4 className="text-lg font-semibold">{brand.name}</h4>
-                  <p className="text-sm text-muted-foreground">{brand.description}</p>
-                </div>
-              </HoverCardContent>
-            </HoverCard>
+            <BrandCard key={i} brand={brand} index={i} />
           ))}
         </div>
       </div>
     </section>
   );
-};
+});
+
+BrandsSection.displayName = "BrandsSection";
 
 export default BrandsSection;

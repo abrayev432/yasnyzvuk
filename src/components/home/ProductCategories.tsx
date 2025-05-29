@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ChevronRight } from "lucide-react";
+import { memo, useState } from "react";
 
 const categories = [
   {
@@ -28,7 +29,51 @@ const categories = [
   },
 ];
 
-const ProductCategories = () => {
+const CategoryCard = memo(({ category, index }: { category: typeof categories[0], index: number }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  return (
+    <div className="group relative overflow-hidden rounded-2xl border bg-white shadow-lg transition-all hover:shadow-xl">
+      {category.badge && (
+        <Badge className="absolute right-4 top-4 z-10 bg-brand text-white">{category.badge}</Badge>
+      )}
+      <div className="aspect-[4/3] overflow-hidden">
+        {!imageLoaded && (
+          <div className="h-full w-full bg-gray-200 animate-pulse flex items-center justify-center">
+            <div className="w-16 h-16 bg-gray-300 rounded-full"></div>
+          </div>
+        )}
+        <img
+          src={category.image}
+          alt={category.title}
+          className={`h-full w-full object-cover transition-all duration-500 ${
+            imageLoaded ? 'opacity-100 group-hover:scale-105' : 'opacity-0'
+          }`}
+          loading="lazy"
+          onLoad={() => setImageLoaded(true)}
+        />
+      </div>
+      <div className="p-6">
+        <h3 className="text-xl font-bold mb-2">{category.title}</h3>
+        <p className="mb-4 text-muted-foreground">{category.description}</p>
+        <Button
+          asChild
+          variant="outline"
+          className="border-brand/30 hover:bg-brand/5"
+        >
+          <Link to={category.path} className="flex items-center text-brand">
+            Смотреть все
+            <ChevronRight className="ml-1 h-4 w-4" />
+          </Link>
+        </Button>
+      </div>
+    </div>
+  );
+});
+
+CategoryCard.displayName = "CategoryCard";
+
+const ProductCategories = memo(() => {
   return (
     <section className="bg-white py-24">
       <div className="container px-4 md:px-6">
@@ -42,32 +87,7 @@ const ProductCategories = () => {
         </div>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {categories.map((category, i) => (
-            <div key={i} className="group relative overflow-hidden rounded-2xl border bg-white shadow-lg transition-all hover:shadow-xl">
-              {category.badge && (
-                <Badge className="absolute right-4 top-4 z-10 bg-brand text-white">{category.badge}</Badge>
-              )}
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src={category.image}
-                  alt={category.title}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">{category.title}</h3>
-                <p className="mb-4 text-muted-foreground">{category.description}</p>
-                <Button
-                  asChild
-                  variant="outline"
-                  className="border-brand/30 hover:bg-brand/5"
-                >
-                  <Link to={category.path} className="flex items-center text-brand">
-                    Смотреть все
-                    <ChevronRight className="ml-1 h-4 w-4" />
-                  </Link>
-                </Button>
-              </div>
-            </div>
+            <CategoryCard key={i} category={category} index={i} />
           ))}
         </div>
         <div className="mt-16 text-center">
@@ -78,6 +98,8 @@ const ProductCategories = () => {
       </div>
     </section>
   );
-};
+});
+
+ProductCategories.displayName = "ProductCategories";
 
 export default ProductCategories;

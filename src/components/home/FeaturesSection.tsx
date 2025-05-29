@@ -1,6 +1,7 @@
 
 import { Ear, Headphones, HelpingHand, Music, Shield } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { memo } from "react";
 
 const features = [
   {
@@ -30,7 +31,26 @@ const features = [
   },
 ];
 
-const FeaturesSection = () => {
+const FeatureCard = memo(({ feature, index }: { feature: typeof features[0], index: number }) => {
+  return (
+    <div
+      className={cn(
+        "group rounded-2xl border bg-white p-8 transition-all hover:shadow-xl",
+        index === 0 && "md:col-span-2 lg:col-span-1"
+      )}
+    >
+      <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-brand/10 group-hover:bg-brand/20 transition-colors">
+        <feature.icon className="h-7 w-7 text-brand" />
+      </div>
+      <h3 className="mb-3 text-xl font-bold">{feature.title}</h3>
+      <p className="text-muted-foreground">{feature.description}</p>
+    </div>
+  );
+});
+
+FeatureCard.displayName = "FeatureCard";
+
+const FeaturesSection = memo(() => {
   return (
     <section className="bg-gray-50 py-24">
       <div className="container px-4 md:px-6">
@@ -44,24 +64,14 @@ const FeaturesSection = () => {
         </div>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {features.map((feature, i) => (
-            <div
-              key={i}
-              className={cn(
-                "group rounded-2xl border bg-white p-8 transition-all hover:shadow-xl",
-                i === 0 && "md:col-span-2 lg:col-span-1"
-              )}
-            >
-              <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-brand/10 group-hover:bg-brand/20 transition-colors">
-                <feature.icon className="h-7 w-7 text-brand" />
-              </div>
-              <h3 className="mb-3 text-xl font-bold">{feature.title}</h3>
-              <p className="text-muted-foreground">{feature.description}</p>
-            </div>
+            <FeatureCard key={i} feature={feature} index={i} />
           ))}
         </div>
       </div>
     </section>
   );
-};
+});
+
+FeaturesSection.displayName = "FeaturesSection";
 
 export default FeaturesSection;
