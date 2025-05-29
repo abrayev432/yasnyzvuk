@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -190,10 +191,10 @@ const News = () => {
       <div className="container px-4 md:px-6 py-20">
         <div className="text-center mb-12">
           <h1 className="text-3xl font-bold tracking-tighter md:text-4xl lg:text-5xl mb-4">
-            Новости и события
+            Статьи и события
           </h1>
           <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
-            Следите за последними новостями нашего центра слуха и новыми поступлениями
+            Читайте наши статьи о слуховых аппаратах и следите за событиями нашего центра слуха
           </p>
         </div>
 

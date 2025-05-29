@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowRight, Phone, Menu, X, MessageCircle } from "lucide-react";
@@ -56,7 +57,7 @@ const Navbar = () => {
       href: "/delivery"
     },
     {
-      name: "Новости",
+      name: "Статьи",
       href: "/news"
     }
   ];
