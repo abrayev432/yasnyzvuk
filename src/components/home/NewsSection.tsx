@@ -1,9 +1,17 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Calendar, Megaphone, CreditCard, Brain, Heart, Headphones, Ear, Volume2 } from "lucide-react";
+import { Calendar, Megaphone, CreditCard, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle } from "lucide-react";
 
 const newsItems = [
+  {
+    id: 8,
+    title: "7 привычек, которые испортят слух к 40 годам",
+    description: "У каждого из нас есть ряд обыденных действий, которые мы привыкли выполнять регулярно. Некоторые тянутся еще из далёкого детства, а некоторые – вошли в привычку совсем недавно. Узнайте, от каких привычек лучше отказаться, чтобы сохранить здоровый слух.",
+    date: "29 мая 2025",
+    icon: AlertTriangle,
+    category: "Здоровье",
+    image: "/lovable-uploads/614f5aec-485f-41bb-b9b9-3b9747b92494.png"
+  },
   {
     id: 7,
     title: "Современные слуховые аппараты: технологии будущего уже сегодня",
