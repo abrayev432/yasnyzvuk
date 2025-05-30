@@ -1,8 +1,16 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Calendar, Megaphone, CreditCard, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle } from "lucide-react";
+import { Calendar, Megaphone, CreditCard, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users } from "lucide-react";
 
 const newsItems = [
+  {
+    id: 9,
+    title: "А ты в группе риска?",
+    description: "Кто относится к группе риска по развитию тугоухости и какие профилактические меры следует соблюдать для предотвращения данного заболевания, рассказываем в статье.",
+    date: "30 мая 2025",
+    icon: Users,
+    category: "Профилактика"
+  },
   {
     id: 8,
     title: "7 привычек, которые испортят слух к 40 годам",
