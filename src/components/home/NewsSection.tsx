@@ -1,8 +1,17 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users, Wrench } from "lucide-react";
+import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users, Wrench, ClipboardList } from "lucide-react";
 
 const newsItems = [
+  {
+    id: 12,
+    title: "Как правильно адаптироваться к слуховому аппарату",
+    description: "Продолжаем цикл статей о важности процесса адаптации в начале пользования слуховым аппаратом. Сегодня расскажем о рекомендациях и упражнениях для успешного прохождения первого месяца адаптации.",
+    date: "30 мая 2025",
+    icon: ClipboardList,
+    category: "Адаптация",
+    image: "/lovable-uploads/c69b5560-6404-49da-b181-d7588da3e016.png"
+  },
   {
     id: 11,
     title: "Загрязнение слухового аппарата ушной серой. Что делать?",
