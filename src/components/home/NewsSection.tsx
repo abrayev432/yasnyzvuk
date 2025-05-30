@@ -1,8 +1,17 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users, Wrench, ClipboardList } from "lucide-react";
+import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users, Wrench, ClipboardList, Music } from "lucide-react";
 
 const newsItems = [
+  {
+    id: 13,
+    title: "Людвиг ван Бетховен: великий композитор несмотря ни на что",
+    description: "Один из величайших немецких композиторов Людвиг ван Бетховен страдал от проблем со слухом. Но это не помешало гению добиться всемирного признания.",
+    date: "30 мая 2025",
+    icon: Music,
+    category: "История",
+    image: "/lovable-uploads/58cf8f91-8f04-4e4d-b1c6-773eb4991132.png"
+  },
   {
     id: 12,
     title: "Как правильно адаптироваться к слуховому аппарату",
