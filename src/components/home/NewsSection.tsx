@@ -1,9 +1,17 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users } from "lucide-react";
+import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users, Wrench } from "lucide-react";
 
 const newsItems = [
+  {
+    id: 11,
+    title: "Загрязнение слухового аппарата ушной серой. Что делать?",
+    description: "Зачастую в слуховом аппарате ухудшается качество звучания без видимой на то причины. Со временем любой пользователь может столкнуться с данной проблемой. Чаще всего причиной такого затруднения становится загрязнение элементов слухового аппарата ушной серой.",
+    date: "30 мая 2025",
+    icon: Wrench,
+    category: "Обслуживание",
+    image: "/lovable-uploads/01a568af-59bd-4ab2-91b0-727dee08183c.png"
+  },
   {
     id: 10,
     title: "Бинауральное слухопротезирование: что это и в каких случаях необходимо",
