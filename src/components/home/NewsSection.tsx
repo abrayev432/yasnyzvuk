@@ -1,8 +1,18 @@
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users } from "lucide-react";
 
 const newsItems = [
+  {
+    id: 10,
+    title: "Бинауральное слухопротезирование: что это и в каких случаях необходимо",
+    description: "Что представляет собой метод бинаурального слухопротезирования, в каких случаях он необходим, а в каких противопоказан читайте в этой статье.",
+    date: "30 мая 2025",
+    icon: Headphones,
+    category: "Технологии",
+    image: "/lovable-uploads/38ee5e38-602d-45ae-8ee4-ea16bcb0520f.png"
+  },
   {
     id: 9,
     title: "А ты в группе риска?",
