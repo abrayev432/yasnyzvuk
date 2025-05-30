@@ -1,8 +1,17 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users, Wrench, ClipboardList, Music } from "lucide-react";
+import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users, Wrench, ClipboardList, Music, ShieldCheck } from "lucide-react";
 
 const newsItems = [
+  {
+    id: 14,
+    title: "Маскировка тиннитуса в слуховых аппаратах",
+    description: "Функция маскировки тиннитуса присутствует в большинстве современных слуховых аппаратах. Зачем она нужна и по какому принципу работает, рассказываем в статье.",
+    date: "30 мая 2025",
+    icon: ShieldCheck,
+    category: "Технологии",
+    image: "/lovable-uploads/tinnitus-masking-article.png"
+  },
   {
     id: 13,
     title: "Людвиг ван Бетховен: великий композитор несмотря ни на что",
