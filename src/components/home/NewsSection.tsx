@@ -1,8 +1,17 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users, Wrench, ClipboardList, Music, ShieldCheck } from "lucide-react";
+import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users, Wrench, ClipboardList, Music, ShieldCheck, HelpCircle } from "lucide-react";
 
 const newsItems = [
+  {
+    id: 15,
+    title: "Может ли слуховой аппарат ухудшить слух?",
+    description: "Среди людей с потерей слуха существует много мифов о слуховых аппаратах и слухопротезировании в целом. Одно из самых распространенных заблуждений звучит так «а что, если слуховой аппарат еще больше испортит мне слух и сделает инвалидом».",
+    date: "31 мая 2025",
+    icon: HelpCircle,
+    category: "Мифы",
+    image: "/lovable-uploads/8439cfc8-195b-4e26-a2bf-676781937fdf.png"
+  },
   {
     id: 14,
     title: "Маскировка тиннитуса в слуховых аппаратах",
