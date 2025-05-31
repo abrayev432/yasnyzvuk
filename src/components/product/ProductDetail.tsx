@@ -197,8 +197,14 @@ const ProductDetail = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     
+    console.log("ProductId from URL:", productId);
+    console.log("Available products:", Object.keys(productsDatabase));
+    
     if (productId && productsDatabase[productId]) {
+      console.log("Product found:", productsDatabase[productId]);
       setProduct(productsDatabase[productId]);
+    } else {
+      console.log("Product not found for productId:", productId);
     }
   }, [productId]);
 
@@ -219,11 +225,27 @@ const ProductDetail = () => {
     }
   };
 
+  if (!productId) {
+    return (
+      <Layout>
+        <div className="container py-24 text-center">
+          <h2 className="text-2xl font-bold mb-4">Неверная ссылка</h2>
+          <p className="mb-4">Не указан ID товара в URL</p>
+          <Link to="/catalog" className="text-brand">Вернуться в каталог</Link>
+        </div>
+      </Layout>
+    );
+  }
+
   if (!product) {
     return (
       <Layout>
         <div className="container py-24 text-center">
           <h2 className="text-2xl font-bold mb-4">Товар не найден</h2>
+          <p className="mb-4">Товар с ID "{productId}" не найден в каталоге</p>
+          <p className="mb-4 text-sm text-gray-600">
+            Доступные товары: {Object.keys(productsDatabase).join(", ")}
+          </p>
           <Link to="/catalog" className="text-brand">Вернуться в каталог</Link>
         </div>
       </Layout>
