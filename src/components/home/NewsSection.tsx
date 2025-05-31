@@ -1,8 +1,17 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users, Wrench, ClipboardList, Music, ShieldCheck, HelpCircle, UserCheck } from "lucide-react";
+import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users, Wrench, ClipboardList, Music, ShieldCheck, HelpCircle, UserCheck, XCircle } from "lucide-react";
 
 const newsItems = [
+  {
+    id: 17,
+    title: "Топ-6 ошибок при первых признаках потери слуха",
+    description: "Многие люди при первых подозрениях на потерю слуха совершают ряд ошибок, которые могут привести только к дальнейшему усугублению проблемы. Что точно нельзя делать при снижении слуха, разбираем в статье.",
+    date: "1 июня 2025",
+    icon: XCircle,
+    category: "Ошибки",
+    image: "/lovable-uploads/614f5aec-485f-41bb-b9b9-3b9747b92494.png"
+  },
   {
     id: 16,
     title: "Можно ли подобрать слуховой аппарат без присутствия пациента?",
