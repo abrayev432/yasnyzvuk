@@ -1,8 +1,17 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users, Wrench, ClipboardList, Music, ShieldCheck, HelpCircle } from "lucide-react";
+import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users, Wrench, ClipboardList, Music, ShieldCheck, HelpCircle, UserCheck } from "lucide-react";
 
 const newsItems = [
+  {
+    id: 16,
+    title: "Можно ли подобрать слуховой аппарат без присутствия пациента?",
+    description: "«Можно ли подобрать слуховой аппарат без присутствия пациента?» — специалисты центров «Аудиале» нередко сталкиваются с таким вопросом. Что же делать, если нет возможности привезти пациента на подбор в центр?",
+    date: "31 мая 2025",
+    icon: UserCheck,
+    category: "Консультация",
+    image: "/lovable-uploads/776d1e53-18da-4686-8efd-c1173cb80fd2.png"
+  },
   {
     id: 15,
     title: "Может ли слуховой аппарат ухудшить слух?",
