@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -12,7 +13,7 @@ const newsItems = [
     date: "30 мая 2025",
     icon: ShieldCheck,
     category: "Технологии",
-    image: "/lovable-uploads/tinnitus-masking-article.png",
+    image: "/lovable-uploads/16096fcf-f14e-464d-beff-570450d6e9e4.png",
     fullText: `Маскировка тиннитуса в слуховых аппаратах
 
 Функция маскировки тиннитуса присутствует в большинстве современных слуховых аппаратах. Зачем она нужна и по какому принципу работает, рассказываем в статье.
