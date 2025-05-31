@@ -197,14 +197,18 @@ const ProductDetail = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     
-    console.log("ProductId from URL:", productId);
-    console.log("Available products:", Object.keys(productsDatabase));
+    console.log("=== DEBUGGING PRODUCT DETAIL ===");
+    console.log("Current URL pathname:", window.location.pathname);
+    console.log("ProductId from URL params:", productId);
+    console.log("Available products in database:", Object.keys(productsDatabase));
+    console.log("Product exists:", productId ? !!productsDatabase[productId] : false);
     
     if (productId && productsDatabase[productId]) {
-      console.log("Product found:", productsDatabase[productId]);
+      console.log("✅ Product found:", productsDatabase[productId].name);
       setProduct(productsDatabase[productId]);
     } else {
-      console.log("Product not found for productId:", productId);
+      console.log("❌ Product not found for productId:", productId);
+      console.log("Current route params:", { productId });
     }
   }, [productId]);
 
@@ -226,11 +230,15 @@ const ProductDetail = () => {
   };
 
   if (!productId) {
+    console.log("🚫 No productId in URL params");
     return (
       <Layout>
         <div className="container py-24 text-center">
           <h2 className="text-2xl font-bold mb-4">Неверная ссылка</h2>
           <p className="mb-4">Не указан ID товара в URL</p>
+          <p className="mb-4 text-sm text-gray-600">
+            Текущий URL: {window.location.pathname}
+          </p>
           <Link to="/catalog" className="text-brand">Вернуться в каталог</Link>
         </div>
       </Layout>
@@ -238,6 +246,7 @@ const ProductDetail = () => {
   }
 
   if (!product) {
+    console.log("🚫 Product not found in database");
     return (
       <Layout>
         <div className="container py-24 text-center">
@@ -246,11 +255,16 @@ const ProductDetail = () => {
           <p className="mb-4 text-sm text-gray-600">
             Доступные товары: {Object.keys(productsDatabase).join(", ")}
           </p>
+          <p className="mb-4 text-sm text-gray-600">
+            Текущий URL: {window.location.pathname}
+          </p>
           <Link to="/catalog" className="text-brand">Вернуться в каталог</Link>
         </div>
       </Layout>
     );
   }
+
+  console.log("✅ Rendering product page for:", product.name);
 
   return (
     <Layout>
