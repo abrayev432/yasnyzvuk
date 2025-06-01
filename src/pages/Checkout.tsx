@@ -1,84 +1,121 @@
 
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import { ShoppingCart } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
-import { useState, useEffect } from "react";
-import { toast } from "sonner";
-import { Trash2, ArrowLeft } from "lucide-react";
-import { Link } from "react-router-dom";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+
+const formSchema = z.object({
+  name: z.string().min(2, "Имя должно содержать не менее 2 символов"),
+  email: z.string().email("Введите корректный email"),
+  phone: z.string().min(6, "Введите корректный номер телефона"),
+  address: z.string().min(10, "Введите полный адрес доставки"),
+  comment: z.string().optional(),
+});
+
+type FormValues = z.infer<typeof formSchema>;
 
 const Checkout = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+  const { cart, totalPrice, clearCart } = useCart();
 
-  const { cart, removeFromCart, clearCart } = useCart();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-    city: "",
-    postalCode: "",
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      address: "",
+      comment: "",
+    },
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const calculateTotal = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  async function onSubmit(data: FormValues) {
     setIsSubmitting(true);
 
     try {
-      // Simulate an API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      // Формируем данные о товарах в корзине
+      const orderItems = cart.map(item => 
+        `${item.name} (${item.brand}) - ${item.quantity} шт. × ${item.price.toLocaleString()} ₽ = ${(item.price * item.quantity).toLocaleString()} ₽`
+      ).join('\n');
+      
+      // Создаем mailto ссылку для отправки заказа
+      const subject = `Новый заказ от ${data.name}`;
+      const body = `
+Данные покупателя:
+Имя: ${data.name}
+Email: ${data.email}
+Телефон: ${data.phone}
+Адрес доставки: ${data.address}
+${data.comment ? `Комментарий: ${data.comment}` : ''}
 
-      // Clear the cart
+Заказанные товары:
+${orderItems}
+
+Общая сумма: ${totalPrice.toLocaleString()} ₽
+
+Дата заказа: ${new Date().toLocaleString('ru-RU')}
+
+---
+Отправлено с сайта yasnyzvuk.ru
+      `.trim();
+
+      const mailtoLink = `mailto:info@yasnyzvuk.ru?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      // Открываем почтовый клиент
+      window.location.href = mailtoLink;
+      
+      // Очищаем форму и корзину
+      form.reset();
       clearCart();
-
-      // Show a success toast
-      toast.success("Заказ успешно оформлен!");
-
-      // Reset the form
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        address: "",
-        city: "",
-        postalCode: "",
+      
+      toast({
+        title: "Заказ оформлен",
+        description: "Ваш почтовый клиент должен открыться для отправки заказа. Мы свяжемся с вами в ближайшее время.",
       });
     } catch (error) {
-      console.error("Error submitting form:", error);
-      toast.error("Не удалось оформить заказ. Пожалуйста, попробуйте еще раз.");
+      console.error("Error preparing order email:", error);
+      toast({
+        title: "Ошибка",
+        description: "Произошла ошибка при оформлении заказа. Попробуйте еще раз.",
+        variant: "destructive",
+      });
     } finally {
       setIsSubmitting(false);
     }
-  };
+  }
 
   if (cart.length === 0) {
     return (
       <Layout>
-        <div className="container py-20 flex flex-col items-center justify-center">
-          <h2 className="text-2xl font-semibold mb-4">Ваша корзина пуста</h2>
-          <p className="text-muted-foreground mb-8">Пожалуйста, добавьте товары в корзину, чтобы оформить заказ.</p>
-          <Button asChild size="lg" className="rounded-full">
-            <Link to="/catalog">Перейти в каталог</Link>
-          </Button>
+        <div className="bg-gray-50 py-12">
+          <div className="container px-4 md:px-6">
+            <div className="max-w-2xl mx-auto text-center">
+              <ShoppingCart className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
+              <h1 className="text-3xl font-bold mb-4">Корзина пуста</h1>
+              <p className="text-muted-foreground mb-6">
+                Добавьте товары в корзину для оформления заказа
+              </p>
+              <Button asChild>
+                <a href="/catalog">Перейти в каталог</a>
+              </Button>
+            </div>
+          </div>
         </div>
       </Layout>
     );
@@ -86,84 +123,146 @@ const Checkout = () => {
 
   return (
     <Layout>
-      <div className="container py-16">
-        <h1 className="text-3xl font-bold mb-8">Оформление заказа</h1>
+      <div className="bg-gray-50 py-12">
+        <div className="container px-4 md:px-6">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="text-3xl font-bold tracking-tighter md:text-4xl mb-8">
+              Оформить заказ
+            </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Order Summary */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Ваш заказ</CardTitle>
-              <CardDescription>Проверьте детали вашего заказа.</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {cart.map((item) => (
-                <div key={item.id} className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4">
-                    <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded-md" />
-                    <div>
-                      <h3 className="font-semibold">{item.name}</h3>
-                      <p className="text-sm text-muted-foreground">Количество: {item.quantity}</p>
+            <div className="grid gap-8 lg:grid-cols-2">
+              {/* Форма заказа */}
+              <div className="bg-white rounded-xl shadow-sm p-6">
+                <h2 className="text-xl font-bold mb-6">Данные для доставки</h2>
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                    <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Имя и фамилия *</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Иванов Иван Иванович" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Электронная почта *</FormLabel>
+                          <FormControl>
+                            <Input type="email" placeholder="ivan@example.com" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Телефон *</FormLabel>
+                          <FormControl>
+                            <Input type="tel" placeholder="+7 (999) 123-45-67" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="address"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Адрес доставки *</FormLabel>
+                          <FormControl>
+                            <Textarea 
+                              placeholder="Укажите полный адрес доставки: город, улица, дом, квартира" 
+                              className="min-h-[100px]"
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="comment"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Комментарий к заказу</FormLabel>
+                          <FormControl>
+                            <Textarea 
+                              placeholder="Дополнительные пожелания к заказу" 
+                              className="min-h-[80px]"
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <Button type="submit" disabled={isSubmitting} className="w-full">
+                      {isSubmitting ? "Оформление заказа..." : "Отправить заказ"}
+                    </Button>
+                  </form>
+                </Form>
+              </div>
+
+              {/* Сводка заказа */}
+              <div className="bg-white rounded-xl shadow-sm p-6">
+                <h2 className="text-xl font-bold mb-6">Ваш заказ</h2>
+                <div className="space-y-4">
+                  {cart.map((item) => (
+                    <div key={item.id} className="flex justify-between items-start py-3 border-b">
+                      <div className="flex gap-3">
+                        <img 
+                          src={item.image} 
+                          alt={item.name} 
+                          className="w-16 h-16 object-cover rounded"
+                        />
+                        <div>
+                          <h3 className="font-medium text-sm">{item.name}</h3>
+                          <p className="text-sm text-muted-foreground">{item.brand}</p>
+                          <p className="text-sm text-muted-foreground">
+                            {item.quantity} шт. × {item.price.toLocaleString()} ₽
+                          </p>
+                        </div>
+                      </div>
+                      <div className="font-medium text-right">
+                        {(item.price * item.quantity).toLocaleString()} ₽
+                      </div>
+                    </div>
+                  ))}
+                  <div className="pt-4 border-t">
+                    <div className="flex justify-between items-center text-lg font-bold">
+                      <span>Итого к оплате:</span>
+                      <span className="text-2xl">{totalPrice.toLocaleString()} ₽</span>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <p className="font-medium">{item.price * item.quantity} ₽</p>
-                    <Button variant="ghost" size="icon" onClick={() => removeFromCart(item.id)}>
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
-                  </div>
                 </div>
-              ))}
-              <Separator />
-              <div className="flex justify-between font-bold text-lg">
-                <span>Итого</span>
-                <span>{calculateTotal()} ₽</span>
+                
+                <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+                  <h3 className="font-medium mb-2">Способы оплаты и доставки</h3>
+                  <p className="text-sm text-muted-foreground">
+                    После отправки заказа наш менеджер свяжется с вами в течение 1 часа для уточнения способа доставки и оплаты.
+                  </p>
+                  <ul className="text-sm text-muted-foreground mt-2">
+                    <li>• Оплата наличными при получении</li>
+                    <li>• Безналичный расчет</li>
+                    <li>• Доставка по городу и области</li>
+                  </ul>
+                </div>
               </div>
-              <Link to="/catalog" className="text-sm text-muted-foreground hover:text-brand flex items-center gap-1">
-                <ArrowLeft className="w-4 h-4" />
-                Продолжить покупки
-              </Link>
-            </CardContent>
-          </Card>
-
-          {/* Contact Information Form */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Контактная информация</CardTitle>
-              <CardDescription>Введите ваши контактные данные для оформления заказа.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <Label htmlFor="name">Имя</Label>
-                  <Input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required />
-                </div>
-                <div>
-                  <Label htmlFor="email">Email</Label>
-                  <Input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
-                </div>
-                <div>
-                  <Label htmlFor="phone">Телефон</Label>
-                  <Input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} required />
-                </div>
-                <div>
-                  <Label htmlFor="address">Адрес</Label>
-                  <Input type="text" id="address" name="address" value={formData.address} onChange={handleChange} required />
-                </div>
-                <div>
-                  <Label htmlFor="city">Город</Label>
-                  <Input type="text" id="city" name="city" value={formData.city} onChange={handleChange} required />
-                </div>
-                <div>
-                  <Label htmlFor="postalCode">Почтовый индекс</Label>
-                  <Input type="text" id="postalCode" name="postalCode" value={formData.postalCode} onChange={handleChange} required />
-                </div>
-                <Button disabled={isSubmitting} className="w-full rounded-full">
-                  {isSubmitting ? "Оформление..." : "Оформить заказ"}
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       </div>
     </Layout>
