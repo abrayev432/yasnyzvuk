@@ -124,7 +124,7 @@ const Catalog = () => {
     addToCart(product);
     toast({
       title: "Товар добавлен в корзину",
-      description: `${product.name} успешно добавлен в корзину.`,
+      description: `Слуховой аппарат ${product.name} успешно добавлен в корзину.`,
     });
   };
 

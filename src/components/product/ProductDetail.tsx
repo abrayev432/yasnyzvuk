@@ -1,4 +1,3 @@
-
 import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -253,12 +252,9 @@ const ProductDetail = () => {
     );
   }
 
-  // Get display name with "Слуховой аппарат" prefix for specific product
+  // Get display name with "Слуховой аппарат" prefix for all products
   const getDisplayName = () => {
-    if (productId === "oticon-zircon-1") {
-      return `Слуховой аппарат ${product.name}`;
-    }
-    return product.name;
+    return `Слуховой аппарат ${product.name}`;
   };
 
   return (
