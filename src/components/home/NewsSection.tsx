@@ -1,8 +1,16 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users, Wrench, ClipboardList, Music, ShieldCheck, HelpCircle, UserCheck, Stethoscope } from "lucide-react";
+import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users, Wrench, ClipboardList, Music, ShieldCheck, HelpCircle, UserCheck, Stethoscope, Settings } from "lucide-react";
 
 const newsItems = [
+  {
+    id: 19,
+    title: "Уход за слуховыми аппаратами",
+    description: "Правильный уход за слуховыми аппаратами продлевает срок их службы и обеспечивает качественную работу. Рассказываем о важных правилах ежедневного ухода.",
+    date: "4 июня 2025",
+    icon: Settings,
+    category: "Уход",
+  },
   {
     id: 18,
     title: "Слепок уха: что это и зачем он нужен",
