@@ -1,8 +1,17 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users, Wrench, ClipboardList, Music, ShieldCheck, HelpCircle } from "lucide-react";
+import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users, Wrench, ClipboardList, Music, ShieldCheck, HelpCircle, UserCheck } from "lucide-react";
 
 const newsItems = [
+  {
+    id: 17,
+    title: "Можно ли подобрать слуховой аппарат без присутствия пациента?",
+    description: "Специалисты центров «Аудиале» нередко сталкиваются с таким вопросом. Что же делать, если нет возможности привезти пациента на подбор в центр?",
+    date: "2 июня 2025",
+    icon: UserCheck,
+    category: "Подбор",
+    image: "/lovable-uploads/9444e69a-e266-440f-8f90-f030d7d2bc1e.png"
+  },
   {
     id: 16,
     title: "Топ-6 ошибок при первых признаках потери слуха",
