@@ -1,3 +1,4 @@
+
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -99,7 +100,7 @@ const Checkout = () => {
               {cart.map((item) => (
                 <div key={item.id} className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
-                    <img src={item.imageUrl} alt={item.name} className="w-16 h-16 object-cover rounded-md" />
+                    <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded-md" />
                     <div>
                       <h3 className="font-semibold">{item.name}</h3>
                       <p className="text-sm text-muted-foreground">Количество: {item.quantity}</p>
