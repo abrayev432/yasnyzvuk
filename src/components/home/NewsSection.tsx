@@ -1,8 +1,17 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users, Wrench, ClipboardList, Music, ShieldCheck, HelpCircle, UserCheck } from "lucide-react";
+import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users, Wrench, ClipboardList, Music, ShieldCheck, HelpCircle, UserCheck, Stethoscope } from "lucide-react";
 
 const newsItems = [
+  {
+    id: 18,
+    title: "Слепок уха: что это и зачем он нужен",
+    description: "Снятие слепка уха — несложная и безболезненная процедура. Что она из себя представляет и зачем проводится, разбираем в этой статье.",
+    date: "3 июня 2025",
+    icon: Stethoscope,
+    category: "Процедуры",
+    image: "/lovable-uploads/a95ce0f8-374c-46a0-945b-846f96dde3e6.png"
+  },
   {
     id: 17,
     title: "Можно ли подобрать слуховой аппарат без присутствия пациента?",
