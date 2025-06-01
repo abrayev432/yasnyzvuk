@@ -1,8 +1,17 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users, Wrench, ClipboardList, Music, ShieldCheck, HelpCircle, UserCheck, Stethoscope, Settings } from "lucide-react";
+import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users, Wrench, ClipboardList, Music, ShieldCheck, HelpCircle, UserCheck, Stethoscope, Settings, VolumeX } from "lucide-react";
 
 const newsItems = [
+  {
+    id: 20,
+    title: "Функция шумоподавления в слуховом аппарате",
+    description: "Шумоподавление – одна из важнейших функций в слуховых аппаратах. Зачем она нужна и для кого предназначена читайте в статье.",
+    date: "5 июня 2025",
+    icon: VolumeX,
+    category: "Технологии",
+    image: "/lovable-uploads/8c875790-b8cd-433b-81e4-1355bb501144.png"
+  },
   {
     id: 19,
     title: "Уход за слуховыми аппаратами",
