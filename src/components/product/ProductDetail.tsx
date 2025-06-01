@@ -1,3 +1,4 @@
+
 import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -252,6 +253,14 @@ const ProductDetail = () => {
     );
   }
 
+  // Get display name with "Слуховой аппарат" prefix for specific product
+  const getDisplayName = () => {
+    if (productId === "oticon-zircon-1") {
+      return `Слуховой аппарат ${product.name}`;
+    }
+    return product.name;
+  };
+
   return (
     <Layout>
       <div className="bg-gray-50 py-12">
@@ -277,7 +286,7 @@ const ProductDetail = () => {
             </div>
             
             <h1 className="text-3xl font-bold tracking-tighter md:text-4xl mb-2">
-              {product.name}
+              {getDisplayName()}
             </h1>
             <p className="text-muted-foreground">
               {product.category === "behind-the-ear" && "Заушный слуховой аппарат"}
