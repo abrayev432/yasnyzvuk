@@ -1,265 +1,187 @@
-import { Truck, CreditCard, Package, ShoppingCart, Phone } from "lucide-react";
 import Layout from "@/components/layout/Layout";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { motion } from "framer-motion";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { Truck, CreditCard, Clock, MapPin, Shield, CheckCircle, Banknote, Smartphone } from "lucide-react";
+import { useEffect } from "react";
 
 const Delivery = () => {
-  return (
-    <Layout>
-      <div className="bg-gray-50 py-12">
-        <div className="container px-4 md:px-6">
-          <div className="mb-10">
-            <h1 className="text-3xl font-bold tracking-tighter md:text-5xl mb-2">
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const deliveryMethods = [{
+    title: "Курьерская доставка",
+    description: "Доставка курьером до двери в удобное для вас время",
+    details: ["Быстрая доставка", "Возможность выбора времени", "Отслеживание заказа"],
+    icon: Truck
+  }, {
+    title: "Оплата онлайн",
+    description: "Безопасная оплата банковской картой или электронным кошельком",
+    details: ["Visa, MasterCard, МИР", "Яндекс.Деньги, WebMoney", "Защита данных"],
+    icon: CreditCard
+  }, {
+    title: "Самовывоз из магазина",
+    description: "Заберите заказ самостоятельно в одном из наших магазинов",
+    details: ["Бесплатно", "Удобное расположение", "Проверка товара на месте"],
+    icon: MapPin
+  }, {
+    title: "Гарантия возврата",
+    description: "Верните товар в течение 14 дней, если он вам не подошел",
+    details: ["Без лишних вопросов", "Полный возврат средств", "Сохранение чека"],
+    icon: Shield
+  }];
+  const paymentMethods = [{
+    title: "Наличными курьеру",
+    description: "Оплата наличными при получении заказа от курьера",
+    details: ["Просто и удобно", "Без комиссии", "Только для Москвы и МО"],
+    icon: Banknote
+  }, {
+    title: "Банковской картой онлайн",
+    description: "Оплата банковской картой на сайте через безопасный платежный шлюз",
+    details: ["Visa, MasterCard, МИР", "Быстро и безопасно", "Подтверждение по SMS"],
+    icon: CreditCard
+  }, {
+    title: "Через мобильное приложение",
+    description: "Оплата через мобильное приложение вашего банка",
+    details: ["QR-код для оплаты", "Подтверждение в приложении", "Совместимость с банками"],
+    icon: Smartphone
+  }];
+  return <Layout>
+      <div className="bg-gradient-to-b from-gray-50 to-white">
+        <div className="container px-4 py-16 md:py-24 md:px-6">
+          <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.5
+        }} className="max-w-3xl mx-auto text-center mb-16">
+            <h1 className="text-4xl font-bold tracking-tight md:text-5xl mb-6">
               Доставка и оплата
             </h1>
-            <p className="text-muted-foreground max-w-3xl">
-              Информация о способах доставки и оплаты слуховых аппаратов и сопутствующих товаров
+            <p className="text-xl text-muted-foreground">
+              Мы предлагаем различные способы доставки и оплаты, чтобы сделать вашу покупку максимально удобной
             </p>
-          </div>
+          </motion.div>
 
-          <Tabs defaultValue="delivery" className="mb-12">
-            <TabsList className="grid w-full grid-cols-2 mb-8">
-              <TabsTrigger value="delivery" className="text-lg py-3">
-                <Truck className="mr-2 h-5 w-5" /> Доставка
-              </TabsTrigger>
-              <TabsTrigger value="payment" className="text-lg py-3">
-                <CreditCard className="mr-2 h-5 w-5" /> Оплата
-              </TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="delivery" className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                <div className="bg-gray-50 p-6 rounded-lg border border-gray-100">
+          <section className="mb-16">
+            <motion.div initial={{
+              opacity: 0,
+              y: 30
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              duration: 0.5,
+              delay: 0.2
+            }} className="mb-8">
+              <h2 className="text-3xl font-bold mb-4">Способы доставки</h2>
+              <p className="text-lg text-muted-foreground">
+                Выберите наиболее удобный для вас способ доставки
+              </p>
+            </motion.div>
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {deliveryMethods.map((method, index) => <motion.div key={index} initial={{
+                opacity: 0,
+                y: 30
+              }} animate={{
+                opacity: 1,
+                y: 0
+              }} transition={{
+                duration: 0.5,
+                delay: 0.3 + index * 0.1
+              }} className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
                   <div className="flex items-center mb-4">
-                    <div className="bg-brand/10 p-3 rounded-full mr-4">
-                      <Package className="h-6 w-6 text-brand" />
+                    <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-brand/10">
+                      <method.icon className="h-6 w-6 text-brand" />
                     </div>
-                    <h3 className="text-xl font-medium">Самовывоз</h3>
+                    <h3 className="text-xl font-semibold">{method.title}</h3>
                   </div>
-                  <p className="text-muted-foreground mb-4">
-                    Вы можете забрать свой заказ в нашем центре слухопротезирования.
-                  </p>
-                  <ul className="space-y-2 text-sm">
-                    <li className="flex items-start">
-                      <span className="font-medium mr-2">Адрес:</span>
-                      <span>ул. Люблинская д. 100 кор. 2, Москва</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="font-medium mr-2">Время работы:</span>
-                      <span>Пн-Сб: 10:00-19:00, Вс: выходной</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="font-medium mr-2">Стоимость:</span>
-                      <span className="text-green-600 font-medium">Бесплатно</span>
-                    </li>
+                  <p className="text-muted-foreground mb-4">{method.description}</p>
+                  <ul className="list-none pl-0">
+                    {method.details.map((detail, i) => <li key={i} className="flex items-center text-muted-foreground mb-2">
+                        <CheckCircle className="h-4 w-4 mr-2 text-brand" />
+                        {detail}
+                      </li>)}
                   </ul>
-                </div>
-
-                <div className="bg-gray-50 p-6 rounded-lg border border-gray-100">
-                  <div className="flex items-center mb-4">
-                    <div className="bg-brand/10 p-3 rounded-full mr-4">
-                      <Truck className="h-6 w-6 text-brand" />
-                    </div>
-                    <h3 className="text-xl font-medium">Курьер по Москве</h3>
-                  </div>
-                  <p className="text-muted-foreground mb-4">
-                    Доставка курьером по Москве в пределах МКАД.
-                  </p>
-                  <ul className="space-y-2 text-sm">
-                    <li className="flex items-start">
-                      <span className="font-medium mr-2">Сроки:</span>
-                      <span>1-2 рабочих дня</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="font-medium mr-2">Стоимость:</span>
-                      <span>300 ₽</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="font-medium mr-2">Бесплатно:</span>
-                      <span>При заказе от 10 000 ₽</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="bg-gray-50 p-6 rounded-lg border border-gray-100">
-                  <div className="flex items-center mb-4">
-                    <div className="bg-brand/10 p-3 rounded-full mr-4">
-                      <Package className="h-6 w-6 text-brand" />
-                    </div>
-                    <h3 className="text-xl font-medium">Почта России</h3>
-                  </div>
-                  <p className="text-muted-foreground mb-4">
-                    Доставка в любой регион России.
-                  </p>
-                  <ul className="space-y-2 text-sm">
-                    <li className="flex items-start">
-                      <span className="font-medium mr-2">Сроки:</span>
-                      <span>5-14 рабочих дней</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="font-medium mr-2">Стоимость:</span>
-                      <span>от 350 ₽ (зависит от региона)</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="font-medium mr-2">Отслеживание:</span>
-                      <span>Трек-номер предоставляется</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="mt-12">
-                <h3 className="text-xl font-medium mb-4">Часто задаваемые вопросы</h3>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>Как долго ждать доставку?</AccordionTrigger>
-                    <AccordionContent>
-                      Срок доставки зависит от выбранного способа и вашего местонахождения. В Москве доставка занимает 1-2 рабочих дня, в регионы - от 5 до 14 дней.
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-2">
-                    <AccordionTrigger>Можно ли изменить адрес доставки после оформления заказа?</AccordionTrigger>
-                    <AccordionContent>
-                      Да, вы можете изменить адрес доставки, связавшись с нами по телефону +7 (495) 799-09-26 не позднее, чем за 24 часа до планируемой даты доставки.
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-3">
-                    <AccordionTrigger>Как отслеживать статус доставки?</AccordionTrigger>
-                    <AccordionContent>
-                      После отправки заказа вы получите трек-номер по SMS или email, по которому можно отслеживать статус доставки на сайте выбранной транспортной компании.
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="payment" className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                <div className="bg-gray-50 p-6 rounded-lg border border-gray-100">
-                  <div className="flex items-center mb-4">
-                    <div className="bg-brand/10 p-3 rounded-full mr-4">
-                      <CreditCard className="h-6 w-6 text-brand" />
-                    </div>
-                    <h3 className="text-xl font-medium">Банковской картой</h3>
-                  </div>
-                  <p className="text-muted-foreground mb-4">
-                    Оплата банковской картой только при самовывозе.
-                  </p>
-                  <ul className="space-y-2 text-sm">
-                    <li className="flex items-start">
-                      <span className="font-medium mr-2">Самовывоз:</span>
-                      <span>Visa, MasterCard, МИР</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="font-medium mr-2">Терминал:</span>
-                      <span>В центре слухопротезирования</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="font-medium mr-2">Комиссия:</span>
-                      <span className="text-green-600 font-medium">Нет</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="bg-gray-50 p-6 rounded-lg border border-gray-100">
-                  <div className="flex items-center mb-4">
-                    <div className="bg-brand/10 p-3 rounded-full mr-4">
-                      <ShoppingCart className="h-6 w-6 text-brand" />
-                    </div>
-                    <h3 className="text-xl font-medium">Наличными</h3>
-                  </div>
-                  <p className="text-muted-foreground mb-4">
-                    Оплата наличными при получении заказа.
-                  </p>
-                  <ul className="space-y-2 text-sm">
-                    <li className="flex items-start">
-                      <span className="font-medium mr-2">Самовывоз:</span>
-                      <span>В кассу центра</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="font-medium mr-2">Курьеру:</span>
-                      <span>При доставке</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="font-medium mr-2">Комиссия:</span>
-                      <span className="text-green-600 font-medium">Нет</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="bg-gray-50 p-6 rounded-lg border border-gray-100">
-                  <div className="flex items-center mb-4">
-                    <div className="bg-white p-2 rounded-full mr-4 border">
-                      <img 
-                        src="https://avatars.mds.yandex.net/i?id=777f34cc8ff1cc1769291b4530ca1ac72c83937e-10285533-images-thumbs&n=13" 
-                        alt="Социальный фонд России" 
-                        className="h-8 w-8 object-contain"
-                      />
-                    </div>
-                    <h3 className="text-xl font-medium">Электронные сертификаты</h3>
-                  </div>
-                  <p className="text-muted-foreground mb-4">
-                    Прием электронных сертификатов от Социального фонда России.
-                  </p>
-                  <ul className="space-y-2 text-sm">
-                    <li className="flex items-start">
-                      <span className="font-medium mr-2">Тип:</span>
-                      <span>Электронные сертификаты СФР</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="font-medium mr-2">Оформление:</span>
-                      <span>В магазине с консультантом</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="font-medium mr-2">Документы:</span>
-                      <span>Паспорт, сертификат</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="mt-12">
-                <h3 className="text-xl font-medium mb-4">Часто задаваемые вопросы</h3>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>Безопасна ли оплата на сайте?</AccordionTrigger>
-                    <AccordionContent>
-                      Да, все платежи на нашем сайте защищены протоколом SSL и соответствуют стандартам безопасности платежных систем. Мы не храним данные вашей карты.
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-2">
-                    <AccordionTrigger>Возможна ли оплата по безналичному расчету?</AccordionTrigger>
-                    <AccordionContent>
-                      Да, для юридических лиц доступна оплата по безналичному расчету. Для этого свяжитесь с нами по телефону +7 (495) 799-09-26, и мы выставим счет.
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-3">
-                    <AccordionTrigger>Как оформить рассрочку?</AccordionTrigger>
-                    <AccordionContent>
-                      Для оформления рассрочки выберите соответствующий способ оплаты при оформлении заказа. Наш менеджер свяжется с вами для уточнения деталей и поможет с оформлением всех необходимых документов.
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </div>
-            </TabsContent>
-          </Tabs>
-
-          <div className="mt-12 py-6 px-8 bg-brand/5 border border-brand/10 rounded-lg">
-            <h3 className="text-xl font-medium mb-2">Нужна помощь с оформлением заказа?</h3>
-            <p className="mb-4">Наши специалисты помогут вам выбрать слуховой аппарат, оформить заказ и ответят на все вопросы.</p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a href="tel:+74957990926" className="flex items-center gap-2 text-brand font-medium">
-                <Phone className="h-4 w-4" />
-                +7 (495) 799-09-26
-              </a>
-              <span className="hidden sm:inline text-muted-foreground">•</span>
-              <span className="text-muted-foreground">Пн-Сб: 10:00-19:00</span>
+                </motion.div>)}
             </div>
-          </div>
+          </section>
+
+          <section className="mb-16">
+            <motion.div initial={{
+              opacity: 0,
+              y: 30
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              duration: 0.5,
+              delay: 0.5
+            }} className="mb-8">
+              <h2 className="text-3xl font-bold mb-4">Способы оплаты</h2>
+              <p className="text-lg text-muted-foreground">
+                Выберите наиболее удобный для вас способ оплаты
+              </p>
+            </motion.div>
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {paymentMethods.map((method, index) => <motion.div key={index} initial={{
+                opacity: 0,
+                y: 30
+              }} animate={{
+                opacity: 1,
+                y: 0
+              }} transition={{
+                duration: 0.5,
+                delay: 0.6 + index * 0.1
+              }} className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                  <div className="flex items-center mb-4">
+                    <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-brand/10">
+                      <method.icon className="h-6 w-6 text-brand" />
+                    </div>
+                    <h3 className="text-xl font-semibold">{method.title}</h3>
+                  </div>
+                  <p className="text-muted-foreground mb-4">{method.description}</p>
+                  <ul className="list-none pl-0">
+                    {method.details.map((detail, i) => <li key={i} className="flex items-center text-muted-foreground mb-2">
+                        <CheckCircle className="h-4 w-4 mr-2 text-brand" />
+                        {detail}
+                      </li>)}
+                  </ul>
+                </motion.div>)}
+            </div>
+          </section>
+
+          <motion.div initial={{
+          opacity: 0,
+          y: 30
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.5,
+          delay: 0.8
+        }} className="bg-brand/5 rounded-2xl p-8 md:p-12 text-center">
+            <h2 className="text-3xl font-bold mb-4">Остались вопросы?</h2>
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Свяжитесь с нами, и мы поможем вам разобраться с любыми вопросами по доставке и оплате
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Button asChild size="lg" className="px-8 rounded-full">
+                <Link to="/contacts">Связаться с нами</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="px-8 rounded-full">
+                <a href="tel:+74957990926">Позвонить: +7 (495) 799-09-26</a>
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </div>
-    </Layout>
-  );
+    </Layout>;
 };
 
 export default Delivery;

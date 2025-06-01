@@ -1,287 +1,230 @@
-import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Input } from "@/components/ui/input";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Package } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
+import { ShoppingCart, Star, Volume2, Headphones, Settings, Zap } from "lucide-react";
+import { motion } from "framer-motion";
 import { useCart } from "@/contexts/CartContext";
-import { useToast } from "@/hooks/use-toast";
-
-// Product database
-const products = [
-  {
-    id: 1,
-    name: "Слуховой аппарат ReSound KEY KE277-DWH",
-    category: "behind-the-ear",
-    price: 40500,
-    image: "https://vitaurum.ru/wa-data/public/shop/products/16/74/127416/images/7816/7816.450x0.png",
-    brand: "ReSound",
-    isNew: true,
-    isBestseller: false,
-    slug: "resound-key-ke277"
-  },
-  {
-    id: 2,
-    name: "Слуховой аппарат Oticon Zircon 1 miniRITE T",
-    category: "behind-the-ear",
-    price: 122000,
-    image: "https://www.radugazvukov.ru/upload/iblock/8a5/7nnm96djgygm4qqeedewiy4dxbll18ea/Zircon_miniRITE_600.jpg",
-    brand: "Oticon",
-    isNew: false,
-    isBestseller: true,
-    slug: "oticon-zircon-1"
-  },
-  {
-    id: 3,
-    name: "Слуховой аппарат Oticon Ruby 2 BTE PP 13",
-    category: "behind-the-ear",
-    price: 83000,
-    image: "https://vitaurum.ru/wa-data/public/shop/products/68/73/127368/images/7136/7136.450x0.png",
-    brand: "Oticon",
-    isNew: true,
-    isBestseller: false,
-    slug: "oticon-ruby-2"
-  },
-  {
-    id: 5,
-    name: "Слуховой аппарат Oticon Xceed 3 BTE SP",
-    category: "behind-the-ear",
-    price: 80000,
-    image: "https://vitaurum.ru/wa-data/public/shop/products/57/76/127657/images/7092/7092.450x0.jpg",
-    brand: "Oticon",
-    isNew: false,
-    isBestseller: true,
-    slug: "oticon-xceed-3"
-  },
-  {
-    id: 6,
-    name: "Слуховой аппарат Phonak Audeo P50-312",
-    category: "behind-the-ear",
-    price: 126000,
-    image: "https://www.radugazvukov.ru/upload/iblock/e73/wwa3mzrbty1e204dcruafye6h31fxlph/Phonak_Audeo_P-312.jpg",
-    brand: "Phonak",
-    isNew: true,
-    isBestseller: false,
-    slug: "phonak-audeo-p50"
-  },
-];
+import { useEffect } from "react";
 
 const Catalog = () => {
-  const location = useLocation();
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const [searchQuery, setSearchQuery] = useState<string>("");
-  const [sortBy, setSortBy] = useState<string>("popular");
   const { addToCart } = useCart();
-  const { toast } = useToast();
-  
-  // Parse URL parameters on component mount and when URL changes
-  useEffect(() => {
-    const queryParams = new URLSearchParams(location.search);
-    const categoryParam = queryParams.get('category');
-    if (categoryParam) {
-      setSelectedCategory(categoryParam);
-    }
-  }, [location.search]);
-  
-  const filteredProducts = products.filter((product) => {
-    // Filter by category
-    if (selectedCategory !== "all" && product.category !== selectedCategory) {
-      return false;
-    }
-    
-    // Filter by search query
-    if (searchQuery && !product.name.toLowerCase().includes(searchQuery.toLowerCase()) && 
-        !product.brand.toLowerCase().includes(searchQuery.toLowerCase())) {
-      return false;
-    }
-    
-    return true;
-  });
-  
-  // Sort products
-  const sortedProducts = [...filteredProducts].sort((a, b) => {
-    switch (sortBy) {
-      case "price-low":
-        return a.price - b.price;
-      case "price-high":
-        return b.price - a.price;
-      case "name":
-        return a.name.localeCompare(b.name);
-      default: // popular
-        if (a.isBestseller && !b.isBestseller) return -1;
-        if (!a.isBestseller && b.isBestseller) return 1;
-        if (a.isNew && !b.isNew) return -1;
-        if (!a.isNew && b.isNew) return 1;
-        return 0;
-    }
-  });
 
-  const handleAddToCart = (product: any) => {
-    addToCart(product);
-    toast({
-      title: "Товар добавлен в корзину",
-      description: `${product.name} успешно добавлен в корзину.`,
-    });
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const products = [
+    {
+      id: "1",
+      name: "Слуховой аппарат Oticon More 1",
+      description: "Премиальный слуховой аппарат с искусственным интеллектом",
+      price: 120000,
+      imageUrl: "/lovable-uploads/0a999559-8437-4921-8a81-56911ef98994.jpg",
+      rating: 4.5,
+      reviews: 62,
+      discount: 10,
+      isNew: true,
+      features: ["BrainHearing™", "Polaris™ платформа", "Bluetooth®"],
+      category: "Слуховые аппараты",
+    },
+    {
+      id: "2",
+      name: "Слуховой аппарат Phonak Audéo Paradise P90",
+      description: "Современный слуховой аппарат с широкими возможностями",
+      price: 110000,
+      imageUrl: "/lovable-uploads/0a999559-8437-4921-8a81-56911ef98994.jpg",
+      rating: 4.2,
+      reviews: 48,
+      discount: 5,
+      isNew: false,
+      features: ["AutoSense OS™", "RogerDirect™", "myPhonak app"],
+      category: "Слуховые аппараты",
+    },
+    {
+      id: "3",
+      name: "Слуховой аппарат Signia Xperience 7X",
+      description: "Слуховой аппарат с технологией обработки звука в реальном времени",
+      price: 115000,
+      imageUrl: "/lovable-uploads/0a999559-8437-4921-8a81-56911ef98994.jpg",
+      rating: 4.7,
+      reviews: 75,
+      discount: 0,
+      isNew: true,
+      features: ["Acoustic-Motion Sensors", "Own Voice Processing", "Signia app"],
+      category: "Слуховые аппараты",
+    },
+    {
+      id: "4",
+      name: "Аксессуар Oticon ConnectClip",
+      description: "Многофункциональный аксессуар для слуховых аппаратов Oticon",
+      price: 15000,
+      imageUrl: "/lovable-uploads/0a999559-8437-4921-8a81-56911ef98994.jpg",
+      rating: 4.3,
+      reviews: 32,
+      discount: 0,
+      isNew: false,
+      features: ["Микрофон", "Пульт ДУ", "Bluetooth®"],
+      category: "Аксессуары",
+    },
+    {
+      id: "5",
+      name: "Батарейки для слуховых аппаратов Rayovac ProLine",
+      description: "Надежные батарейки для слуховых аппаратов",
+      price: 1500,
+      imageUrl: "/lovable-uploads/0a999559-8437-4921-8a81-56911ef98994.jpg",
+      rating: 4.6,
+      reviews: 58,
+      discount: 0,
+      isNew: false,
+      features: ["Тип 13", "60 штук в упаковке", "Долгий срок службы"],
+      category: "Батарейки",
+    },
+    {
+      id: "6",
+      name: "Средство для чистки слуховых аппаратов Audinell",
+      description: "Эффективное средство для ухода за слуховыми аппаратами",
+      price: 2000,
+      imageUrl: "/lovable-uploads/0a999559-8437-4921-8a81-56911ef98994.jpg",
+      rating: 4.4,
+      reviews: 41,
+      discount: 0,
+      isNew: false,
+      features: ["Спрей", "Салфетки", "Щеточка"],
+      category: "Аксессуары",
+    },
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeInOut",
+      },
+    },
+    hover: {
+      scale: 1.05,
+      transition: {
+        duration: 0.2,
+      },
+    },
   };
 
   return (
     <Layout>
-      <div className="bg-gray-50 py-12">
-        <div className="container px-4 md:px-6">
-          <div className="mb-10">
-            <h1 className="text-3xl font-bold tracking-tighter md:text-5xl mb-2">
-              Каталог слуховых аппаратов
+      <div className="bg-gradient-to-b from-gray-50 to-white">
+        <div className="container px-4 py-16 md:py-24 md:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-3xl mx-auto text-center mb-12"
+          >
+            <h1 className="text-4xl font-bold tracking-tight md:text-5xl mb-4">
+              Каталог товаров
             </h1>
-            <p className="text-muted-foreground max-w-3xl">
-              Выберите и закажите слуховой аппарат, который подходит именно вам. Наши специалисты помогут с выбором и настройкой.
+            <p className="text-xl text-muted-foreground">
+              Широкий выбор слуховых аппаратов и аксессуаров от ведущих
+              производителей
             </p>
-          </div>
+          </motion.div>
 
-          <div className="flex flex-col gap-10 lg:flex-row">
-            <div className="w-full lg:w-1/4">
-              <div className="bg-white rounded-xl shadow-md p-6 sticky top-24">
-                <h2 className="text-lg font-semibold mb-4">Фильтры</h2>
-                
-                <div className="mb-6">
-                  <h3 className="text-sm font-medium mb-2">Категории</h3>
-                  <Tabs 
-                    defaultValue="all" 
-                    orientation="vertical" 
-                    value={selectedCategory}
-                    onValueChange={setSelectedCategory}
-                    className="w-full"
-                  >
-                    <TabsList className="flex flex-col h-auto bg-muted/50 rounded-md w-full">
-                      <TabsTrigger value="all" className="justify-start">
-                        Все категории
-                      </TabsTrigger>
-                      <TabsTrigger value="behind-the-ear" className="justify-start">
-                        Заушные аппараты
-                      </TabsTrigger>
-                      <TabsTrigger value="in-the-ear" className="justify-start">
-                        Внутриушные аппараты
-                      </TabsTrigger>
-                      <TabsTrigger value="in-the-canal" className="justify-start">
-                        Внутриканальные аппараты
-                      </TabsTrigger>
-                    </TabsList>
-                  </Tabs>
-                </div>
-
-                <div className="mb-6">
-                  <Button variant="outline" className="w-full" onClick={() => {
-                    setSelectedCategory("all");
-                    setSearchQuery("");
-                    setSortBy("popular");
-                  }}>Сбросить фильтры</Button>
-                </div>
-
-                <div className="pt-4 border-t">
-                  <h3 className="text-sm font-medium mb-2">Нужна помощь?</h3>
-                  <p className="text-sm text-muted-foreground mb-2">Позвоните нам для консультации:</p>
-                  <a href="tel:+74957990926" className="text-brand font-medium">+7 (495) 799-09-26</a>
-                </div>
-              </div>
-            </div>
-            
-            <div className="w-full lg:w-3/4">
-              <div className="flex flex-col sm:flex-row gap-4 justify-between mb-6">
-                <div className="relative">
-                  <Input
-                    placeholder="Поиск по названию или бренду"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="max-w-sm"
-                  />
-                </div>
-                
-                <div className="flex items-center gap-2 whitespace-nowrap">
-                  <span className="text-sm text-muted-foreground">Сортировать по:</span>
-                  <Select value={sortBy} onValueChange={setSortBy}>
-                    <SelectTrigger className="w-[180px]">
-                      <SelectValue placeholder="Популярности" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="popular">Популярности</SelectItem>
-                      <SelectItem value="price-low">Цена (по возрастанию)</SelectItem>
-                      <SelectItem value="price-high">Цена (по убыванию)</SelectItem>
-                      <SelectItem value="name">Названию</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-              
-              {sortedProducts.length === 0 ? (
-                <div className="bg-white rounded-xl shadow-sm p-12 text-center">
-                  <Package className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-                  <h3 className="text-xl font-medium mb-2">Товары не найдены</h3>
-                  <p className="text-muted-foreground">
-                    Попробуйте изменить параметры поиска или сбросить фильтры
-                  </p>
-                </div>
-              ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {sortedProducts.map((product) => (
-                    <Card key={product.id} className="overflow-hidden transition-all hover:shadow-md group">
-                      <div className="relative">
-                        <Link to={`/catalog/${product.slug}`}>
-                          <img
-                            src={product.image}
-                            alt={product.name}
-                            className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105"
-                          />
-                          {product.isNew && (
-                            <Badge className="absolute top-2 right-2 bg-brand text-white">Новинка</Badge>
-                          )}
-                          {product.isBestseller && (
-                            <Badge variant="outline" className="absolute top-2 right-2 border-brand bg-white text-brand">
-                              Хит продаж
-                            </Badge>
-                          )}
-                        </Link>
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {products.map((product) => (
+              <motion.div
+                key={product.id}
+                className="w-full"
+                variants={cardVariants}
+                whileHover="hover"
+              >
+                <Card className="h-full flex flex-col">
+                  <CardHeader className="pb-4">
+                    <CardTitle className="text-lg font-semibold leading-none line-clamp-1">
+                      {product.name}
+                    </CardTitle>
+                    <CardDescription className="text-sm text-muted-foreground line-clamp-2">
+                      {product.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <Link to={`/catalog/${product.id}`}>
+                    <div className="relative overflow-hidden rounded-md aspect-video">
+                      <img
+                        src={product.imageUrl}
+                        alt={product.name}
+                        className="object-cover w-full h-full"
+                      />
+                      {product.discount ? (
+                        <Badge className="absolute top-2 left-2 bg-red-500 text-white rounded-full px-2 py-1 text-xs font-bold">
+                          Скидка {product.discount}%
+                        </Badge>
+                      ) : null}
+                      {product.isNew ? (
+                        <Badge className="absolute top-2 right-2 bg-blue-500 text-white rounded-full px-2 py-1 text-xs font-bold">
+                          Новинка
+                        </Badge>
+                      ) : null}
+                    </div>
+                  </Link>
+                  <CardContent className="px-4 py-4 flex-grow flex flex-col justify-between">
+                    <div className="space-y-1">
+                      <div className="flex items-center space-x-2">
+                        <Star className="h-4 w-4 text-yellow-500" />
+                        <span className="text-sm font-medium">
+                          {product.rating}
+                        </span>
+                        <span className="text-sm text-muted-foreground">
+                          ({product.reviews} отзывов)
+                        </span>
                       </div>
-                      <CardContent className="p-4">
-                        <div className="mb-2">
-                          <Badge variant="outline" className="bg-brand/5 text-brand border-brand/20">
-                            {product.brand}
-                          </Badge>
-                        </div>
-                        <Link to={`/catalog/${product.slug}`}>
-                          <h3 className="text-lg font-medium line-clamp-2 mb-1 group-hover:text-brand transition-colors">
-                            {product.name}
-                          </h3>
-                        </Link>
-                        <div className="text-sm text-muted-foreground mb-3">
-                          {product.category === "behind-the-ear" && "Заушный"}
-                          {product.category === "in-the-ear" && "Внутриушной"}
-                          {product.category === "in-the-canal" && "Внутриканальный"}
-                        </div>
-                        <div className="flex justify-between items-center mt-4">
-                          <div className="font-semibold">
-                            {product.price.toLocaleString()} ₽
-                          </div>
-                          <div className="flex gap-2">
-                            <Button size="sm" variant="outline" asChild>
-                              <Link to={`/catalog/${product.slug}`}>
-                                Подробнее
-                              </Link>
-                            </Button>
-                            <Button size="sm" onClick={() => handleAddToCart(product)}>
-                              <ShoppingCart className="h-4 w-4" />
-                            </Button>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
+                      <div className="text-xl font-bold">
+                        {product.price.toLocaleString("ru-RU")} ₽
+                      </div>
+                      <ul className="list-disc pl-4 text-sm text-muted-foreground">
+                        {product.features.map((feature, index) => (
+                          <li key={index}>{feature}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="flex justify-between items-center mt-4">
+                      <Button
+                        size="sm"
+                        className="rounded-full"
+                        onClick={() => addToCart(product)}
+                      >
+                        <ShoppingCart className="w-4 h-4 mr-2" />
+                        В корзину
+                      </Button>
+                      <Link to={`/catalog/${product.id}`}>
+                        <Button variant="outline" size="sm" className="rounded-full">
+                          Подробнее
+                        </Button>
+                      </Link>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </Layout>

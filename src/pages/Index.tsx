@@ -8,8 +8,13 @@ import CtaSection from "@/components/home/CtaSection";
 import ContactSection from "@/components/home/ContactSection";
 import RotatingBanner from "@/components/home/RotatingBanner";
 import Layout from "@/components/layout/Layout";
+import { useEffect } from "react";
 
 const Index = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <Layout>
       <RotatingBanner />
