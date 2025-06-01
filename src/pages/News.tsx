@@ -1,5 +1,8 @@
-import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users, Wrench, ClipboardList, Music, ShieldCheck, HelpCircle, UserCheck, Stethoscope, Settings, VolumeX } from "lucide-react";
+import { useState } from "react";
+import { Calendar, Megaphone, Brain, Heart, Headphones, Ear, Volume2, AlertTriangle, Users, Wrench, ClipboardList, Music, ShieldCheck, HelpCircle, UserCheck, Stethoscope, Settings, VolumeX, ChevronDown, ChevronUp } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { useEffect } from "react";
 
 const newsItems = [
   {
@@ -449,7 +452,79 @@ const newsItems = [
   }
 ];
 
+const NewsArticle = ({ article }: { article: typeof newsItems[0] }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <Card className="h-full hover:shadow-lg transition-shadow duration-300">
+      {article.image && (
+        <div className="w-full h-48 overflow-hidden rounded-t-lg">
+          <img 
+            src={article.image} 
+            alt={article.title}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      )}
+      <CardHeader>
+        <div className="flex items-center gap-3 mb-2">
+          <div className="h-10 w-10 rounded-full bg-brand/10 flex items-center justify-center">
+            <article.icon className="h-5 w-5 text-brand" />
+          </div>
+          <span className="text-xs font-medium text-brand bg-brand/10 px-2 py-1 rounded-full">
+            {article.category}
+          </span>
+        </div>
+        <CardTitle className="text-xl leading-tight">{article.title}</CardTitle>
+        <CardDescription className="flex items-center gap-1 text-sm text-muted-foreground">
+          <Calendar className="h-3 w-3" />
+          {article.date}
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+          {article.description}
+        </p>
+        
+        {article.fullContent && (
+          <>
+            {isExpanded && (
+              <div 
+                className="prose prose-sm max-w-none text-gray-700 mb-4"
+                dangerouslySetInnerHTML={{ __html: article.fullContent }}
+              />
+            )}
+            
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="w-full flex items-center gap-2 text-brand hover:text-brand/80"
+            >
+              {isExpanded ? (
+                <>
+                  <ChevronUp className="h-4 w-4" />
+                  Скрыть
+                </>
+              ) : (
+                <>
+                  <ChevronDown className="h-4 w-4" />
+                  Читать далее
+                </>
+              )}
+            </Button>
+          </>
+        )}
+      </CardContent>
+    </Card>
+  );
+};
+
 const News = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-12">
@@ -462,43 +537,7 @@ const News = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {newsItems.map((article) => (
-            <Card key={article.id} className="h-full hover:shadow-lg transition-shadow duration-300">
-              {article.image && (
-                <div className="w-full h-48 overflow-hidden rounded-t-lg">
-                  <img 
-                    src={article.image} 
-                    alt={article.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              )}
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="h-10 w-10 rounded-full bg-brand/10 flex items-center justify-center">
-                    <article.icon className="h-5 w-5 text-brand" />
-                  </div>
-                  <span className="text-xs font-medium text-brand bg-brand/10 px-2 py-1 rounded-full">
-                    {article.category}
-                  </span>
-                </div>
-                <CardTitle className="text-xl leading-tight">{article.title}</CardTitle>
-                <CardDescription className="flex items-center gap-1 text-sm text-muted-foreground">
-                  <Calendar className="h-3 w-3" />
-                  {article.date}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                  {article.description}
-                </p>
-                {article.fullContent && (
-                  <div 
-                    className="prose prose-sm max-w-none text-gray-700"
-                    dangerouslySetInnerHTML={{ __html: article.fullContent }}
-                  />
-                )}
-              </CardContent>
-            </Card>
+            <NewsArticle key={article.id} article={article} />
           ))}
         </div>
       </div>
