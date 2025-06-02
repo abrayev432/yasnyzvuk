@@ -81,7 +81,16 @@ const Catalog = () => {
   
   // Scroll to top when component mounts
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Use setTimeout to ensure DOM is ready and smooth scrolling
+    const timer = setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+    }, 100);
+    
+    return () => clearTimeout(timer);
   }, []);
   
   // Parse URL parameters on component mount and when URL changes
