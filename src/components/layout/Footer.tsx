@@ -1,5 +1,6 @@
+
 import { Link } from "react-router-dom";
-import { Mail, MapPin, Phone, Clock, Facebook, Instagram, Youtube } from "lucide-react";
+import { Mail, MapPin, Phone, Clock, Facebook, Instagram, Send, MessageCircle } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -123,12 +124,39 @@ const Footer = () => {
                   <Instagram className="h-5 w-5" />
                 </a>
                 <a 
-                  href="https://youtube.com" 
+                  href="https://t.me/yasnyzvuk" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-10 h-10 bg-gray-800 hover:bg-brand transition-colors rounded-full"
+                  aria-label="Telegram"
                 >
-                  <Youtube className="h-5 w-5" />
+                  <Send className="h-5 w-5" />
+                </a>
+                <a 
+                  href="https://vk.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-10 h-10 bg-gray-800 hover:bg-brand transition-colors rounded-full"
+                  aria-label="VK"
+                >
+                  <MessageCircle className="h-5 w-5" />
+                </a>
+                <a 
+                  href="https://rutube.ru" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-10 h-10 bg-gray-800 hover:bg-brand transition-colors rounded-full"
+                  aria-label="RuTube"
+                >
+                  <svg 
+                    width="20" 
+                    height="20" 
+                    viewBox="0 0 24 24" 
+                    fill="currentColor"
+                    className="h-5 w-5"
+                  >
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+                  </svg>
                 </a>
               </div>
             </div>
