@@ -66,7 +66,7 @@ const productsDatabase: Record<string, ProductData> = {
       { name: "Степень потери слуха", value: "От легкой до тяжелой" },
       { name: "Беспроводное соединение", value: "Bluetooth, 2,4 ГГц" },
       { name: "Защита от влаги и пыли", value: "IP68" },
-      { name: "Гарантия", value: "24 месяца" }
+      { name: "Гарантия", value: "12 месяцев" }
     ]
   },
   "oticon-xceed-3": {
@@ -182,7 +182,7 @@ const productsDatabase: Record<string, ProductData> = {
       { name: "Степень потери слуха", value: "От легкой до средне-тяжелой" },
       { name: "Беспроводное соединение", value: "Bluetooth 5.0" },
       { name: "Защита от влаги и пыли", value: "IP68" },
-      { name: "Гарантия", value: "24 месяца" }
+      { name: "Гарантия", value: "12 месяцев" }
     ]
   }
 };
