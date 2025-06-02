@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
@@ -77,6 +78,11 @@ const Catalog = () => {
   const [sortBy, setSortBy] = useState<string>("popular");
   const { addToCart } = useCart();
   const { toast } = useToast();
+  
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
   // Parse URL parameters on component mount and when URL changes
   useEffect(() => {
