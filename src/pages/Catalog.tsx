@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
@@ -8,9 +7,11 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Package } from "lucide-react";
+import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
+import { ShoppingCart, Package, Filter } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useToast } from "@/hooks/use-toast";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 // Product database
 const products = [
@@ -78,6 +79,7 @@ const Catalog = () => {
   const [sortBy, setSortBy] = useState<string>("popular");
   const { addToCart } = useCart();
   const { toast } = useToast();
+  const isMobile = useIsMobile();
   
   // Scroll to top when component mounts
   useEffect(() => {
@@ -143,6 +145,50 @@ const Catalog = () => {
     });
   };
 
+  const FilterContent = () => (
+    <div className="space-y-6">
+      <div>
+        <h3 className="text-sm font-medium mb-3">Категории</h3>
+        <Tabs 
+          defaultValue="all" 
+          orientation="vertical" 
+          value={selectedCategory}
+          onValueChange={setSelectedCategory}
+          className="w-full"
+        >
+          <TabsList className="flex flex-col h-auto bg-muted/50 rounded-md w-full">
+            <TabsTrigger value="all" className="justify-start">
+              Все категории
+            </TabsTrigger>
+            <TabsTrigger value="behind-the-ear" className="justify-start">
+              Заушные аппараты
+            </TabsTrigger>
+            <TabsTrigger value="in-the-ear" className="justify-start">
+              Внутриушные аппараты
+            </TabsTrigger>
+            <TabsTrigger value="in-the-canal" className="justify-start">
+              Внутриканальные аппараты
+            </TabsTrigger>
+          </TabsList>
+        </Tabs>
+      </div>
+
+      <div>
+        <Button variant="outline" className="w-full" onClick={() => {
+          setSelectedCategory("all");
+          setSearchQuery("");
+          setSortBy("popular");
+        }}>Сбросить фильтры</Button>
+      </div>
+
+      <div className="pt-4 border-t">
+        <h3 className="text-sm font-medium mb-2">Нужна помощь?</h3>
+        <p className="text-sm text-muted-foreground mb-2">Позвоните нам для консультации:</p>
+        <a href="tel:+74957990926" className="text-brand font-medium">+7 (495) 799-09-26</a>
+      </div>
+    </div>
+  );
+
   return (
     <Layout>
       <div className="bg-gray-50 py-12">
@@ -157,61 +203,47 @@ const Catalog = () => {
           </div>
 
           <div className="flex flex-col gap-10 lg:flex-row">
-            <div className="w-full lg:w-1/4">
-              <div className="bg-white rounded-xl shadow-md p-6 sticky top-24">
-                <h2 className="text-lg font-semibold mb-4">Фильтры</h2>
-                
-                <div className="mb-6">
-                  <h3 className="text-sm font-medium mb-2">Категории</h3>
-                  <Tabs 
-                    defaultValue="all" 
-                    orientation="vertical" 
-                    value={selectedCategory}
-                    onValueChange={setSelectedCategory}
-                    className="w-full"
-                  >
-                    <TabsList className="flex flex-col h-auto bg-muted/50 rounded-md w-full">
-                      <TabsTrigger value="all" className="justify-start">
-                        Все категории
-                      </TabsTrigger>
-                      <TabsTrigger value="behind-the-ear" className="justify-start">
-                        Заушные аппараты
-                      </TabsTrigger>
-                      <TabsTrigger value="in-the-ear" className="justify-start">
-                        Внутриушные аппараты
-                      </TabsTrigger>
-                      <TabsTrigger value="in-the-canal" className="justify-start">
-                        Внутриканальные аппараты
-                      </TabsTrigger>
-                    </TabsList>
-                  </Tabs>
-                </div>
-
-                <div className="mb-6">
-                  <Button variant="outline" className="w-full" onClick={() => {
-                    setSelectedCategory("all");
-                    setSearchQuery("");
-                    setSortBy("popular");
-                  }}>Сбросить фильтры</Button>
-                </div>
-
-                <div className="pt-4 border-t">
-                  <h3 className="text-sm font-medium mb-2">Нужна помощь?</h3>
-                  <p className="text-sm text-muted-foreground mb-2">Позвоните нам для консультации:</p>
-                  <a href="tel:+74957990926" className="text-brand font-medium">+7 (495) 799-09-26</a>
+            {/* Desktop Filters */}
+            {!isMobile && (
+              <div className="w-full lg:w-1/4">
+                <div className="bg-white rounded-xl shadow-md p-6 sticky top-24">
+                  <h2 className="text-lg font-semibold mb-4">Фильтры</h2>
+                  <FilterContent />
                 </div>
               </div>
-            </div>
+            )}
             
             <div className="w-full lg:w-3/4">
               <div className="flex flex-col sm:flex-row gap-4 justify-between mb-6">
-                <div className="relative">
-                  <Input
-                    placeholder="Поиск по названию или бренду"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="max-w-sm"
-                  />
+                <div className="flex gap-2">
+                  {/* Mobile Filter Button */}
+                  {isMobile && (
+                    <Drawer>
+                      <DrawerTrigger asChild>
+                        <Button variant="outline" size="sm">
+                          <Filter className="h-4 w-4 mr-2" />
+                          Фильтры
+                        </Button>
+                      </DrawerTrigger>
+                      <DrawerContent>
+                        <DrawerHeader>
+                          <DrawerTitle>Фильтры</DrawerTitle>
+                        </DrawerHeader>
+                        <div className="p-4">
+                          <FilterContent />
+                        </div>
+                      </DrawerContent>
+                    </Drawer>
+                  )}
+                  
+                  <div className="relative flex-1">
+                    <Input
+                      placeholder="Поиск по названию или бренду"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="max-w-sm"
+                    />
+                  </div>
                 </div>
                 
                 <div className="flex items-center gap-2 whitespace-nowrap">
