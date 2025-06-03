@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { ArrowRight, Sparkles, Shield } from "lucide-react";
+import { ArrowRight, Sparkles, Shield, Award, Heart } from "lucide-react";
 
 const bannerSlides = [
   {
@@ -30,6 +30,32 @@ const bannerSlides = [
     bgGradient: "from-cyan-400/90 via-cyan-500/85 to-teal-400/80",
     accentColor: "bg-cyan-500",
     icon: Shield
+  },
+  {
+    id: 3,
+    title: "Принимаем электронные сертификаты",
+    subtitle: "От социального фонда России",
+    description: "Используйте государственные сертификаты для приобретения слуховых аппаратов",
+    image: "/lovable-uploads/51d40c07-ad93-450b-845e-27b231ac5926.jpg",
+    buttonText: "Узнать больше",
+    buttonLink: "/services",
+    bgGradient: "from-orange-600/90 via-amber-500/85 to-yellow-500/80",
+    accentColor: "bg-orange-500",
+    icon: Award,
+    showSfrLogo: true
+  },
+  {
+    id: 4,
+    title: "",
+    subtitle: "",
+    description: "",
+    image: "https://avatars.mds.yandex.net/i?id=dc9dbfd2a865441abe71ab69c02e7c5d29d9d35c-12209413-images-thumbs&n=13",
+    buttonText: "",
+    buttonLink: "/about",
+    bgGradient: "",
+    accentColor: "",
+    icon: Heart,
+    isVictoryDay: true
   }
 ];
 
@@ -71,6 +97,24 @@ const RotatingBanner = () => {
           {bannerSlides.map((slide, index) => {
             const IconComponent = slide.icon;
             
+            // Special handling for Victory Day slide
+            if (slide.isVictoryDay) {
+              return (
+                <CarouselItem key={slide.id}>
+                  <div className="relative h-[280px] md:h-[320px] overflow-hidden rounded-2xl mx-4 my-8 shadow-2xl group flex items-center justify-center bg-gradient-to-br from-slate-50 to-gray-100">
+                    {/* Centered and scaled image for Victory Day */}
+                    <div className="relative">
+                      <img 
+                        src={slide.image}
+                        alt="День Победы"
+                        className="max-h-48 md:max-h-56 w-auto object-contain transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                  </div>
+                </CarouselItem>
+              );
+            }
+            
             return (
               <CarouselItem key={slide.id}>
                 <div className="relative h-[280px] md:h-[320px] overflow-hidden rounded-2xl mx-4 my-8 shadow-2xl group">
@@ -97,6 +141,19 @@ const RotatingBanner = () => {
                       <IconComponent className="w-6 h-6 text-white" />
                     </div>
                   </div>
+
+                  {/* SFR Logo for certificate slide */}
+                  {slide.showSfrLogo && (
+                    <div className="absolute top-4 right-4">
+                      <div className="bg-white/90 backdrop-blur-sm rounded-xl p-3 shadow-lg">
+                        <img 
+                          src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Logo_SFR.svg/2458px-Logo_SFR.svg.png"
+                          alt="Логотип СФР"
+                          className="h-10 w-auto"
+                        />
+                      </div>
+                    </div>
+                  )}
 
                   {/* Content */}
                   <div className="relative h-full flex items-center justify-start px-8 md:px-12">
