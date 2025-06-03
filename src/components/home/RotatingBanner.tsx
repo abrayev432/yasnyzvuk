@@ -1,3 +1,4 @@
+
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -26,8 +27,8 @@ const bannerSlides = [
     image: "/lovable-uploads/51d40c07-ad93-450b-845e-27b231ac5926.jpg",
     buttonText: "Узнать больше",
     buttonLink: "/services",
-    bgGradient: "from-orange-600/90 via-amber-500/85 to-yellow-500/80",
-    accentColor: "bg-orange-500",
+    bgGradient: "from-cyan-400/90 via-cyan-500/85 to-teal-400/80",
+    accentColor: "bg-cyan-500",
     icon: Award,
     showSfrLogo: true
   },
@@ -39,8 +40,8 @@ const bannerSlides = [
     image: "https://avatars.mds.yandex.net/i?id=dc9dbfd2a865441abe71ab69c02e7c5d29d9d35c-12209413-images-thumbs&n=13",
     buttonText: "",
     buttonLink: "/about",
-    bgGradient: "",
-    accentColor: "",
+    bgGradient: "from-cyan-400/90 via-cyan-500/85 to-teal-400/80",
+    accentColor: "bg-cyan-500",
     icon: Heart,
     isVictoryDay: true
   }
