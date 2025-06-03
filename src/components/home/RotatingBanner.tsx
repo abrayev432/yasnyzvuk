@@ -1,24 +1,11 @@
-
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { ArrowRight, Sparkles, Shield, Award, Heart } from "lucide-react";
+import { ArrowRight, Shield, Award, Heart } from "lucide-react";
 
 const bannerSlides = [
-  {
-    id: 1,
-    title: "Новое поступление слуховых аппаратов Oticon Real™",
-    subtitle: "Революционная технология Deep Neural Network",
-    description: "Испытайте новый уровень качества звука с современными слуховыми аппаратами",
-    image: "/lovable-uploads/d9416cbc-5ba5-460d-9eb1-d80d296aec7f.jpg",
-    buttonText: "Подробнее",
-    buttonLink: "/catalog",
-    bgGradient: "from-blue-600/90 via-blue-500/85 to-cyan-500/80",
-    accentColor: "bg-blue-500",
-    icon: Sparkles
-  },
   {
     id: 2,
     title: "Бесплатная консультация специалиста",
