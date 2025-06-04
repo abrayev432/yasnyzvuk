@@ -10,15 +10,15 @@ const brands = [
   { name: "Widex", logo: "https://upload.wikimedia.org/wikipedia/commons/6/6d/Widex_logo.png", description: "Датский производитель с фокусом на естественное звучание и инновации" },
 ];
 
-const BrandCard = memo(({ brand, index }: { brand: typeof brands[0], index: number }) => {
+const BrandCard = memo(({ brand }: { brand: typeof brands[0] }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
-        <div className="flex items-center justify-center bg-white/95 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-white cursor-pointer h-32">
+        <div className="flex items-center justify-center bg-white border border-neutral-200 p-6 h-32 transition-all hover:shadow-lg hover:border-neutral-300 cursor-pointer">
           {!imageLoaded && (
-            <div className="max-h-20 w-20 bg-gray-200 animate-pulse rounded"></div>
+            <div className="max-h-20 w-20 bg-neutral-200 animate-pulse"></div>
           )}
           <img
             src={brand.logo}
@@ -33,8 +33,8 @@ const BrandCard = memo(({ brand, index }: { brand: typeof brands[0], index: numb
       </HoverCardTrigger>
       <HoverCardContent className="w-80">
         <div className="space-y-2">
-          <h4 className="text-lg font-semibold">{brand.name}</h4>
-          <p className="text-sm text-muted-foreground">{brand.description}</p>
+          <h4 className="text-lg font-medium text-neutral-900">{brand.name}</h4>
+          <p className="text-sm text-neutral-600">{brand.description}</p>
         </div>
       </HoverCardContent>
     </HoverCard>
@@ -45,20 +45,20 @@ BrandCard.displayName = "BrandCard";
 
 const BrandsSection = memo(() => {
   return (
-    <section className="bg-gradient-to-br from-brand to-brand-dark py-20">
+    <section className="bg-neutral-50 py-20">
       <div className="container px-4 md:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-2xl font-bold tracking-tighter md:text-3xl lg:text-4xl text-white">
+          <h2 className="text-3xl font-medium tracking-tight md:text-4xl lg:text-5xl text-neutral-900">
             Работаем с ведущими производителями
           </h2>
-          <p className="mt-3 text-white/80 md:text-lg max-w-2xl mx-auto">
+          <p className="mt-3 text-neutral-600 md:text-lg max-w-2xl mx-auto leading-relaxed">
             Представляем слуховые аппараты от мировых лидеров в области аудиологии
           </p>
         </div>
         
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-5">
           {brands.map((brand, i) => (
-            <BrandCard key={i} brand={brand} index={i} />
+            <BrandCard key={i} brand={brand} />
           ))}
         </div>
       </div>
