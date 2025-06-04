@@ -8,31 +8,31 @@ const brands = [
     name: "Oticon", 
     logo: "https://avatars.mds.yandex.net/get-entity_search/5578182/576251644/S600xU", 
     description: "Датский производитель с более чем 115-летним опытом разработки слуховых аппаратов",
-    gradient: "bg-orange-gradient"
+    gradient: "bg-classic-gradient"
   },
   { 
     name: "Phonak", 
     logo: "https://www.phonakpro.com/content/dam/phonakpro/gc_hq/en/overall/images/logos/Logo_Phonak_life_is_on_pos_RGB_300dpi.jpg", 
     description: "Швейцарский бренд, специализирующийся на высокотехнологичных решениях для слуха",
-    gradient: "bg-blue-gradient"
+    gradient: "bg-gold-gradient"
   },
   { 
     name: "Signia", 
     logo: "https://www.sluh-center.ru/upload/iblock/8d9/vh0b7k59kobw6x2qb2ggaue6um9lrtpr.webp", 
     description: "Немецкое качество и инновационные технологии для естественного звучания",
-    gradient: "bg-purple-gradient"
+    gradient: "bg-burgundy-gradient"
   },
   { 
     name: "ReSound", 
     logo: "https://avatars.mds.yandex.net/i?id=c1fef404869f838208e4f1f14a6cbba1ffbe9690-5233519-images-thumbs&n=13", 
     description: "Пионер в области беспроводных технологий для слуховых аппаратов",
-    gradient: "bg-green-gradient"
+    gradient: "bg-forest-gradient"
   },
   { 
     name: "Widex", 
     logo: "https://upload.wikimedia.org/wikipedia/commons/6/6d/Widex_logo.png", 
     description: "Датский производитель с фокусом на естественное звучание и инновации",
-    gradient: "bg-vibrant-gradient"
+    gradient: "bg-classic-gradient"
   },
 ];
 
@@ -42,11 +42,11 @@ const BrandCard = memo(({ brand }: { brand: typeof brands[0] }) => {
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
-        <div className="group vibrant-card hover-lift h-40 flex items-center justify-center cursor-pointer relative overflow-hidden p-6">
-          {/* Декоративные звездочки */}
-          <Star className="absolute top-2 right-2 h-4 w-4 text-vibrant-yellow opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse" />
+        <div className="group classic-card elegant-hover h-40 flex items-center justify-center cursor-pointer relative overflow-hidden p-6">
+          {/* Декоративная звездочка */}
+          <Star className="absolute top-2 right-2 h-4 w-4 text-classic-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           
-          {/* Градиентный фон при ховере */}
+          {/* Элегантный фон при ховере */}
           <div className={`absolute inset-0 ${brand.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
           
           <div className="relative z-10">
@@ -57,7 +57,7 @@ const BrandCard = memo(({ brand }: { brand: typeof brands[0] }) => {
               src={brand.logo}
               alt={`${brand.name} логотип`}
               className={`max-h-24 w-auto object-contain transition-all duration-500 ${
-                imageLoaded ? 'opacity-100 group-hover:scale-110' : 'opacity-0'
+                imageLoaded ? 'opacity-100 group-hover:scale-105' : 'opacity-0'
               }`}
               loading="lazy"
               onLoad={() => setImageLoaded(true)}
@@ -68,12 +68,12 @@ const BrandCard = memo(({ brand }: { brand: typeof brands[0] }) => {
           <div className={`absolute bottom-0 left-0 right-0 h-1 ${brand.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
         </div>
       </HoverCardTrigger>
-      <HoverCardContent className="w-80 vibrant-card">
+      <HoverCardContent className="w-80 classic-card">
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <div className={`w-2 h-2 ${brand.gradient} rounded-full`}></div>
-            <h4 className="text-xl font-bold text-gray-900">{brand.name}</h4>
-            <Award className="h-5 w-5 text-vibrant-yellow" />
+            <h4 className="text-xl font-bold text-classic-charcoal font-serif">{brand.name}</h4>
+            <Award className="h-5 w-5 text-classic-gold" />
           </div>
           <p className="text-gray-600 leading-relaxed">{brand.description}</p>
         </div>
@@ -86,27 +86,27 @@ BrandCard.displayName = "BrandCard";
 
 const BrandsSection = memo(() => {
   return (
-    <section className="bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 py-24 relative overflow-hidden">
+    <section className="bg-gradient-to-br from-classic-ivory via-white to-classic-cream py-24 relative overflow-hidden">
       {/* Декоративные элементы */}
-      <div className="absolute top-16 left-16 w-28 h-28 bg-vibrant-purple rounded-full opacity-10 animate-bounce-gentle"></div>
-      <div className="absolute bottom-16 right-16 w-36 h-36 bg-vibrant-pink rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute top-16 left-16 w-28 h-28 bg-classic-burgundy/10 rounded-full"></div>
+      <div className="absolute bottom-16 right-16 w-36 h-36 bg-classic-forest/10 rounded-full"></div>
       
       <div className="container px-4 md:px-6 relative z-10">
         <div className="text-center mb-16 animate-fade-in">
-          <div className="inline-flex items-center bg-gradient-to-r from-vibrant-purple to-vibrant-pink text-white px-4 py-2 rounded-full text-sm font-medium mb-6 shadow-lg">
+          <div className="inline-flex items-center bg-classic-gold text-white px-4 py-2 rounded-full text-sm font-medium mb-6 shadow-lg">
             <Award className="mr-2 h-4 w-4" />
             <span>Премиальные бренды</span>
           </div>
           
-          <h2 className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl mb-6">
-            <span className="gradient-text">Работаем с ведущими</span>
+          <h2 className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl mb-6 font-serif">
+            <span className="text-classic-navy">Работаем с ведущими</span>
             <br />
-            <span className="text-gray-900">производителями</span>
+            <span className="text-classic-charcoal">производителями</span>
           </h2>
           
           <p className="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
             Представляем слуховые аппараты от 
-            <span className="font-bold text-vibrant-purple"> мировых лидеров</span> в области аудиологии
+            <span className="font-bold text-classic-navy"> мировых лидеров</span> в области аудиологии
           </p>
         </div>
         
