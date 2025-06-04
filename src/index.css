@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -16,7 +16,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 215 16% 20%;
 
-    --primary: 215 16% 35%;
+    --primary: 197 71% 46%;
     --primary-foreground: 0 0% 98%;
 
     --secondary: 215 16% 96%;
@@ -33,9 +33,9 @@
 
     --border: 215 16% 91%;
     --input: 215 16% 91%;
-    --ring: 215 16% 35%;
+    --ring: 197 71% 46%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -57,7 +57,7 @@
     --popover: 215 16% 6%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 0 0% 98%;
+    --primary: 197 71% 46%;
     --primary-foreground: 215 16% 20%;
 
     --secondary: 215 16% 12%;
@@ -74,7 +74,7 @@
 
     --border: 215 16% 12%;
     --input: 215 16% 12%;
-    --ring: 215 16% 65%;
+    --ring: 197 71% 46%;
     
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -99,27 +99,45 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-medium tracking-tight;
+    @apply font-semibold tracking-tight;
     line-height: 1.2;
   }
 }
 
-/* Минималистичные утилиты */
-.minimal-card {
-  @apply bg-white border border-neutral-200 rounded-lg;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+/* Яркие современные утилиты */
+.vibrant-card {
+  @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
-.minimal-button {
-  @apply bg-neutral-900 text-white hover:bg-neutral-800 transition-colors duration-200;
+.vibrant-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
-.minimal-text {
-  @apply text-neutral-600 leading-relaxed;
+.vibrant-button {
+  @apply bg-gradient-to-r from-vibrant-blue to-vibrant-purple text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-105;
 }
 
-.text-balance {
-  text-wrap: balance;
+.gradient-text {
+  @apply bg-gradient-to-r from-vibrant-blue via-vibrant-purple to-vibrant-pink bg-clip-text text-transparent;
+}
+
+.vibrant-background {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.glow-effect {
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+}
+
+/* Анимации для интерактивности */
+.hover-lift {
+  @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
+}
+
+.pulse-on-hover {
+  @apply transition-all duration-300 hover:scale-105 hover:shadow-lg;
 }
 
 /* Smooth scrolling */
@@ -127,11 +145,23 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Убираем лишние эффекты для минимализма */
-.no-shadow {
-  box-shadow: none !important;
+/* Кастомные градиенты */
+.bg-vibrant-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
-.clean-border {
-  @apply border border-neutral-200;
+.bg-orange-gradient {
+  background: linear-gradient(135deg, #FF8A80 0%, #FF5722 100%);
+}
+
+.bg-blue-gradient {
+  background: linear-gradient(135deg, #42A5F5 0%, #1E88E5 100%);
+}
+
+.bg-purple-gradient {
+  background: linear-gradient(135deg, #AB47BC 0%, #7B1FA2 100%);
+}
+
+.bg-green-gradient {
+  background: linear-gradient(135deg, #66BB6A 0%, #388E3C 100%);
 }

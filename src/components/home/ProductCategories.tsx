@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Sparkles, TrendingUp } from "lucide-react";
 import { memo, useState } from "react";
 
 const categories = [
@@ -10,18 +10,24 @@ const categories = [
     description: "Классические и мощные слуховые аппараты, располагающиеся за ухом",
     image: "/lovable-uploads/91f6ae84-a749-4e86-85fb-537db46052c7.png",
     path: "/catalog?category=behind-the-ear",
+    gradient: "bg-orange-gradient",
+    badge: "Популярные"
   },
   {
     title: "Внутриушные слуховые аппараты",
     description: "Компактные аппараты, размещающиеся в ушной раковине",
     image: "https://www.outsideclinic.co.uk/uploads/images/_large/Hearing-Aid-Styles-ITE-min.png",
     path: "/catalog?category=in-the-ear",
+    gradient: "bg-blue-gradient",
+    badge: "Комфорт"
   },
   {
     title: "Внутриканальные слуховые аппараты",
     description: "Миниатюрные и практически незаметные аппараты внутри слухового канала",
     image: "https://avatars.mds.yandex.net/i?id=6530ef747c881994cc1a243a48d0cc7e7c306653-9425828-images-thumbs&n=13",
     path: "/catalog?category=in-the-canal",
+    gradient: "bg-purple-gradient",
+    badge: "Незаметные"
   },
 ];
 
@@ -29,34 +35,50 @@ const CategoryCard = memo(({ category }: { category: typeof categories[0] }) => 
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
-    <div className="group bg-white border border-neutral-200 transition-all hover:shadow-lg hover:border-neutral-300">
-      <div className="aspect-[4/3] overflow-hidden bg-neutral-50">
+    <div className="group vibrant-card hover-lift relative overflow-hidden">
+      {/* Бейдж */}
+      <div className={`absolute top-4 left-4 z-20 ${category.gradient} text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg`}>
+        {category.badge}
+      </div>
+      
+      <div className="aspect-[4/3] overflow-hidden relative">
         {!imageLoaded && (
-          <div className="h-full w-full bg-neutral-100 animate-pulse flex items-center justify-center">
-            <div className="w-16 h-16 bg-neutral-300"></div>
+          <div className="h-full w-full bg-gradient-to-br from-gray-100 to-gray-200 animate-pulse flex items-center justify-center">
+            <div className="w-20 h-20 bg-gray-300 rounded-full animate-pulse"></div>
           </div>
         )}
         <img
           src={category.image}
           alt={category.title}
-          className={`h-full w-full object-cover transition-all duration-500 ${
-            imageLoaded ? 'opacity-100 group-hover:scale-105' : 'opacity-0'
+          className={`h-full w-full object-cover transition-all duration-700 ${
+            imageLoaded ? 'opacity-100 group-hover:scale-110' : 'opacity-0'
           }`}
           loading="lazy"
           onLoad={() => setImageLoaded(true)}
         />
+        
+        {/* Градиентный оверлей */}
+        <div className={`absolute inset-0 ${category.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-300`}></div>
       </div>
-      <div className="p-6">
-        <h3 className="text-lg font-medium mb-2 text-neutral-900">{category.title}</h3>
-        <p className="mb-4 text-neutral-600 leading-relaxed">{category.description}</p>
+      
+      <div className="p-8 relative">
+        <div className="flex items-start justify-between mb-4">
+          <h3 className="text-xl font-bold text-gray-900 group-hover:text-vibrant-blue transition-colors duration-300">
+            {category.title}
+          </h3>
+          <Sparkles className="h-5 w-5 text-vibrant-yellow opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse" />
+        </div>
+        
+        <p className="mb-6 text-gray-600 leading-relaxed">{category.description}</p>
+        
         <Button
           asChild
           variant="outline"
-          className="border-neutral-300 text-neutral-700 hover:bg-neutral-50 hover:border-neutral-400"
+          className="w-full border-2 border-vibrant-blue text-vibrant-blue hover:bg-vibrant-blue hover:text-white transition-all duration-300 rounded-xl font-semibold group"
         >
-          <Link to={category.path} className="flex items-center">
+          <Link to={category.path} className="flex items-center justify-center gap-2">
             Смотреть все
-            <ChevronRight className="ml-1 h-4 w-4" />
+            <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
           </Link>
         </Button>
       </div>
@@ -68,24 +90,42 @@ CategoryCard.displayName = "CategoryCard";
 
 const ProductCategories = memo(() => {
   return (
-    <section className="bg-white py-20">
-      <div className="container px-4 md:px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-medium tracking-tight md:text-4xl lg:text-5xl text-neutral-900">
-            Каталог слуховых аппаратов
+    <section className="bg-white py-24 relative overflow-hidden">
+      {/* Декоративные элементы */}
+      <div className="absolute top-10 left-10 w-40 h-40 bg-vibrant-green rounded-full opacity-5 animate-pulse"></div>
+      <div className="absolute bottom-10 right-10 w-32 h-32 bg-vibrant-orange rounded-full opacity-10 animate-bounce-gentle"></div>
+      
+      <div className="container px-4 md:px-6 relative z-10">
+        <div className="text-center mb-20 animate-fade-in">
+          <div className="inline-flex items-center bg-gradient-to-r from-vibrant-green to-vibrant-blue text-white px-4 py-2 rounded-full text-sm font-medium mb-6 shadow-lg">
+            <TrendingUp className="mr-2 h-4 w-4" />
+            <span>Каталог товаров</span>
+          </div>
+          
+          <h2 className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl mb-6">
+            <span className="gradient-text">Каталог слуховых аппаратов</span>
           </h2>
-          <p className="mt-4 text-neutral-600 md:text-lg max-w-2xl mx-auto leading-relaxed">
-            Выберите тип слухового аппарата, который подходит именно вам
+          
+          <p className="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+            Выберите тип слухового аппарата, который 
+            <span className="font-bold text-vibrant-purple"> подходит именно вам</span> из нашего ассортимента
           </p>
         </div>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-16">
           {categories.map((category, i) => (
-            <CategoryCard key={i} category={category} />
+            <div key={i} className="animate-fade-in" style={{animationDelay: `${i * 0.1}s`}}>
+              <CategoryCard category={category} />
+            </div>
           ))}
         </div>
-        <div className="mt-16 text-center">
-          <Button asChild size="lg" className="bg-neutral-900 text-white hover:bg-neutral-800 transition-colors">
-            <Link to="/catalog">Перейти в полный каталог</Link>
+        
+        <div className="text-center animate-fade-in">
+          <Button asChild size="lg" className="vibrant-button text-lg px-10 py-4 rounded-xl shadow-xl">
+            <Link to="/catalog" className="flex items-center gap-2">
+              <Sparkles className="w-5 h-5" />
+              Перейти в полный каталог
+            </Link>
           </Button>
         </div>
       </div>
