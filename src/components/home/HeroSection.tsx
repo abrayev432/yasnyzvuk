@@ -129,7 +129,7 @@ const HeroSection = memo(() => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .glow-text {
           text-shadow: 0 0 10px currentColor;
         }

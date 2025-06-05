@@ -8,7 +8,7 @@ const categories = [
   {
     title: "Заушные слуховые аппараты",
     description: "Классические и мощные слуховые аппараты, располагающиеся за ухом",
-    image: "/lovable-uploads/91f6ae84-a749-4e86-85fb-537db46052c7.png",
+    image: "/lovable-uploads/57ed4636-4548-4c8a-8039-d027b3b445a2.jpg",
     path: "/catalog?category=behind-the-ear",
     gradient: "bg-modern-gradient",
     badge: "Популярные"
