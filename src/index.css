@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Georgia:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,34 +8,34 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 215 16% 20%;
+    --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 16% 20%;
+    --card-foreground: 222.2 84% 4.9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 16% 20%;
+    --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 221 83% 35%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 239 84% 67%;
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 215 16% 96%;
-    --secondary-foreground: 215 16% 20%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
 
-    --muted: 215 16% 96%;
-    --muted-foreground: 215 10% 46%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 215 16% 94%;
-    --accent-foreground: 215 16% 20%;
+    --accent: 210 40% 94%;
+    --accent-foreground: 222.2 84% 4.9%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 215 16% 91%;
-    --input: 215 16% 91%;
-    --ring: 221 83% 35%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 239 84% 67%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -48,33 +48,33 @@
   }
 
   .dark {
-    --background: 215 16% 6%;
-    --foreground: 0 0% 98%;
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
 
-    --card: 215 16% 6%;
-    --card-foreground: 0 0% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 215 16% 6%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 221 83% 35%;
-    --primary-foreground: 215 16% 20%;
+    --primary: 239 84% 67%;
+    --primary-foreground: 222.2 84% 4.9%;
 
-    --secondary: 215 16% 12%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 215 16% 12%;
-    --muted-foreground: 215 10% 54%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 215 16% 12%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 215 16% 12%;
-    --input: 215 16% 12%;
-    --ring: 221 83% 35%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 239 84% 67%;
     
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -100,34 +100,30 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold tracking-tight;
-    line-height: 1.3;
+    line-height: 1.2;
   }
 }
 
-/* Классические современные утилиты */
-.classic-card {
-  @apply bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100;
+/* Современные утилиты */
+.modern-card {
+  @apply bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100/50 backdrop-blur-sm;
 }
 
-.classic-button {
-  @apply bg-classic-navy text-white font-semibold px-6 py-3 rounded-md transition-all duration-300 hover:bg-classic-navy/90 hover:shadow-md;
+.modern-button {
+  @apply bg-gradient-to-r from-brand to-modern-purple text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-brand/25;
 }
 
-.elegant-text {
-  @apply text-classic-charcoal font-serif;
+.glass-effect {
+  @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;
 }
 
-.accent-gold {
-  @apply text-classic-gold;
+.gradient-text {
+  @apply bg-gradient-to-r from-brand via-modern-purple to-modern-rose bg-clip-text text-transparent font-bold;
 }
 
-/* Элегантные эффекты */
-.elegant-hover {
-  @apply transition-all duration-300 hover:transform hover:scale-105 hover:shadow-lg;
-}
-
-.classic-gradient {
-  background: linear-gradient(135deg, #1E40AF 0%, #1E3A8A 100%);
+/* Современные эффекты */
+.modern-hover {
+  @apply transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl hover:-translate-y-2;
 }
 
 /* Плавные анимации */
@@ -135,19 +131,33 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Классические градиенты */
-.bg-classic-gradient {
-  background: linear-gradient(135deg, #1E40AF 0%, #1E3A8A 100%);
+/* Современные градиенты */
+.bg-modern-gradient {
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%);
 }
 
-.bg-gold-gradient {
-  background: linear-gradient(135deg, #D97706 0%, #B45309 100%);
+.bg-blue-modern {
+  background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%);
 }
 
-.bg-burgundy-gradient {
-  background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
+.bg-purple-modern {
+  background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
 }
 
-.bg-forest-gradient {
-  background: linear-gradient(135deg, #059669 0%, #166534 100%);
+.bg-emerald-modern {
+  background: linear-gradient(135deg, #10B981 0%, #06B6D4 100%);
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }

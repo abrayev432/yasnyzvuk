@@ -53,20 +53,21 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// Классическая цветовая схема
+				// Современная цветовая схема
 				brand: {
-					light: '#F8FAFC',
-					DEFAULT: '#1E40AF', // Classic blue
-					dark: '#1E3A8A'
+					light: '#F1F5F9',
+					DEFAULT: '#6366F1', // Indigo
+					dark: '#4338CA'
 				},
-				classic: {
-					navy: '#1E3A8A',
-					gold: '#B45309',
-					burgundy: '#991B1B',
-					forest: '#166534',
-					charcoal: '#374151',
-					cream: '#FEF7ED',
-					ivory: '#FFFBEB'
+				modern: {
+					purple: '#8B5CF6',
+					blue: '#3B82F6',
+					cyan: '#06B6D4',
+					emerald: '#10B981',
+					orange: '#F59E0B',
+					rose: '#F43F5E',
+					slate: '#64748B',
+					zinc: '#71717A'
 				},
 				neutral: {
 					50: '#FAFAFA',
@@ -98,16 +99,16 @@ export default {
 			},
 			fontFamily: {
 				sans: ['Inter', 'system-ui', 'sans-serif'],
-				serif: ['Georgia', 'serif'],
+				display: ['Inter', 'system-ui', 'sans-serif'],
 				mono: ['JetBrains Mono', 'monospace']
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-				'classic-gradient': 'linear-gradient(135deg, #1E40AF 0%, #1E3A8A 100%)',
-				'gold-gradient': 'linear-gradient(135deg, #D97706 0%, #B45309 100%)',
-				'burgundy-gradient': 'linear-gradient(135deg, #DC2626 0%, #991B1B 100%)',
-				'forest-gradient': 'linear-gradient(135deg, #059669 0%, #166534 100%)'
+				'modern-gradient': 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%)',
+				'blue-gradient': 'linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%)',
+				'purple-gradient': 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+				'emerald-gradient': 'linear-gradient(135deg, #10B981 0%, #06B6D4 100%)'
 			},
 			keyframes: {
 				'accordion-down': {
@@ -145,13 +146,22 @@ export default {
 						transform: 'translateY(0)',
 						opacity: '1'
 					}
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0)'
+					},
+					'50%': {
+						transform: 'translateY(-10px)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.8s ease-out',
-				'slide-up': 'slide-up 0.8s ease-out'
+				'slide-up': 'slide-up 0.8s ease-out',
+				'float': 'float 3s ease-in-out infinite'
 			}
 		}
 	},
