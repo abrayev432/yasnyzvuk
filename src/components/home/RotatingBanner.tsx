@@ -65,7 +65,7 @@ const RotatingBanner = () => {
             
             return (
               <CarouselItem key={slide.id}>
-                <div className={`relative h-[150px] md:h-[250px] overflow-hidden mx-2 md:mx-4 my-3 md:my-6 ${slide.gradient} rounded-2xl shadow-2xl`}>
+                <div className={`relative h-[150px] md:h-[250px] overflow-hidden mx-6 md:mx-8 my-3 md:my-6 ${slide.gradient} rounded-2xl shadow-2xl`}>
                   
                   {/* Современные декоративные элементы */}
                   <div className="absolute top-4 left-4">
