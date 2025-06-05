@@ -36,6 +36,10 @@ const Navbar = () => {
       href: "/catalog"
     },
     {
+      name: "Аксессуары",
+      href: "/accessories"
+    },
+    {
       name: "Услуги",
       href: "/services"
     },
