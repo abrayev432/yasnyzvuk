@@ -1,3 +1,4 @@
+
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -91,11 +92,11 @@ const RotatingBanner = () => {
 
                   {/* Hearing Aid Image for certificate slide */}
                   {slide.showHearingAidImage && (
-                    <div className="absolute right-2 md:right-4 bottom-2 md:bottom-4 w-28 h-28 md:w-40 md:h-40">
+                    <div className="absolute right-8 md:right-16 bottom-2 md:bottom-4 w-28 h-28 md:w-40 md:h-40">
                       <img 
-                        src="/lovable-uploads/989a52d6-82bd-43a8-ba75-93aad7c04c14.png"
+                        src="/lovable-uploads/f899c75e-76dd-4839-9a90-8fb874e306b8.png"
                         alt="Слуховые аппараты"
-                        className="w-full h-full object-contain filter drop-shadow-2xl mix-blend-multiply"
+                        className="w-full h-full object-contain filter drop-shadow-2xl"
                       />
                     </div>
                   )}
