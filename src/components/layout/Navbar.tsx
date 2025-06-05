@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowRight, Phone, Menu, X, MessageCircle } from "lucide-react";
@@ -33,10 +32,6 @@ const Navbar = () => {
 
   const navigation = [
     {
-      name: "Главная",
-      href: "/"
-    },
-    {
       name: "Каталог",
       href: "/catalog"
     },
@@ -45,7 +40,7 @@ const Navbar = () => {
       href: "/services"
     },
     {
-      name: "О нас",
+      name: "о компании",
       href: "/about"
     },
     {
