@@ -42,21 +42,21 @@ const BrandCard = memo(({ brand }: { brand: typeof brands[0] }) => {
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
-        <div className="group modern-card modern-hover h-48 flex items-center justify-center cursor-pointer relative overflow-hidden p-8">
+        <div className="group modern-card modern-hover h-32 flex items-center justify-center cursor-pointer relative overflow-hidden p-6">
           {/* Современная звездочка */}
-          <Zap className="absolute top-3 right-3 h-5 w-5 text-modern-orange opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <Zap className="absolute top-2 right-2 h-4 w-4 text-modern-orange opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           
           {/* Современный фон при ховере */}
           <div className={`absolute inset-0 ${brand.gradient} opacity-0 group-hover:opacity-15 transition-opacity duration-300`}></div>
           
           <div className="relative z-10">
             {!imageLoaded && (
-              <div className="max-h-28 w-28 bg-gradient-to-br from-slate-200 to-slate-300 animate-pulse rounded-2xl"></div>
+              <div className="max-h-20 w-20 bg-gradient-to-br from-slate-200 to-slate-300 animate-pulse rounded-xl"></div>
             )}
             <img
               src={brand.logo}
               alt={`${brand.name} логотип`}
-              className={`max-h-28 w-auto object-contain transition-all duration-500 ${
+              className={`max-h-20 w-auto object-contain transition-all duration-500 ${
                 imageLoaded ? 'opacity-100 group-hover:scale-110' : 'opacity-0'
               }`}
               loading="lazy"
@@ -65,17 +65,17 @@ const BrandCard = memo(({ brand }: { brand: typeof brands[0] }) => {
           </div>
           
           {/* Современная подсветка снизу */}
-          <div className={`absolute bottom-0 left-0 right-0 h-2 ${brand.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl`}></div>
+          <div className={`absolute bottom-0 left-0 right-0 h-1 ${brand.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl`}></div>
         </div>
       </HoverCardTrigger>
       <HoverCardContent className="w-80 modern-card">
-        <div className="space-y-4">
-          <div className="flex items-center gap-3">
-            <div className={`w-3 h-3 ${brand.gradient} rounded-full`}></div>
-            <h4 className="text-xl font-bold text-slate-800 font-display">{brand.name}</h4>
-            <Award className="h-5 w-5 text-modern-orange" />
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <div className={`w-2 h-2 ${brand.gradient} rounded-full`}></div>
+            <h4 className="text-lg font-bold text-slate-800 font-display">{brand.name}</h4>
+            <Award className="h-4 w-4 text-modern-orange" />
           </div>
-          <p className="text-slate-600 leading-relaxed">{brand.description}</p>
+          <p className="text-slate-600 leading-relaxed text-sm">{brand.description}</p>
         </div>
       </HoverCardContent>
     </HoverCard>
@@ -86,31 +86,31 @@ BrandCard.displayName = "BrandCard";
 
 const BrandsSection = memo(() => {
   return (
-    <section className="bg-gradient-to-br from-slate-50 via-white to-blue-50 py-24 relative overflow-hidden">
+    <section className="bg-gradient-to-br from-slate-50 via-white to-blue-50 py-16 relative overflow-hidden">
       {/* Современные декоративные элементы */}
-      <div className="absolute top-16 left-16 w-40 h-40 bg-gradient-to-br from-modern-rose/20 to-modern-purple/20 rounded-full blur-3xl animate-float"></div>
-      <div className="absolute bottom-16 right-16 w-56 h-56 bg-gradient-to-br from-modern-emerald/20 to-modern-cyan/20 rounded-full blur-3xl animate-float" style={{animationDelay: '3s'}}></div>
+      <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-modern-rose/20 to-modern-purple/20 rounded-full blur-3xl animate-float"></div>
+      <div className="absolute bottom-10 right-10 w-40 h-40 bg-gradient-to-br from-modern-emerald/20 to-modern-cyan/20 rounded-full blur-3xl animate-float" style={{animationDelay: '3s'}}></div>
       
       <div className="container px-4 md:px-6 relative z-10">
-        <div className="text-center mb-20 animate-fade-in">
-          <div className="inline-flex items-center bg-gradient-to-r from-modern-orange to-modern-rose text-white px-6 py-3 rounded-full text-sm font-medium mb-8 shadow-lg">
+        <div className="text-center mb-12 animate-fade-in">
+          <div className="inline-flex items-center bg-gradient-to-r from-modern-orange to-modern-rose text-white px-4 py-2 rounded-full text-sm font-medium mb-6 shadow-lg">
             <Award className="mr-2 h-4 w-4" />
             <span>Премиальные бренды</span>
           </div>
           
-          <h2 className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl mb-6 font-display">
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl mb-4 font-display">
             <span className="gradient-text">Работаем с ведущими</span>
             <br />
             <span className="text-slate-800">производителями</span>
           </h2>
           
-          <p className="text-slate-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+          <p className="text-slate-600 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
             Представляем слуховые аппараты от 
             <span className="font-bold text-brand"> мировых лидеров</span> в области аудиологии
           </p>
         </div>
         
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-5">
           {brands.map((brand, i) => (
             <div key={i} className="animate-fade-in" style={{animationDelay: `${i * 0.1}s`}}>
               <BrandCard brand={brand} />
