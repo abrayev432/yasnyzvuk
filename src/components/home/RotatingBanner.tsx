@@ -25,6 +25,7 @@ const bannerSlides = [
     buttonLink: "/services",
     icon: Award,
     showSfrLogo: true,
+    showHearingAidImage: true,
     gradient: "bg-blue-modern"
   }
 ];
@@ -86,6 +87,17 @@ const RotatingBanner = () => {
                           className="h-4 md:h-8 w-auto"
                         />
                       </div>
+                    </div>
+                  )}
+
+                  {/* Hearing Aid Image for certificate slide */}
+                  {slide.showHearingAidImage && (
+                    <div className="absolute right-4 md:right-8 bottom-4 md:bottom-8 w-20 h-20 md:w-32 md:h-32">
+                      <img 
+                        src="/lovable-uploads/989a52d6-82bd-43a8-ba75-93aad7c04c14.png"
+                        alt="Слуховые аппараты"
+                        className="w-full h-full object-contain filter drop-shadow-2xl"
+                      />
                     </div>
                   )}
 
