@@ -70,7 +70,7 @@ const HeroSection = memo(() => {
           </div>
           
           <div className="flex items-center justify-center animate-slide-up">
-            <div className="relative h-[350px] w-full max-w-[450px] rounded-2xl overflow-hidden modern-card modern-hover">
+            <div className="relative h-[350px] w-full max-w-[450px] rounded-2xl overflow-hidden modern-card modern-hover bg-white">
               {!imageLoaded && (
                 <div className="h-full w-full bg-gradient-to-br from-slate-100 to-slate-200 animate-pulse flex items-center justify-center">
                   <Volume className="h-16 w-16 text-brand animate-pulse" />
@@ -78,7 +78,7 @@ const HeroSection = memo(() => {
               )}
               <img 
                 alt="Современные слуховые аппараты" 
-                className={`h-full w-full object-cover transition-all duration-700 ${
+                className={`h-full w-full object-contain transition-all duration-700 ${
                   imageLoaded ? 'opacity-100' : 'opacity-0'
                 }`}
                 src="https://www.sinohearing.com/wp-content/uploads/2019/10/bluetooth-hearing-aid-app-control.jpg"
