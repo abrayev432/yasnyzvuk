@@ -31,6 +31,7 @@ const bannerSlides = [
     buttonLink: "/services",
     showSfrLogo: true,
     showHearingAidImage: true,
+    showMirCards: true,
     gradient: "bg-blue-modern"
   }
 ];
@@ -100,6 +101,19 @@ const RotatingBanner = () => {
                           src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Logo_SFR.svg/2458px-Logo_SFR.svg.png"
                           alt="Логотип СФР"
                           className="h-4 md:h-8 w-auto"
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {/* MIR Cards for certificate slide */}
+                  {slide.showMirCards && (
+                    <div className="absolute bottom-4 left-4">
+                      <div className="glass-effect rounded-xl p-2 md:p-3 shadow-xl">
+                        <img 
+                          src="/lovable-uploads/dd65aa82-180a-4593-9586-dc647c4cd504.png"
+                          alt="Карты МИР"
+                          className="h-8 md:h-12 w-auto"
                         />
                       </div>
                     </div>
