@@ -3,7 +3,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { ArrowRight, Shield, Award, Sparkles, Zap } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 const bannerSlides = [
   {
@@ -20,7 +20,6 @@ const bannerSlides = [
     description: "Запишитесь на консультацию и получите индивидуальный план восстановления слуха",
     buttonText: "Записаться",
     buttonLink: "/services",
-    icon: Shield,
     gradient: "bg-modern-gradient"
   },
   {
@@ -30,7 +29,6 @@ const bannerSlides = [
     description: "Используйте государственные сертификаты для приобретения слуховых аппаратов",
     buttonText: "Узнать больше",
     buttonLink: "/services",
-    icon: Award,
     showSfrLogo: true,
     showHearingAidImage: true,
     gradient: "bg-blue-modern"
@@ -67,8 +65,6 @@ const RotatingBanner = () => {
       >
         <CarouselContent>
           {bannerSlides.map((slide, index) => {
-            const IconComponent = slide.icon;
-            
             return (
               <CarouselItem key={slide.id}>
                 <div className="relative h-[150px] md:h-[250px] overflow-hidden mx-10 md:mx-12 my-3 md:my-6 rounded-2xl shadow-2xl">
@@ -83,22 +79,13 @@ const RotatingBanner = () => {
                     />
                   )}
                   
-                  {/* Gradient overlay - только для слайдов с иконками */}
-                  {IconComponent && (
+                  {/* Gradient overlay - только для слайдов с градиентом */}
+                  {slide.gradient && (
                     <div className={`absolute inset-0 ${slide.gradient}`} />
                   )}
 
-                  {/* Современные декоративные элементы - только для слайдов с иконками */}
-                  {IconComponent && (
-                    <div className="absolute top-4 left-4">
-                      <div className="w-8 h-8 md:w-12 md:h-12 glass-effect rounded-xl flex items-center justify-center">
-                        <IconComponent className="w-4 h-4 md:w-6 md:h-6 text-white" />
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Floating decorative elements - только для слайдов с иконками */}
-                  {IconComponent && (
+                  {/* Floating decorative elements - только для слайдов с градиентом */}
+                  {slide.gradient && (
                     <>
                       <div className="absolute top-6 right-16 w-3 h-3 bg-white/20 rounded-full animate-float"></div>
                       <div className="absolute bottom-12 right-24 w-4 h-4 bg-white/15 rounded-full animate-float" style={{animationDelay: '2s'}}></div>
