@@ -1,3 +1,4 @@
+
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -10,8 +11,7 @@ const bannerSlides = [
     title: "Oticon Xceed - Мощное решение",
     subtitle: "Для глубоких потерь слуха", 
     description: "Революционная технология BrainHearing™ и отмеченный наградами дизайн для максимального комфорта",
-    backgroundImage: "/lovable-uploads/ee579751-bf3b-403e-94cc-d0394387fd95.png",
-    hideAllElements: true // Флаг для скрытия всех элементов кроме фона
+    backgroundImage: "/lovable-uploads/ee579751-bf3b-403e-94cc-d0394387fd95.png"
   },
   {
     id: 2,
@@ -83,13 +83,13 @@ const RotatingBanner = () => {
                     />
                   )}
                   
-                  {/* Gradient overlay - только для слайдов без hideAllElements */}
-                  {!slide.hideAllElements && (
+                  {/* Gradient overlay - только для слайдов с иконками */}
+                  {IconComponent && (
                     <div className={`absolute inset-0 ${slide.gradient}`} />
                   )}
 
-                  {/* Современные декоративные элементы - скрываем для первого слайда */}
-                  {!slide.hideAllElements && IconComponent && (
+                  {/* Современные декоративные элементы - только для слайдов с иконками */}
+                  {IconComponent && (
                     <div className="absolute top-4 left-4">
                       <div className="w-8 h-8 md:w-12 md:h-12 glass-effect rounded-xl flex items-center justify-center">
                         <IconComponent className="w-4 h-4 md:w-6 md:h-6 text-white" />
@@ -97,8 +97,8 @@ const RotatingBanner = () => {
                     </div>
                   )}
 
-                  {/* Floating decorative elements - скрываем для первого слайда */}
-                  {!slide.hideAllElements && (
+                  {/* Floating decorative elements - только для слайдов с иконками */}
+                  {IconComponent && (
                     <>
                       <div className="absolute top-6 right-16 w-3 h-3 bg-white/20 rounded-full animate-float"></div>
                       <div className="absolute bottom-12 right-24 w-4 h-4 bg-white/15 rounded-full animate-float" style={{animationDelay: '2s'}}></div>
@@ -129,48 +129,44 @@ const RotatingBanner = () => {
                     </div>
                   )}
 
-                  {/* Content - скрываем для первого слайда */}
-                  {!slide.hideAllElements && (
-                    <div className="relative h-full flex items-center justify-start px-6 md:px-12 z-10">
-                      <div className={`max-w-2xl text-white space-y-2 md:space-y-4 ${slide.showHearingAidImage ? 'pr-16 md:pr-32' : ''}`}>
-                        
-                        {/* Title */}
-                        <h1 className="text-lg md:text-3xl font-bold mb-2 md:mb-3 leading-tight font-display">
-                          {slide.title}
-                        </h1>
-                        
-                        {/* Subtitle */}
-                        <h2 className="text-xs md:text-xl mb-2 md:mb-4 text-white/90 font-medium">
-                          {slide.subtitle}
-                        </h2>
-                        
-                        {/* Description */}
-                        <p className="text-xs md:text-base mb-4 md:mb-6 text-white/80 leading-relaxed max-w-xl line-clamp-2">
-                          {slide.description}
-                        </p>
-                        
-                        {/* CTA Button */}
-                        {slide.buttonText && (
-                          <Button 
-                            asChild 
-                            size="sm"
-                            className="glass-effect text-slate-800 hover:bg-white/90 transition-all duration-300 px-4 md:px-8 py-2 md:py-3 text-xs md:text-base font-semibold rounded-xl shadow-2xl hover:shadow-3xl hover:scale-105"
-                          >
-                            <Link to={slide.buttonLink} className="flex items-center gap-2">
-                              <Sparkles className="w-3 h-3 md:w-4 md:h-4" />
-                              {slide.buttonText}
-                              <ArrowRight className="w-3 h-3 md:w-4 md:h-4" />
-                            </Link>
-                          </Button>
-                        )}
-                      </div>
+                  {/* Content */}
+                  <div className="relative h-full flex items-center justify-start px-6 md:px-12 z-10">
+                    <div className={`max-w-2xl text-white space-y-2 md:space-y-4 ${slide.showHearingAidImage ? 'pr-16 md:pr-32' : ''}`}>
+                      
+                      {/* Title */}
+                      <h1 className="text-lg md:text-3xl font-bold mb-2 md:mb-3 leading-tight font-display">
+                        {slide.title}
+                      </h1>
+                      
+                      {/* Subtitle */}
+                      <h2 className="text-xs md:text-xl mb-2 md:mb-4 text-white/90 font-medium">
+                        {slide.subtitle}
+                      </h2>
+                      
+                      {/* Description */}
+                      <p className="text-xs md:text-base mb-4 md:mb-6 text-white/80 leading-relaxed max-w-xl line-clamp-2">
+                        {slide.description}
+                      </p>
+                      
+                      {/* CTA Button */}
+                      {slide.buttonText && (
+                        <Button 
+                          asChild 
+                          size="sm"
+                          className="glass-effect text-slate-800 hover:bg-white/90 transition-all duration-300 px-4 md:px-8 py-2 md:py-3 text-xs md:text-base font-semibold rounded-xl shadow-2xl hover:shadow-3xl hover:scale-105"
+                        >
+                          <Link to={slide.buttonLink} className="flex items-center gap-2">
+                            <Sparkles className="w-3 h-3 md:w-4 md:h-4" />
+                            {slide.buttonText}
+                            <ArrowRight className="w-3 h-3 md:w-4 md:h-4" />
+                          </Link>
+                        </Button>
+                      )}
                     </div>
-                  )}
+                  </div>
 
-                  {/* Modern gradient overlay for better text readability - только для слайдов с контентом */}
-                  {!slide.hideAllElements && (
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/20 pointer-events-none"></div>
-                  )}
+                  {/* Modern gradient overlay for better text readability */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/20 pointer-events-none"></div>
                 </div>
               </CarouselItem>
             );
