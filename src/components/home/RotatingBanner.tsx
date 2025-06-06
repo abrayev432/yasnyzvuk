@@ -1,3 +1,4 @@
+
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -10,7 +11,7 @@ const bannerSlides = [
     title: "Oticon Xceed - Мощное решение",
     subtitle: "Для глубоких потерь слуха", 
     description: "Революционная технология BrainHearing™ и отмеченный наградами дизайн для максимального комфорта",
-    backgroundImage: "https://www.sinohearing.com/wp-content/uploads/2019/10/bluetooth-hearing-aid-app-control.jpg"
+    backgroundImage: "/lovable-uploads/ee579751-bf3b-403e-94cc-d0394387fd95.png"
   },
   {
     id: 2,
