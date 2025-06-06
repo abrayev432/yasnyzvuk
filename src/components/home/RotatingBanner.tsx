@@ -1,3 +1,4 @@
+
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -89,20 +90,20 @@ const RotatingBanner = () => {
                     </div>
                   )}
 
-                  {/* Hearing Aid Image for certificate slide */}
+                  {/* Hearing Aid Image for certificate slide - positioned to complement text */}
                   {slide.showHearingAidImage && (
-                    <div className="absolute right-2 md:right-6 bottom-2 md:bottom-4 w-52 h-52 md:w-72 md:h-72">
+                    <div className="absolute right-0 bottom-0 w-32 h-32 md:w-48 md:h-48 opacity-80">
                       <img 
                         src="/lovable-uploads/f899c75e-76dd-4839-9a90-8fb874e306b8.png"
                         alt="Слуховые аппараты"
-                        className="w-full h-full object-contain filter drop-shadow-2xl"
+                        className="w-full h-full object-contain filter drop-shadow-2xl transform translate-x-2 translate-y-2"
                       />
                     </div>
                   )}
 
-                  {/* Content */}
+                  {/* Content - adjusted for certificate slide */}
                   <div className="relative h-full flex items-center justify-start px-6 md:px-12">
-                    <div className="max-w-2xl text-white space-y-2 md:space-y-4">
+                    <div className={`max-w-2xl text-white space-y-2 md:space-y-4 ${slide.showHearingAidImage ? 'pr-16 md:pr-32' : ''}`}>
                       
                       {/* Title */}
                       <h1 className="text-lg md:text-3xl font-bold mb-2 md:mb-3 leading-tight font-display">
