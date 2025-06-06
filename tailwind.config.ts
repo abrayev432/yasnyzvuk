@@ -53,33 +53,28 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// Современная цветовая схема
+				// Новая цветовая схема в стиле tehnikasluha.ru
 				brand: {
-					light: '#F1F5F9',
-					DEFAULT: '#6366F1', // Indigo
-					dark: '#4338CA'
+					light: '#F0FDFA',
+					DEFAULT: '#14B8A6', // Teal-500
+					dark: '#0F766E'
 				},
-				modern: {
-					purple: '#8B5CF6',
-					blue: '#3B82F6',
-					cyan: '#06B6D4',
-					emerald: '#10B981',
-					orange: '#F59E0B',
-					rose: '#F43F5E',
-					slate: '#64748B',
-					zinc: '#71717A'
+				teal: {
+					50: '#F0FDFA',
+					100: '#CCFBF1',
+					200: '#99F6E4',
+					300: '#5EEAD4',
+					400: '#2DD4BF',
+					500: '#14B8A6',
+					600: '#0D9488',
+					700: '#0F766E',
+					800: '#115E59',
+					900: '#134E4A'
 				},
-				neutral: {
-					50: '#FAFAFA',
-					100: '#F5F5F5',
-					200: '#E5E5E5',
-					300: '#D4D4D4',
-					400: '#A3A3A3',
-					500: '#737373',
-					600: '#525252',
-					700: '#404040',
-					800: '#262626',
-					900: '#171717'
+				green: {
+					400: '#4ADE80',
+					500: '#22C55E',
+					600: '#16A34A'
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
@@ -105,10 +100,8 @@ export default {
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-				'modern-gradient': 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%)',
-				'blue-gradient': 'linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%)',
-				'purple-gradient': 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
-				'emerald-gradient': 'linear-gradient(135deg, #10B981 0%, #06B6D4 100%)'
+				'teal-gradient': 'linear-gradient(135deg, #14B8A6 0%, #0D9488 100%)',
+				'green-gradient': 'linear-gradient(135deg, #22C55E 0%, #16A34A 100%)'
 			},
 			keyframes: {
 				'accordion-down': {

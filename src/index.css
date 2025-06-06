@@ -16,8 +16,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 239 84% 67%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 174 83% 39%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 210 40% 96%;
     --secondary-foreground: 222.2 84% 4.9%;
@@ -33,9 +33,9 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 239 84% 67%;
+    --ring: 174 83% 39%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -57,7 +57,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 239 84% 67%;
+    --primary: 174 83% 39%;
     --primary-foreground: 222.2 84% 4.9%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -74,7 +74,7 @@
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 239 84% 67%;
+    --ring: 174 83% 39%;
     
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -93,7 +93,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-white text-foreground font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
     line-height: 1.6;
   }
@@ -104,48 +104,30 @@
   }
 }
 
-/* Современные утилиты */
-.modern-card {
-  @apply bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100/50 backdrop-blur-sm;
+/* Стили в стиле tehnikasluha.ru */
+.tehnika-card {
+  @apply bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden;
 }
 
-.modern-button {
-  @apply bg-gradient-to-r from-brand to-modern-purple text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-brand/25;
+.tehnika-button {
+  @apply bg-brand text-white font-medium px-8 py-3 rounded-full transition-all duration-300 hover:bg-brand-dark hover:shadow-lg;
 }
 
-.glass-effect {
-  @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;
+.tehnika-button-green {
+  @apply bg-green-500 text-white font-medium px-8 py-3 rounded-full transition-all duration-300 hover:bg-green-600 hover:shadow-lg;
+}
+
+.tehnika-button-outline {
+  @apply border-2 border-brand text-brand font-medium px-8 py-3 rounded-full transition-all duration-300 hover:bg-brand hover:text-white;
 }
 
 .gradient-text {
-  @apply bg-gradient-to-r from-brand via-modern-purple to-modern-rose bg-clip-text text-transparent font-bold;
-}
-
-/* Современные эффекты */
-.modern-hover {
-  @apply transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl hover:-translate-y-2;
+  @apply bg-gradient-to-r from-brand to-teal-600 bg-clip-text text-transparent font-bold;
 }
 
 /* Плавные анимации */
 html {
   scroll-behavior: smooth;
-}
-
-/* Современные градиенты */
-.bg-modern-gradient {
-  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%);
-}
-
-.bg-blue-modern {
-  background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%);
-}
-
-.bg-purple-modern {
-  background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
-}
-
-.bg-emerald-modern {
-  background: linear-gradient(135deg, #10B981 0%, #06B6D4 100%);
 }
 
 /* Floating animation */
