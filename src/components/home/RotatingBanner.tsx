@@ -3,9 +3,21 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { ArrowRight, Shield, Award, Sparkles } from "lucide-react";
+import { ArrowRight, Shield, Award, Sparkles, Zap } from "lucide-react";
 
 const bannerSlides = [
+  {
+    id: 1,
+    title: "Oticon Xceed - Мощное решение",
+    subtitle: "Для глубоких потерь слуха",
+    description: "Революционная технология BrainHearing™ и отмеченный наградами дизайн для максимального комфорта",
+    buttonText: "Подробнее",
+    buttonLink: "/catalog",
+    icon: Zap,
+    gradient: "bg-gradient-to-br from-blue-900/80 to-blue-700/80",
+    backgroundImage: "/lovable-uploads/ee579751-bf3b-403e-94cc-d0394387fd95.png",
+    badge: "CES Innovation Award 2020"
+  },
   {
     id: 2,
     title: "Бесплатная консультация специалиста",
@@ -64,14 +76,36 @@ const RotatingBanner = () => {
             
             return (
               <CarouselItem key={slide.id}>
-                <div className={`relative h-[150px] md:h-[250px] overflow-hidden mx-10 md:mx-12 my-3 md:my-6 ${slide.gradient} rounded-2xl shadow-2xl`}>
+                <div className="relative h-[150px] md:h-[250px] overflow-hidden mx-10 md:mx-12 my-3 md:my-6 rounded-2xl shadow-2xl">
                   
+                  {/* Background Image для Oticon Xceed */}
+                  {slide.backgroundImage && (
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                      style={{
+                        backgroundImage: `url(${slide.backgroundImage})`
+                      }}
+                    />
+                  )}
+                  
+                  {/* Gradient overlay */}
+                  <div className={`absolute inset-0 ${slide.gradient}`} />
+
                   {/* Современные декоративные элементы */}
                   <div className="absolute top-4 left-4">
                     <div className="w-8 h-8 md:w-12 md:h-12 glass-effect rounded-xl flex items-center justify-center">
                       <IconComponent className="w-4 h-4 md:w-6 md:h-6 text-white" />
                     </div>
                   </div>
+
+                  {/* Badge для Oticon Xceed */}
+                  {slide.badge && (
+                    <div className="absolute top-4 right-4">
+                      <div className="glass-effect rounded-xl p-2 md:p-3 shadow-xl">
+                        <span className="text-xs md:text-sm font-bold text-white">{slide.badge}</span>
+                      </div>
+                    </div>
+                  )}
 
                   {/* Floating decorative elements */}
                   <div className="absolute top-6 right-16 w-3 h-3 bg-white/20 rounded-full animate-float"></div>
@@ -92,7 +126,7 @@ const RotatingBanner = () => {
 
                   {/* Hearing Aid Image for certificate slide - positioned to complement text */}
                   {slide.showHearingAidImage && (
-                    <div className="absolute right-0 bottom-0 w-32 h-32 md:w-48 md:h-48 opacity-80">
+                    <div className="absolute right-0 bottom-0 w-24 h-24 md:w-40 md:h-40 opacity-70">
                       <img 
                         src="/lovable-uploads/f899c75e-76dd-4839-9a90-8fb874e306b8.png"
                         alt="Слуховые аппараты"
@@ -102,7 +136,7 @@ const RotatingBanner = () => {
                   )}
 
                   {/* Content - adjusted for certificate slide */}
-                  <div className="relative h-full flex items-center justify-start px-6 md:px-12">
+                  <div className="relative h-full flex items-center justify-start px-6 md:px-12 z-10">
                     <div className={`max-w-2xl text-white space-y-2 md:space-y-4 ${slide.showHearingAidImage ? 'pr-16 md:pr-32' : ''}`}>
                       
                       {/* Title */}
@@ -135,8 +169,8 @@ const RotatingBanner = () => {
                     </div>
                   </div>
 
-                  {/* Modern gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-white/10 pointer-events-none"></div>
+                  {/* Modern gradient overlay for better text readability */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/20 pointer-events-none"></div>
                 </div>
               </CarouselItem>
             );
