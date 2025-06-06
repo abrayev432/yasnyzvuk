@@ -191,10 +191,10 @@ const Catalog = () => {
 
   return (
     <Layout>
-      <div className="bg-gray-50 py-12">
+      <div className="bg-gray-50 py-8">
         <div className="container px-4 md:px-6">
-          <div className="mb-10">
-            <h1 className="text-3xl font-bold tracking-tighter md:text-5xl mb-2">
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold tracking-tighter md:text-4xl mb-2">
               Каталог слуховых аппаратов
             </h1>
             <p className="text-muted-foreground max-w-3xl">
@@ -202,11 +202,11 @@ const Catalog = () => {
             </p>
           </div>
 
-          <div className="flex flex-col gap-10 lg:flex-row">
+          <div className="flex flex-col gap-8 lg:flex-row">
             {/* Desktop Filters */}
             {!isMobile && (
               <div className="w-full lg:w-1/4">
-                <div className="bg-white rounded-xl shadow-md p-6 sticky top-24">
+                <div className="bg-white rounded-xl shadow-sm p-6 sticky top-24">
                   <h2 className="text-lg font-semibold mb-4">Фильтры</h2>
                   <FilterContent />
                 </div>
@@ -246,17 +246,17 @@ const Catalog = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-center gap-2 whitespace-nowrap">
-                  <span className="text-sm text-muted-foreground">Сортировать по:</span>
+                <div className="flex items-center gap-2">
+                  <span className="text-sm text-muted-foreground whitespace-nowrap">Сортировать:</span>
                   <Select value={sortBy} onValueChange={setSortBy}>
                     <SelectTrigger className="w-[180px]">
-                      <SelectValue placeholder="Популярности" />
+                      <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="popular">Популярности</SelectItem>
+                      <SelectItem value="popular">По популярности</SelectItem>
                       <SelectItem value="price-low">Цена (по возрастанию)</SelectItem>
                       <SelectItem value="price-high">Цена (по убыванию)</SelectItem>
-                      <SelectItem value="name">Названию</SelectItem>
+                      <SelectItem value="name">По названию</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -279,7 +279,7 @@ const Catalog = () => {
                           <img
                             src={product.image}
                             alt={product.name}
-                            className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105"
+                            className="w-full aspect-[4/3] object-cover transition-transform duration-300 group-hover:scale-105"
                           />
                           {product.isNew && (
                             <Badge className="absolute top-2 right-2 bg-brand text-white">Новинка</Badge>
@@ -298,7 +298,7 @@ const Catalog = () => {
                           </Badge>
                         </div>
                         <Link to={`/catalog/${product.slug}`}>
-                          <h3 className="text-lg font-medium line-clamp-2 mb-1 group-hover:text-brand transition-colors">
+                          <h3 className="text-lg font-medium line-clamp-2 mb-2">
                             {product.name}
                           </h3>
                         </Link>
@@ -307,8 +307,8 @@ const Catalog = () => {
                           {product.category === "in-the-ear" && "Внутриушной"}
                           {product.category === "in-the-canal" && "Внутриканальный"}
                         </div>
-                        <div className="flex justify-between items-center mt-4">
-                          <div className="font-semibold">
+                        <div className="flex justify-between items-center">
+                          <div className="font-semibold text-lg">
                             {product.price.toLocaleString()} ₽
                           </div>
                           <div className="flex gap-2">
