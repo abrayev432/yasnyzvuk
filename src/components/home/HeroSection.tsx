@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Volume, Star, ArrowRight, Sparkles, Heart, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -82,7 +81,7 @@ const HeroSection = memo(() => {
                 className={`h-full w-full object-cover transition-all duration-700 ${
                   imageLoaded ? 'opacity-100' : 'opacity-0'
                 }`}
-                src="/lovable-uploads/51d40c07-ad93-450b-845e-27b231ac5926.jpg"
+                src="https://www.sinohearing.com/wp-content/uploads/2019/10/bluetooth-hearing-aid-app-control.jpg"
                 loading="eager"
                 onLoad={() => setImageLoaded(true)}
               />
