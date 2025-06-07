@@ -95,8 +95,8 @@ const Navbar = () => {
           </button>
 
           <nav className="hidden lg:flex items-center space-x-6">
-            {/* Кнопка каталог в стиле скриншота */}
-            <Button asChild className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-2 rounded-full shadow-lg transition-all duration-300">
+            {/* Кнопка каталог в стиле скриншота с brand цветом */}
+            <Button asChild className="bg-brand hover:bg-brand-dark text-white font-semibold px-6 py-2 rounded-full shadow-lg transition-all duration-300">
               <Link to="/catalog" className="flex items-center gap-2">
                 <Menu className="h-4 w-4" />
                 КАТАЛОГ
@@ -149,8 +149,8 @@ const Navbar = () => {
                     </Button>
                   </div>
                   
-                  {/* Кнопка каталог в мобильном меню */}
-                  <Button asChild className="bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-full">
+                  {/* Кнопка каталог в мобильном меню с brand цветом */}
+                  <Button asChild className="bg-brand hover:bg-brand-dark text-white font-semibold rounded-full">
                     <Link to="/catalog" onClick={() => setIsMobileMenuOpen(false)}>
                       <Menu className="h-4 w-4 mr-2" />
                       КАТАЛОГ
