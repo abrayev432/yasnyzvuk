@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ArrowRight, Phone, Menu, X, MessageCircle, ShoppingCart, MapPin } from "lucide-react";
+import { ArrowRight, Phone, Menu, X, MessageCircle, ShoppingCart, MapPin, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CartModal } from "@/components/cart/CartModal";
@@ -12,6 +12,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isCatalogHovered, setIsCatalogHovered] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,6 +45,16 @@ const Navbar = () => {
       name: "СТАТЬИ",
       href: "/news"
     }
+  ];
+
+  const catalogItems = [
+    { name: "Все слуховые аппараты", href: "/catalog" },
+    { name: "Внутриушные слуховые аппараты", href: "/catalog?type=in-ear" },
+    { name: "Внутриканальные слуховые аппараты", href: "/catalog?type=in-canal" },
+    { name: "Заушные слуховые аппараты", href: "/catalog?type=behind-ear" },
+    { name: "Слуховые аппараты для пожилых", href: "/catalog?type=elderly" },
+    { name: "Бренды", href: "/catalog?section=brands" },
+    { name: "Аксессуары", href: "/accessories" }
   ];
 
   const isActive = (path: string) => {
@@ -95,13 +106,38 @@ const Navbar = () => {
           </button>
 
           <nav className="hidden lg:flex items-center space-x-6">
-            {/* Кнопка каталог в стиле скриншота с brand цветом */}
-            <Button asChild className="bg-brand hover:bg-brand-dark text-white font-semibold px-6 py-2 rounded-full shadow-lg transition-all duration-300">
-              <Link to="/catalog" className="flex items-center gap-2">
-                <Menu className="h-4 w-4" />
-                КАТАЛОГ
-              </Link>
-            </Button>
+            {/* Кнопка каталог с выпадающим меню */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setIsCatalogHovered(true)}
+              onMouseLeave={() => setIsCatalogHovered(false)}
+            >
+              <Button asChild className="bg-brand hover:bg-brand-dark text-white font-semibold px-6 py-2 rounded-full shadow-lg transition-all duration-300">
+                <Link to="/catalog" className="flex items-center gap-2">
+                  <Menu className="h-4 w-4" />
+                  КАТАЛОГ
+                  <ChevronDown className="h-4 w-4" />
+                </Link>
+              </Button>
+              
+              {/* Выпадающее меню */}
+              {isCatalogHovered && (
+                <div className="absolute top-full left-0 mt-2 w-80 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                  <div className="py-2">
+                    {catalogItems.map((item, index) => (
+                      <Link
+                        key={index}
+                        to={item.href}
+                        className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-brand transition-colors"
+                        onClick={() => setIsCatalogHovered(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
             
             {navigation.map(item => (
               <Link 
@@ -156,6 +192,20 @@ const Navbar = () => {
                       КАТАЛОГ
                     </Link>
                   </Button>
+                  
+                  {/* Пункты каталога в мобильном меню */}
+                  <div className="pl-4 space-y-2">
+                    {catalogItems.map((item, index) => (
+                      <Link 
+                        key={index}
+                        to={item.href} 
+                        className="block py-2 text-sm text-gray-600 hover:text-brand"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
                   
                   {navigation.map(item => (
                     <Link 
