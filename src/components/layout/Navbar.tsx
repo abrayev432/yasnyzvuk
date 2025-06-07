@@ -33,11 +33,6 @@ const Navbar = () => {
 
   const navigation = [
     {
-      name: "КАТАЛОГ",
-      href: "/catalog",
-      isButton: true
-    },
-    {
       name: "УСЛУГИ",
       href: "/services"
     },
@@ -46,16 +41,8 @@ const Navbar = () => {
       href: "/about"
     },
     {
-      name: "АДРЕСА ЦЕНТРОВ",
-      href: "/contacts"
-    },
-    {
       name: "СТАТЬИ",
       href: "/news"
-    },
-    {
-      name: "АКЦИИ",
-      href: "/accessories"
     }
   ];
 
@@ -108,25 +95,24 @@ const Navbar = () => {
           </button>
 
           <nav className="hidden lg:flex items-center space-x-6">
+            {/* Кнопка каталог в стиле скриншота */}
+            <Button asChild className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-2 rounded-full shadow-lg transition-all duration-300">
+              <Link to="/catalog" className="flex items-center gap-2">
+                <Menu className="h-4 w-4" />
+                КАТАЛОГ
+              </Link>
+            </Button>
+            
             {navigation.map(item => (
-              item.isButton ? (
-                <Button key={item.name} asChild size="sm" className="tehnika-button">
-                  <Link to={item.href} className="flex items-center gap-2">
-                    <Menu className="h-4 w-4" />
-                    {item.name}
-                  </Link>
-                </Button>
-              ) : (
-                <Link 
-                  key={item.name} 
-                  to={item.href} 
-                  className={`text-sm font-medium transition-colors hover:text-brand uppercase tracking-wide ${
-                    isActive(item.href) ? "text-brand" : "text-gray-700"
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              )
+              <Link 
+                key={item.name} 
+                to={item.href} 
+                className={`text-sm font-medium transition-colors hover:text-brand uppercase tracking-wide ${
+                  isActive(item.href) ? "text-brand" : "text-gray-700"
+                }`}
+              >
+                {item.name}
+              </Link>
             ))}
           </nav>
 
@@ -162,6 +148,15 @@ const Navbar = () => {
                       <X className="h-5 w-5" />
                     </Button>
                   </div>
+                  
+                  {/* Кнопка каталог в мобильном меню */}
+                  <Button asChild className="bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-full">
+                    <Link to="/catalog" onClick={() => setIsMobileMenuOpen(false)}>
+                      <Menu className="h-4 w-4 mr-2" />
+                      КАТАЛОГ
+                    </Link>
+                  </Button>
+                  
                   {navigation.map(item => (
                     <Link 
                       key={item.name} 

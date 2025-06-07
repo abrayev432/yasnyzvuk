@@ -38,11 +38,6 @@ const Footer = () => {
                   Внутриканальные слуховые аппараты
                 </Link>
               </li>
-              <li>
-                <Link to="/catalog/accessories" className="text-gray-300 hover:text-brand transition-colors">
-                  Аксессуары
-                </Link>
-              </li>
             </ul>
           </div>
 
