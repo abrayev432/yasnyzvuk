@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { Card, CardContent } from "@/components/ui/card";
@@ -6,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
-import { ShoppingCart, Battery, Headphones, Shield, Volume2 } from "lucide-react";
+import { ShoppingCart, Battery, Shield, Volume2 } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useToast } from "@/hooks/use-toast";
 
@@ -42,16 +41,6 @@ const accessories = [
     inStock: true
   },
   {
-    id: 104,
-    name: "Беспроводная система Roger",
-    category: "wireless",
-    price: 35000,
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=300&h=300&fit=crop",
-    brand: "Phonak",
-    description: "Беспроводная система для улучшения слышимости в шумной обстановке",
-    inStock: true
-  },
-  {
     id: 105,
     name: "Защитные фильтры WaxGuard",
     category: "care",
@@ -60,25 +49,13 @@ const accessories = [
     brand: "Oticon",
     description: "Защитные фильтры от серы для внутриушных аппаратов",
     inStock: true
-  },
-  {
-    id: 106,
-    name: "Пульт дистанционного управления",
-    category: "controls",
-    price: 4500,
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=300&h=300&fit=crop",
-    brand: "ReSound",
-    description: "Пульт для дистанционного управления слуховыми аппаратами",
-    inStock: false
   }
 ];
 
 const categories = [
   { value: "all", label: "Все категории", icon: Volume2 },
   { value: "batteries", label: "Батарейки", icon: Battery },
-  { value: "care", label: "Уход и обслуживание", icon: Shield },
-  { value: "wireless", label: "Беспроводные системы", icon: Headphones },
-  { value: "controls", label: "Пульты управления", icon: Volume2 }
+  { value: "care", label: "Уход и обслуживание", icon: Shield }
 ];
 
 const Accessories = () => {
@@ -129,7 +106,7 @@ const Accessories = () => {
               Аксессуары для слуховых аппаратов
             </h1>
             <p className="text-muted-foreground max-w-3xl">
-              Батарейки, средства ухода, беспроводные системы и другие аксессуары для ваших слуховых аппаратов.
+              Батарейки, средства ухода и другие аксессуары для ваших слуховых аппаратов.
             </p>
           </div>
 
