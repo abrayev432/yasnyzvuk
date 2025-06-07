@@ -1,5 +1,4 @@
-
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowRight, Phone, Menu, X, MessageCircle, ShoppingCart, MapPin, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -13,6 +12,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isCatalogHovered, setIsCatalogHovered] = useState(false);
+  const catalogTimeoutRef = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,6 +30,19 @@ const Navbar = () => {
 
   const handleLogoClick = () => {
     window.location.href = "/";
+  };
+
+  const handleCatalogMouseEnter = () => {
+    if (catalogTimeoutRef.current) {
+      clearTimeout(catalogTimeoutRef.current);
+    }
+    setIsCatalogHovered(true);
+  };
+
+  const handleCatalogMouseLeave = () => {
+    catalogTimeoutRef.current = setTimeout(() => {
+      setIsCatalogHovered(false);
+    }, 150);
   };
 
   const navigation = [
@@ -109,8 +122,8 @@ const Navbar = () => {
             {/* Кнопка каталог с выпадающим меню */}
             <div 
               className="relative"
-              onMouseEnter={() => setIsCatalogHovered(true)}
-              onMouseLeave={() => setIsCatalogHovered(false)}
+              onMouseEnter={handleCatalogMouseEnter}
+              onMouseLeave={handleCatalogMouseLeave}
             >
               <Button asChild className="bg-brand hover:bg-brand-dark text-white font-semibold px-6 py-2 rounded-full shadow-lg transition-all duration-300">
                 <Link to="/catalog" className="flex items-center gap-2">
@@ -122,7 +135,11 @@ const Navbar = () => {
               
               {/* Выпадающее меню */}
               {isCatalogHovered && (
-                <div className="absolute top-full left-0 mt-2 w-80 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                <div 
+                  className="absolute top-full left-0 mt-1 w-80 bg-white border border-gray-200 rounded-lg shadow-lg z-50"
+                  onMouseEnter={handleCatalogMouseEnter}
+                  onMouseLeave={handleCatalogMouseLeave}
+                >
                   <div className="py-2">
                     {catalogItems.map((item, index) => (
                       <Link
