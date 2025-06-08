@@ -1,3 +1,4 @@
+
 import Layout from "@/components/layout/Layout";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -15,7 +16,7 @@ const Services = () => {
     title: "Тест слуха",
     description: "Комплексное обследование слуха с использованием современного оборудования",
     details: ["Тест слуха", "Тимпанометрия", "Отоакустическая эмиссия", "Консультация сурдолога"],
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYiwcOPwT7Ri2DRNBJH0gEcZxthFt7jRNFPg&s"
+    image: "/lovable-uploads/1aa88dd3-610b-4269-b328-02caf677dbb3.png"
   }, {
     title: "Подбор слуховых аппаратов",
     description: "Индивидуальный подбор слуховых аппаратов с учетом степени потери слуха и образа жизни",
