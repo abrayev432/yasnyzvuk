@@ -1,4 +1,3 @@
-
 import Layout from "@/components/layout/Layout";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -21,7 +20,7 @@ const Services = () => {
     title: "Подбор слуховых аппаратов",
     description: "Индивидуальный подбор слуховых аппаратов с учетом степени потери слуха и образа жизни",
     details: ["Консультация специалиста", "Демонстрация моделей", "Тестовое использование", "Компьютерная настройка"],
-    image: "https://images.unsplash.com/photo-1595859703065-2259982784bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+    image: "/lovable-uploads/5acfef58-b2e8-4c32-a239-944be6a62fb0.png"
   }, {
     title: "Настройка и адаптация",
     description: "Профессиональная настройка слуховых аппаратов и помощь в адаптации к их использованию",
