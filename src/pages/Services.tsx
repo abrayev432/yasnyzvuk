@@ -1,4 +1,5 @@
 
+
 import Layout from "@/components/layout/Layout";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -81,7 +82,7 @@ const Services = () => {
                   </Button>
                 </div>
                 <div className={`rounded-xl overflow-hidden shadow-lg ${index % 2 !== 0 ? 'md:order-1' : 'md:order-2'}`}>
-                  <img src={service.image} alt={service.title} className="w-full h-full object-cover aspect-video" />
+                  <img src={service.image} alt={service.title} className="w-full h-64 md:h-80 object-contain bg-gray-50" />
                 </div>
               </motion.div>)}
           </div>
@@ -114,3 +115,4 @@ const Services = () => {
     </Layout>;
 };
 export default Services;
+
