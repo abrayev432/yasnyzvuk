@@ -1,5 +1,3 @@
-
-
 import Layout from "@/components/layout/Layout";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -17,7 +15,7 @@ const Services = () => {
     title: "Тест слуха",
     description: "Комплексное обследование слуха с использованием современного оборудования",
     details: ["Тест слуха", "Тимпанометрия", "Отоакустическая эмиссия", "Консультация сурдолога"],
-    image: "/lovable-uploads/d2300501-2c41-4cd4-8cbe-f7fdb780c04a.png"
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYiwcOPwT7Ri2DRNBJH0gEcZxthFt7jRNFPg&s"
   }, {
     title: "Подбор слуховых аппаратов",
     description: "Индивидуальный подбор слуховых аппаратов с учетом степени потери слуха и образа жизни",
@@ -82,7 +80,7 @@ const Services = () => {
                   </Button>
                 </div>
                 <div className={`rounded-xl overflow-hidden shadow-lg ${index % 2 !== 0 ? 'md:order-1' : 'md:order-2'}`}>
-                  <img src={service.image} alt={service.title} className="w-full h-64 md:h-80 object-contain bg-gray-50" />
+                  <img src={service.image} alt={service.title} className="w-full h-full object-cover aspect-video" />
                 </div>
               </motion.div>)}
           </div>
@@ -115,4 +113,3 @@ const Services = () => {
     </Layout>;
 };
 export default Services;
-
