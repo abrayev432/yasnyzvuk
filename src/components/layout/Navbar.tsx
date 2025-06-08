@@ -77,34 +77,6 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Верхняя полоса с контактами */}
-      <div className="bg-gray-50 border-b border-gray-200 py-2">
-        <div className="container flex items-center justify-between px-4 md:px-6 text-sm">
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2 text-gray-600">
-              <MapPin className="h-4 w-4 text-brand" />
-              <span>Выберите город</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-6">
-            <div className="hidden md:block text-gray-600">
-              Для всех регионов
-            </div>
-            <a href="tel:+74993941797" className="flex items-center gap-2 text-gray-800 font-medium hover:text-brand">
-              <Phone className="h-4 w-4" />
-              +7 499 394-17-97
-            </a>
-            <div className="hidden md:block text-gray-500 text-xs">
-              Звонить с ПН по СБ с 10:00 до 18:00
-            </div>
-            <div className="flex items-center gap-2 text-gray-600">
-              <ShoppingCart className="h-4 w-4" />
-              <span className="text-brand font-medium">0 шт.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Основная навигация */}
       <header className={`sticky top-0 z-40 w-full bg-white transition-all ${isScrolled ? "shadow-md" : "border-b border-gray-200"}`}>
         <div className="container flex items-center justify-between px-4 md:px-6 py-4">
