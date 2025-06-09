@@ -12,26 +12,36 @@ import { useToast } from "@/hooks/use-toast";
 const accessories = [
   {
     id: 101,
-    name: "Батарейки для слуховых аппаратов 312",
+    name: "Батарейка Power One Siemens тип 10",
     category: "batteries",
-    price: 450,
+    price: 120,
     image: "https://images.unsplash.com/photo-1609877280000-37f0b2b8b4ba?w=300&h=300&fit=crop",
-    brand: "PowerOne",
-    description: "Долговечные батарейки размера 312 для слуховых аппаратов",
+    brand: "Power One",
+    description: "Высококачественные батарейки для слуховых аппаратов тип 10 (желтые)",
     inStock: true
   },
   {
     id: 102,
-    name: "Батарейки для слуховых аппаратов 13",
+    name: "Батарейка Power One Siemens тип 13",
     category: "batteries",
-    price: 480,
+    price: 120,
     image: "https://images.unsplash.com/photo-1609877280000-37f0b2b8b4ba?w=300&h=300&fit=crop",
-    brand: "Rayovac",
-    description: "Высококачественные батарейки размера 13",
+    brand: "Power One",
+    description: "Высококачественные батарейки для слуховых аппаратов тип 13 (оранжевые)",
     inStock: true
   },
   {
     id: 103,
+    name: "Батарейка Power One Siemens тип 312",
+    category: "batteries",
+    price: 120,
+    image: "https://images.unsplash.com/photo-1609877280000-37f0b2b8b4ba?w=300&h=300&fit=crop",
+    brand: "Power One",
+    description: "Высококачественные батарейки для слуховых аппаратов тип 312 (коричневые)",
+    inStock: true
+  },
+  {
+    id: 104,
     name: "Сушильный бокс для слуховых аппаратов",
     category: "care",
     price: 2500,
