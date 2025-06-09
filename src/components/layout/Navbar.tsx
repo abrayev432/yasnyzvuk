@@ -65,8 +65,6 @@ const Navbar = () => {
     { name: "Внутриушные слуховые аппараты", href: "/catalog?type=in-ear" },
     { name: "Внутриканальные слуховые аппараты", href: "/catalog?type=in-canal" },
     { name: "Заушные слуховые аппараты", href: "/catalog?type=behind-ear" },
-    { name: "Слуховые аппараты для пожилых", href: "/catalog?type=elderly" },
-    { name: "Бренды", href: "/catalog?section=brands" },
     { name: "Аксессуары", href: "/accessories" }
   ];
 
