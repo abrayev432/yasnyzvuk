@@ -35,6 +35,15 @@ const bannerSlides = [
     buttonText: "Записаться",
     buttonLink: "/services",
     backgroundColor: "bg-gradient-to-r from-brand to-teal-600"
+  },
+  {
+    id: 4,
+    title: "Электронные сертификаты",
+    subtitle: "Социального фонда России",
+    description: "Принимаем электронные сертификаты от СФР для компенсации стоимости слуховых аппаратов",
+    buttonText: "Узнать подробнее",
+    buttonLink: "/delivery",
+    backgroundColor: "bg-gradient-to-r from-blue-600 to-blue-800"
   }
 ];
 
