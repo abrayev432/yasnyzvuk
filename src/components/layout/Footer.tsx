@@ -1,19 +1,12 @@
-
 import { Link } from "react-router-dom";
 import { Mail, MapPin, Phone, Clock, Facebook, Instagram, Send, MessageCircle } from "lucide-react";
-
 const Footer = () => {
-  return (
-    <footer className="bg-gray-900 text-white">
+  return <footer className="bg-gray-900 text-white">
       <div className="container px-4 py-16 mx-auto md:px-6">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
             <Link to="/" className="flex items-center">
-              <img 
-                src="/lovable-uploads/73734014-4b6a-42ea-ba93-6269c3768514.png" 
-                alt="Ясный звук" 
-                className="h-20 w-auto" 
-              />
+              <img src="/lovable-uploads/73734014-4b6a-42ea-ba93-6269c3768514.png" alt="Ясный звук" className="h-20 w-auto" />
             </Link>
             <p className="text-sm text-gray-300">
               Специализированный магазин слуховых аппаратов с профессиональной консультацией и подбором.
@@ -102,55 +95,19 @@ const Footer = () => {
             <div className="mb-8 md:mb-0">
               <h3 className="text-lg font-medium mb-4">Мы в социальных сетях</h3>
               <div className="flex space-x-4">
-                <a 
-                  href="https://facebook.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-10 h-10 bg-gray-800 hover:bg-brand transition-colors rounded-full"
-                >
-                  <Facebook className="h-5 w-5" />
-                </a>
-                <a 
-                  href="https://instagram.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-10 h-10 bg-gray-800 hover:bg-brand transition-colors rounded-full"
-                >
+                
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 bg-gray-800 hover:bg-brand transition-colors rounded-full">
                   <Instagram className="h-5 w-5" />
                 </a>
-                <a 
-                  href="https://t.me/yasnyzvuk" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-10 h-10 bg-gray-800 hover:bg-brand transition-colors rounded-full"
-                  aria-label="Telegram"
-                >
+                <a href="https://t.me/yasnyzvuk" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 bg-gray-800 hover:bg-brand transition-colors rounded-full" aria-label="Telegram">
                   <Send className="h-5 w-5" />
                 </a>
-                <a 
-                  href="https://vk.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-10 h-10 bg-gray-800 hover:bg-brand transition-colors rounded-full"
-                  aria-label="VK"
-                >
+                <a href="https://vk.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 bg-gray-800 hover:bg-brand transition-colors rounded-full" aria-label="VK">
                   <MessageCircle className="h-5 w-5" />
                 </a>
-                <a 
-                  href="https://rutube.ru" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-10 h-10 bg-gray-800 hover:bg-brand transition-colors rounded-full"
-                  aria-label="RuTube"
-                >
-                  <svg 
-                    width="20" 
-                    height="20" 
-                    viewBox="0 0 24 24" 
-                    fill="currentColor"
-                    className="h-5 w-5"
-                  >
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+                <a href="https://rutube.ru" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 bg-gray-800 hover:bg-brand transition-colors rounded-full" aria-label="RuTube">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
                   </svg>
                 </a>
               </div>
@@ -159,21 +116,9 @@ const Footer = () => {
             <div className="flex flex-col items-start md:items-end">
               <h3 className="text-lg font-medium mb-4">Принимаем к оплате</h3>
               <div className="flex space-x-3">
-                <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/200px-MasterCard_Logo.svg.png" 
-                  alt="Mastercard" 
-                  className="h-8 w-auto"
-                />
-                <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/200px-Visa_Inc._logo.svg.png" 
-                  alt="Visa" 
-                  className="h-8 w-auto"
-                />
-                <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Mir-logo.SVG.svg" 
-                  alt="Мир" 
-                  className="h-8 w-auto"
-                />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/200px-MasterCard_Logo.svg.png" alt="Mastercard" className="h-8 w-auto" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/200px-Visa_Inc._logo.svg.png" alt="Visa" className="h-8 w-auto" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Mir-logo.SVG.svg" alt="Мир" className="h-8 w-auto" />
               </div>
             </div>
           </div>
@@ -190,8 +135,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
