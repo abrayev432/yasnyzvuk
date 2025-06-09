@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowRight, Phone, Menu, X, MessageCircle, ShoppingCart, MapPin, ChevronDown } from "lucide-react";
@@ -79,13 +80,11 @@ const Navbar = () => {
       <header className={`sticky top-0 z-40 w-full bg-white transition-all ${isScrolled ? "shadow-md" : "border-b border-gray-200"}`}>
         <div className="container flex items-center justify-between px-4 md:px-6 py-4">
           <button onClick={handleLogoClick} className="flex items-center gap-2 cursor-pointer">
-            <div className="w-12 h-12 bg-brand rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-lg">ЯЗ</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-bold text-gray-800">Ясный звук</span>
-              <span className="text-xs text-brand">оживляем тишину</span>
-            </div>
+            <img 
+              src="/lovable-uploads/fe8c03ba-b977-4605-9e9c-52ee8c6111d8.png" 
+              alt="Ясный звук - слуховые аппараты" 
+              className="h-12 w-auto"
+            />
           </button>
 
           <nav className="hidden lg:flex items-center space-x-6">
