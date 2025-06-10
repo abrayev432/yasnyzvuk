@@ -16,17 +16,17 @@ const accessories = [
     category: "batteries",
     price: 120,
     image: "/lovable-uploads/37b93500-ad11-4b2a-b30f-3a613d4bc198.png",
-    brand: "Power One",
+    brand: "audifon",
     description: "Высококачественные батарейки для слуховых аппаратов тип 10 (желтые)",
     inStock: true
   },
   {
     id: 102,
-    name: "Батарейка Power One Siemens тип 13",
+    name: "Батарейка для слухового аппарата Тип 13",
     category: "batteries",
     price: 120,
-    image: "https://images.unsplash.com/photo-1609877280000-37f0b2b8b4ba?w=300&h=300&fit=crop",
-    brand: "Power One",
+    image: "/lovable-uploads/c888a1e7-275f-4104-b6e9-a06817988e7e.png",
+    brand: "audifon",
     description: "Высококачественные батарейки для слуховых аппаратов тип 13 (оранжевые)",
     inStock: true
   },
@@ -36,7 +36,7 @@ const accessories = [
     category: "batteries",
     price: 120,
     image: "https://images.unsplash.com/photo-1609877280000-37f0b2b8b4ba?w=300&h=300&fit=crop",
-    brand: "Power One",
+    brand: "audifon",
     description: "Высококачественные батарейки для слуховых аппаратов тип 312 (коричневые)",
     inStock: true
   },
