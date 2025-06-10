@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { Card, CardContent } from "@/components/ui/card";
@@ -32,12 +33,22 @@ const accessories = [
   },
   {
     id: 103,
-    name: "Батарейка Power One Siemens тип 312",
+    name: "Батарейка для слуховых аппаратов Тип 312",
     category: "batteries",
     price: 120,
-    image: "https://images.unsplash.com/photo-1609877280000-37f0b2b8b4ba?w=300&h=300&fit=crop",
+    image: "/lovable-uploads/battery-312-image.jpg",
     brand: "audifon",
     description: "Высококачественные батарейки для слуховых аппаратов тип 312 (коричневые)",
+    inStock: true
+  },
+  {
+    id: 106,
+    name: "Тестер для батареек",
+    category: "batteries",
+    price: 1300,
+    image: "/lovable-uploads/battery-tester-image.png",
+    brand: "audifon",
+    description: "Цифровой тестер для проверки заряда батареек слуховых аппаратов",
     inStock: true
   },
   {
