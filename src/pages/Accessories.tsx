@@ -12,10 +12,10 @@ import { useToast } from "@/hooks/use-toast";
 const accessories = [
   {
     id: 101,
-    name: "Батарейка Power One Siemens тип 10",
+    name: "Батарейка для слухового аппарата Тип 10",
     category: "batteries",
     price: 120,
-    image: "https://images.unsplash.com/photo-1609877280000-37f0b2b8b4ba?w=300&h=300&fit=crop",
+    image: "/lovable-uploads/37b93500-ad11-4b2a-b30f-3a613d4bc198.png",
     brand: "Power One",
     description: "Высококачественные батарейки для слуховых аппаратов тип 10 (желтые)",
     inStock: true
