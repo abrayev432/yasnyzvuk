@@ -45,8 +45,8 @@ const accessories = [
     name: "Тестер для батареек",
     category: "batteries",
     price: 1300,
-    image: "/lovable-uploads/battery-tester-image.png",
-    brand: "audifon",
+    image: "/lovable-uploads/7f807c40-77a9-4ad5-b69b-cd5f2ade44e1.png",
+    brand: "",
     description: "Цифровой тестер для проверки заряда батареек слуховых аппаратов",
     inStock: true
   },
@@ -247,3 +247,5 @@ const Accessories = () => {
 };
 
 export default Accessories;
+
+}
