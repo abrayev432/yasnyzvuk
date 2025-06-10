@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { Card, CardContent } from "@/components/ui/card";
@@ -36,7 +35,7 @@ const accessories = [
     name: "Батарейка для слуховых аппаратов Тип 312",
     category: "batteries",
     price: 120,
-    image: "/lovable-uploads/battery-312-image.jpg",
+    image: "/lovable-uploads/43b812ea-e3bb-4636-968c-558304ee622e.png",
     brand: "audifon",
     description: "Высококачественные батарейки для слуховых аппаратов тип 312 (коричневые)",
     inStock: true
