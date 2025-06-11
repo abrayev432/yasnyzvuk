@@ -87,7 +87,7 @@ const Navbar = () => {
             />
           </button>
 
-          <nav className="hidden lg:flex items-center space-x-6">
+          <nav className="hidden lg:flex items-center space-x-8 ml-8">
             {/* Кнопка каталог с выпадающим меню */}
             <div 
               className="relative"
@@ -138,7 +138,7 @@ const Navbar = () => {
             ))}
           </nav>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 ml-auto">
             <Button 
               variant="ghost" 
               size="icon" 

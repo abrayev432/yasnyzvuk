@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { Card, CardContent } from "@/components/ui/card";
@@ -15,7 +14,7 @@ const accessories = [
     id: 101,
     name: "Батарейка для слухового аппарата Тип 10",
     category: "batteries",
-    price: 120,
+    price: 75,
     image: "/lovable-uploads/37b93500-ad11-4b2a-b30f-3a613d4bc198.png",
     brand: "audifon",
     description: "Высококачественные батарейки для слуховых аппаратов тип 10 (желтые)",
@@ -25,7 +24,7 @@ const accessories = [
     id: 102,
     name: "Батарейка для слухового аппарата Тип 13",
     category: "batteries",
-    price: 120,
+    price: 75,
     image: "/lovable-uploads/c888a1e7-275f-4104-b6e9-a06817988e7e.png",
     brand: "audifon",
     description: "Высококачественные батарейки для слуховых аппаратов тип 13 (оранжевые)",
@@ -35,7 +34,7 @@ const accessories = [
     id: 103,
     name: "Батарейка для слуховых аппаратов Тип 312",
     category: "batteries",
-    price: 120,
+    price: 75,
     image: "/lovable-uploads/43b812ea-e3bb-4636-968c-558304ee622e.png",
     brand: "audifon",
     description: "Высококачественные батарейки для слуховых аппаратов тип 312 (коричневые)",
