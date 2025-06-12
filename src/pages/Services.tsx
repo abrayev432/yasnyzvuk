@@ -1,12 +1,16 @@
+
 import Layout from "@/components/layout/Layout";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { CheckCircle } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import AppointmentForm from "@/components/AppointmentForm";
 
 const Services = () => {
+  const [isAppointmentOpen, setIsAppointmentOpen] = useState(false);
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -38,7 +42,8 @@ const Services = () => {
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1nOZRtTkrdKyjS3MrpN7D5dWZY7PTO9msLQ&s"
   }];
   
-  return <Layout>
+  return (
+    <Layout>
       <div className="bg-gradient-to-b from-gray-50 to-white">
         <div className="container px-4 py-16 md:py-24 md:px-6">
           <motion.div initial={{
@@ -75,8 +80,11 @@ const Services = () => {
                     {service.description}
                   </p>
                   
-                  <Button asChild className="rounded-full">
-                    <Link to="/contacts">Записаться на прием</Link>
+                  <Button 
+                    className="rounded-full"
+                    onClick={() => setIsAppointmentOpen(true)}
+                  >
+                    Записаться на прием
                   </Button>
                 </div>
                 <div className={`rounded-xl overflow-hidden shadow-lg ${index % 2 !== 0 ? 'md:order-1' : 'md:order-2'}`}>
@@ -100,8 +108,12 @@ const Services = () => {
               Запишитесь на бесплатную консультацию к нашим специалистам. Мы подберем оптимальное решение именно для вас.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Button asChild size="lg" className="px-8 rounded-full">
-                <Link to="/contacts">Связаться с нами</Link>
+              <Button 
+                size="lg" 
+                className="px-8 rounded-full"
+                onClick={() => setIsAppointmentOpen(true)}
+              >
+                Связаться с нами
               </Button>
               <Button asChild variant="outline" size="lg" className="px-8 rounded-full">
                 <a href="tel:+74957990926">Позвонить: +7 (495) 799-09-26</a>
@@ -110,6 +122,10 @@ const Services = () => {
           </motion.div>
         </div>
       </div>
-    </Layout>;
+      
+      <AppointmentForm open={isAppointmentOpen} onOpenChange={setIsAppointmentOpen} />
+    </Layout>
+  );
 };
+
 export default Services;

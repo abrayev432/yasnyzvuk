@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowRight, Phone, Menu, X, MessageCircle, ShoppingCart, MapPin, ChevronDown } from "lucide-react";
@@ -6,12 +5,14 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CartModal } from "@/components/cart/CartModal";
 import ChatModal from "../chat/ChatModal";
+import AppointmentForm from "../AppointmentForm";
 
 const Navbar = () => {
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isAppointmentOpen, setIsAppointmentOpen] = useState(false);
   const [isCatalogHovered, setIsCatalogHovered] = useState(false);
   const catalogTimeoutRef = useRef<NodeJS.Timeout>();
 
@@ -150,10 +151,13 @@ const Navbar = () => {
 
             <CartModal />
 
-            <Button asChild className="hidden md:inline-flex tehnika-button-green">
-              <Link to="/contacts" className="gap-2 uppercase tracking-wide">
+            <Button 
+              className="hidden md:inline-flex tehnika-button-green"
+              onClick={() => setIsAppointmentOpen(true)}
+            >
+              <span className="gap-2 uppercase tracking-wide">
                 ЗАПИСАТЬСЯ НА ПРИЕМ
-              </Link>
+              </span>
             </Button>
 
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -206,10 +210,14 @@ const Navbar = () => {
                     </Link>
                   ))}
                   <div className="pt-4">
-                    <Button asChild className="w-full tehnika-button-green">
-                      <Link to="/contacts" onClick={() => setIsMobileMenuOpen(false)}>
-                        ЗАПИСАТЬСЯ НА ПРИЕМ
-                      </Link>
+                    <Button 
+                      className="w-full tehnika-button-green"
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        setIsAppointmentOpen(true);
+                      }}
+                    >
+                      ЗАПИСАТЬСЯ НА ПРИЕМ
                     </Button>
                   </div>
                   <Button variant="outline" className="flex items-center gap-2" onClick={() => {
@@ -225,6 +233,7 @@ const Navbar = () => {
           </div>
         </div>
         <ChatModal isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
+        <AppointmentForm open={isAppointmentOpen} onOpenChange={setIsAppointmentOpen} />
       </header>
     </>
   );
