@@ -52,22 +52,22 @@ const accessories = [
   },
   {
     id: 104,
-    name: "Сушильный бокс для слуховых аппаратов",
+    name: "Контейнер для сушки ушных вкладышей слухового аппарата",
     category: "care",
-    price: 2500,
-    image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=300&h=300&fit=crop",
-    brand: "Widex",
-    description: "Электронный сушильный бокс для ухода за слуховыми аппаратами",
+    price: 2200,
+    image: "/lovable-uploads/0eaa30fb-1dfa-469a-a08d-e783f9b4d2e5.png",
+    brand: "AURICA",
+    description: "Специальный контейнер для безопасной сушки и хранения ушных вкладышей слуховых аппаратов",
     inStock: true
   },
   {
     id: 105,
-    name: "Защитные фильтры WaxGuard",
+    name: "Защитные фильтры ProWax miniFit",
     category: "care",
-    price: 800,
-    image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=300&h=300&fit=crop",
+    price: 950,
+    image: "/lovable-uploads/80fbcca6-d1fb-4b05-bf5f-0095e5fbc00f.png",
     brand: "Oticon",
-    description: "Защитные фильтры от серы для внутриушных аппаратов",
+    description: "Защитные фильтры ProWax miniFit для защиты от серы и влаги внутриушных слуховых аппаратов",
     inStock: true
   }
 ];
