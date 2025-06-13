@@ -32,7 +32,7 @@ const bannerSlides = [{
   backgroundColor: "bg-gradient-to-r from-brand to-teal-600"
 }, {
   id: 4,
-  backgroundImage: "/lovable-uploads/944696fd-460a-422f-aabd-237eb2405b0b.png"
+  backgroundImage: "/lovable-uploads/083d6d65-028b-48bf-8d3e-636baa2a7a6b.png"
 }];
 const RotatingBanner = () => {
   const [api, setApi] = useState<any>();
