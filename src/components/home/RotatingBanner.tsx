@@ -37,7 +37,7 @@ const bannerSlides = [{
   description: "Принимаем электронные сертификаты от СФР для компенсации стоимости слуховых аппаратов",
   buttonText: "Узнать подробнее",
   buttonLink: "/delivery",
-  backgroundColor: "bg-gradient-to-r from-blue-600 to-blue-800"
+  backgroundImage: "/lovable-uploads/686b09d9-88e2-4d17-a13b-31d5f9d3c858.png"
 }];
 const RotatingBanner = () => {
   const [api, setApi] = useState<any>();
