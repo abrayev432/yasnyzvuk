@@ -32,11 +32,6 @@ const bannerSlides = [{
   backgroundColor: "bg-gradient-to-r from-brand to-teal-600"
 }, {
   id: 4,
-  title: "Электронные сертификаты",
-  subtitle: "Социального фонда России",
-  description: "Принимаем электронные сертификаты от СФР для компенсации стоимости слуховых аппаратов",
-  buttonText: "Узнать подробнее",
-  buttonLink: "/delivery",
   backgroundImage: "/lovable-uploads/944696fd-460a-422f-aabd-237eb2405b0b.png"
 }];
 const RotatingBanner = () => {
@@ -68,49 +63,51 @@ const RotatingBanner = () => {
                   </div>
 
                   {/* Content */}
-                  <div className="relative h-full flex items-center justify-between px-6 md:px-12 z-10">
-                    <div className="max-w-xl text-white space-y-3 md:space-y-4">
-                      {slide.showBatteries && <div className="inline-block bg-white/20 text-white px-3 py-1 rounded-full text-xs font-medium mb-2">
-                          {slide.title}
-                        </div>}
-                      
-                      <h1 className="text-2xl md:text-4xl font-bold leading-tight">
-                        {slide.showBatteries ? <>
-                            <span className="text-3xl md:text-5xl">{slide.subtitle}</span>
-                            <br />
-                            <span className="text-lg md:text-2xl">{slide.description}</span>
-                            <br />
-                            <span className="text-2xl md:text-4xl font-bold">{slide.price}</span>
-                          </> : <>
+                  {(slide.title || slide.subtitle || slide.description || slide.buttonText || slide.showBatteries || slide.showProduct) && (
+                    <div className="relative h-full flex items-center justify-between px-6 md:px-12 z-10">
+                      <div className="max-w-xl text-white space-y-3 md:space-y-4">
+                        {slide.showBatteries && <div className="inline-block bg-white/20 text-white px-3 py-1 rounded-full text-xs font-medium mb-2">
                             {slide.title}
-                            {slide.subtitle && <>
-                                <br />
-                                <span className="text-lg md:text-xl font-normal opacity-90">{slide.subtitle}</span>
-                              </>}
-                          </>}
-                      </h1>
-                      
-                      {!slide.showBatteries && slide.description && <p className="text-sm md:text-base opacity-90 leading-relaxed max-w-lg">
-                          {slide.description}
-                        </p>}
-                      
-                      {slide.buttonText && <Button asChild className="tehnika-button-green mt-4">
+                          </div>}
+                        
+                        <h1 className="text-2xl md:text-4xl font-bold leading-tight">
+                          {slide.showBatteries ? <>
+                              <span className="text-3xl md:text-5xl">{slide.subtitle}</span>
+                              <br />
+                              <span className="text-lg md:text-2xl">{slide.description}</span>
+                              <br />
+                              <span className="text-2xl md:text-4xl font-bold">{slide.price}</span>
+                            </> : <>
+                              {slide.title}
+                              {slide.subtitle && <>
+                                  <br />
+                                  <span className="text-lg md:text-xl font-normal opacity-90">{slide.subtitle}</span>
+                                </>}
+                            </>}
+                        </h1>
+                        
+                        {!slide.showBatteries && slide.description && <p className="text-sm md:text-base opacity-90 leading-relaxed max-w-lg">
+                            {slide.description}
+                          </p>}
+                        
+                        {slide.buttonText && <Button asChild className="tehnika-button-green mt-4">
+                            
+                          </Button>}
+                      </div>
+
+                      {/* Product Images */}
+                      {slide.showBatteries && <div className="hidden md:block">
                           
-                        </Button>}
+                        </div>}
+
+                      {slide.showProduct && <div className="hidden md:block">
+                          
+                        </div>}
                     </div>
-
-                    {/* Product Images */}
-                    {slide.showBatteries && <div className="hidden md:block">
-                        
-                      </div>}
-
-                    {slide.showProduct && <div className="hidden md:block">
-                        
-                      </div>}
-                  </div>
+                  )}
 
                   {/* Overlay for better text readability */}
-                  {slide.backgroundImage && <div className="absolute inset-0 bg-black/30 pointer-events-none"></div>}
+                  {slide.backgroundImage && (slide.title || slide.subtitle || slide.description || slide.buttonText) && <div className="absolute inset-0 bg-black/30 pointer-events-none"></div>}
                 </div>
               </CarouselItem>;
         })}
