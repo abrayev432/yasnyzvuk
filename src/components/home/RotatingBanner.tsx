@@ -32,7 +32,7 @@ const bannerSlides = [{
   backgroundColor: "bg-gradient-to-r from-brand to-teal-600"
 }, {
   id: 4,
-  backgroundImage: "/lovable-uploads/083d6d65-028b-48bf-8d3e-636baa2a7a6b.png"
+  backgroundImage: "/lovable-uploads/76365c12-324d-475e-b17e-57d9bd5c9245.png"
 }];
 const RotatingBanner = () => {
   const [api, setApi] = useState<any>();
@@ -59,7 +59,7 @@ const RotatingBanner = () => {
                   
                   {/* Background */}
                   <div className={`absolute inset-0 ${slide.backgroundColor || 'bg-white'}`}>
-                    {slide.backgroundImage && <img src={slide.backgroundImage} alt="" className="w-full h-full object-cover" />}
+                    {slide.backgroundImage && <img src={slide.backgroundImage} alt="" className="w-full h-full object-contain" />}
                   </div>
 
                   {/* Content */}
