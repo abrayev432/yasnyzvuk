@@ -1,4 +1,3 @@
-
 export type Accessory = {
   id: number;
   name: string;
@@ -25,8 +24,8 @@ export const accessories: Accessory[] = [
     id: 102,
     name: "Батарейка для слухового аппарата Тип 13",
     category: "batteries",
-    price: 75,
-    image: "/lovable-uploads/c888a1e7-275f-4104-b6e9-a06817988e7e.png",
+    price: 300,
+    image: "/lovable-uploads/167404b8-5cb3-4c1e-881f-d9d7b99e093c.png",
     brand: "audifon",
     description: "Высококачественные батарейки для слуховых аппаратов тип 13 (оранжевые)",
     inStock: true
