@@ -11,7 +11,7 @@ const bannerSlides = [{
   title: "Всегда в наличии",
   subtitle: "Батарейки для слуховых аппаратов",
   description: "Всех типоразмеров: 10, 13, 312",
-  price: "от 75 ₽/блистер",
+  price: "от 300 ₽/блистер",
   buttonText: "К покупкам",
   buttonLink: "/accessories",
   backgroundColor: "bg-brand",
