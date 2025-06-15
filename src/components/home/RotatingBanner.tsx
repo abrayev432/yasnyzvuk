@@ -1,16 +1,18 @@
+
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
+import { accessories } from "@/data/accessories";
 
 const bannerSlides = [{
   id: 1,
-  title: "АКЦИЯ",
-  subtitle: "БАТАРЕЙКИ",
-  description: "ДЛЯ СЛУХОВЫХ АППАРАТОВ",
-  price: "ПО 300 РУБ",
-  buttonText: "Подробнее",
+  title: "Всегда в наличии",
+  subtitle: "Батарейки для слуховых аппаратов",
+  description: "Всех типоразмеров: 10, 13, 312",
+  price: "от 75 ₽/блистер",
+  buttonText: "К покупкам",
   buttonLink: "/accessories",
   backgroundColor: "bg-brand",
   showBatteries: true
@@ -39,6 +41,9 @@ const bannerSlides = [{
 const RotatingBanner = () => {
   const [api, setApi] = useState<any>();
   const [current, setCurrent] = useState(0);
+
+  const batteryAccessories = accessories.filter(acc => acc.category === "batteries" && acc.id <= 103);
+
   useEffect(() => {
     if (!api) return;
     const interval = setInterval(() => {
@@ -76,7 +81,7 @@ const RotatingBanner = () => {
                           {slide.showBatteries ? <>
                               <span className="text-3xl md:text-5xl">{slide.subtitle}</span>
                               <br />
-                              <span className="text-lg md:text-2xl">{slide.description}</span>
+                              <span className="text-lg md:text-2xl font-normal">{slide.description}</span>
                               <br />
                               <span className="text-2xl md:text-4xl font-bold">{slide.price}</span>
                             </> : <>
@@ -93,13 +98,24 @@ const RotatingBanner = () => {
                           </p>}
                         
                         {slide.buttonText && <Button asChild className="tehnika-button-green mt-4">
-                            
+                            <Link to={slide.buttonLink || '#'} className="flex items-center gap-2">
+                              {slide.buttonText}
+                              <ArrowRight className="h-4 w-4" />
+                            </Link>
                           </Button>}
                       </div>
 
                       {/* Product Images */}
-                      {slide.showBatteries && <div className="hidden md:block">
-                          
+                      {slide.showBatteries && <div className="hidden md:flex items-center space-x-[-2rem]">
+                          {batteryAccessories.map((battery, index) => (
+                            <div key={battery.id} className="transition-transform duration-300 hover:scale-110 hover:z-10" style={{ transform: `rotate(${index * 15 - 15}deg)` }}>
+                              <img
+                                src={battery.image}
+                                alt={battery.name}
+                                className="w-32 h-32 object-contain drop-shadow-lg"
+                              />
+                            </div>
+                          ))}
                         </div>}
 
                       {slide.showProduct && <div className="hidden md:block">
