@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
+
 const bannerSlides = [{
   id: 1,
   title: "АКЦИЯ",
@@ -32,8 +33,9 @@ const bannerSlides = [{
   backgroundColor: "bg-gradient-to-r from-brand to-teal-600"
 }, {
   id: 4,
-  backgroundImage: "/lovable-uploads/083d6d65-028b-48bf-8d3e-636baa2a7a6b.png"
+  backgroundImage: "/lovable-uploads/2d4d6ee7-7413-4adf-84b0-63d03d0574bb.png"
 }];
+
 const RotatingBanner = () => {
   const [api, setApi] = useState<any>();
   const [current, setCurrent] = useState(0);
