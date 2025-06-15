@@ -17,6 +17,7 @@ import Checkout from "./pages/Checkout";
 import ProductDetail from "./components/product/ProductDetail";
 import { CartProvider } from "./contexts/CartContext";
 import FloatingSocialButtons from "./components/common/FloatingSocialButtons";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -34,6 +35,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
           <FloatingSocialButtons />
           <Routes>
             <Route path="/" element={<Index />} />
