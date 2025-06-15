@@ -15,8 +15,8 @@ export const accessories: Accessory[] = [
     id: 101,
     name: "Батарейка для слухового аппарата Тип 10",
     category: "batteries",
-    price: 75,
-    image: "/lovable-uploads/37b93500-ad11-4b2a-b30f-3a613d4bc198.png",
+    price: 300,
+    image: "/lovable-uploads/dd9e9afc-1840-45a5-b02c-fffd8e56eb6d.png",
     brand: "audifon",
     description: "Высококачественные батарейки для слуховых аппаратов тип 10 (желтые)",
     inStock: true
