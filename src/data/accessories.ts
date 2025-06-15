@@ -1,4 +1,3 @@
-import { Accessory } from "@/types/Accessory";
 
 export type Accessory = {
   id: number;
@@ -17,7 +16,7 @@ export const accessories: Accessory[] = [
     name: "Батарейка для слухового аппарата Тип 10",
     category: "batteries",
     price: 75,
-    image: "/lovable-uploads/b8a3a888-5122-4273-b515-904ba45d9b0c.png",
+    image: "/lovable-uploads/37b93500-ad11-4b2a-b30f-3a613d4bc198.png",
     brand: "audifon",
     description: "Высококачественные батарейки для слуховых аппаратов тип 10 (желтые)",
     inStock: true
