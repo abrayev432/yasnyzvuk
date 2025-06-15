@@ -15,6 +15,7 @@ import Delivery from "./pages/Delivery";
 import News from "./pages/News";
 import Checkout from "./pages/Checkout";
 import ProductDetail from "./components/product/ProductDetail";
+import AccessoryDetail from "./pages/AccessoryDetail";
 import { CartProvider } from "./contexts/CartContext";
 import FloatingSocialButtons from "./components/common/FloatingSocialButtons";
 import ScrollToTop from "./components/common/ScrollToTop";
@@ -42,6 +43,7 @@ const App = () => (
             <Route path="/catalog" element={<Catalog />} />
             <Route path="/catalog/:productId" element={<ProductDetail />} />
             <Route path="/accessories" element={<Accessories />} />
+            <Route path="/accessories/:accessoryId" element={<AccessoryDetail />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/contacts" element={<Contacts />} />

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -8,69 +9,7 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@
 import { ShoppingCart, Battery, Shield, Volume2 } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useToast } from "@/hooks/use-toast";
-
-const accessories = [
-  {
-    id: 101,
-    name: "Батарейка для слухового аппарата Тип 10",
-    category: "batteries",
-    price: 75,
-    image: "/lovable-uploads/37b93500-ad11-4b2a-b30f-3a613d4bc198.png",
-    brand: "audifon",
-    description: "Высококачественные батарейки для слуховых аппаратов тип 10 (желтые)",
-    inStock: true
-  },
-  {
-    id: 102,
-    name: "Батарейка для слухового аппарата Тип 13",
-    category: "batteries",
-    price: 75,
-    image: "/lovable-uploads/c888a1e7-275f-4104-b6e9-a06817988e7e.png",
-    brand: "audifon",
-    description: "Высококачественные батарейки для слуховых аппаратов тип 13 (оранжевые)",
-    inStock: true
-  },
-  {
-    id: 103,
-    name: "Батарейка для слуховых аппаратов Тип 312",
-    category: "batteries",
-    price: 75,
-    image: "/lovable-uploads/43b812ea-e3bb-4636-968c-558304ee622e.png",
-    brand: "audifon",
-    description: "Высококачественные батарейки для слуховых аппаратов тип 312 (коричневые)",
-    inStock: true
-  },
-  {
-    id: 106,
-    name: "Тестер для батареек",
-    category: "batteries",
-    price: 1300,
-    image: "/lovable-uploads/7f807c40-77a9-4ad5-b69b-cd5f2ade44e1.png",
-    brand: "",
-    description: "Цифровой тестер для проверки заряда батареек слуховых аппаратов",
-    inStock: true
-  },
-  {
-    id: 104,
-    name: "Контейнер для сушки ушных вкладышей слухового аппарата",
-    category: "care",
-    price: 2200,
-    image: "/lovable-uploads/0eaa30fb-1dfa-469a-a08d-e783f9b4d2e5.png",
-    brand: "AURICA",
-    description: "Специальный контейнер для безопасной сушки и хранения ушных вкладышей слуховых аппаратов",
-    inStock: true
-  },
-  {
-    id: 105,
-    name: "Защитные фильтры ProWax miniFit",
-    category: "care",
-    price: 950,
-    image: "/lovable-uploads/80fbcca6-d1fb-4b05-bf5f-0095e5fbc00f.png",
-    brand: "Oticon",
-    description: "Защитные фильтры ProWax miniFit для защиты от серы и влаги внутриушных слуховых аппаратов",
-    inStock: true
-  }
-];
+import { accessories, Accessory } from "@/data/accessories";
 
 const categories = [
   { value: "all", label: "Все категории", icon: Volume2 },
@@ -109,7 +48,7 @@ const Accessories = () => {
     }
   });
 
-  const handleAddToCart = (item: any) => {
+  const handleAddToCart = (item: Accessory) => {
     addToCart(item);
     toast({
       title: "Товар добавлен в корзину",
@@ -185,47 +124,53 @@ const Accessories = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {sortedAccessories.map((item) => (
-                  <Card key={item.id} className="overflow-hidden transition-all hover:shadow-md group">
-                    <div className="relative">
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="w-full aspect-[4/3] object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
-                      {!item.inStock && (
-                        <Badge variant="destructive" className="absolute top-2 right-2">
-                          Нет в наличии
-                        </Badge>
-                      )}
-                    </div>
-                    <CardContent className="p-4">
-                      <div className="mb-2">
-                        <Badge variant="outline" className="bg-brand/5 text-brand border-brand/20">
-                          {item.brand}
-                        </Badge>
+                  <Link to={`/accessories/${item.id}`} key={item.id} className="block group">
+                    <Card className="overflow-hidden transition-all hover:shadow-md h-full flex flex-col">
+                      <div className="relative">
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="w-full aspect-[4/3] object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                        {!item.inStock && (
+                          <Badge variant="destructive" className="absolute top-2 right-2">
+                            Нет в наличии
+                          </Badge>
+                        )}
                       </div>
-                      <h3 className="text-lg font-medium line-clamp-2 mb-2">
-                        {item.name}
-                      </h3>
-                      <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
-                        {item.description}
-                      </p>
-                      <div className="flex justify-between items-center">
-                        <div className="font-semibold text-lg">
-                          {item.price.toLocaleString()} ₽
+                      <CardContent className="p-4 flex flex-col flex-grow">
+                        <div className="mb-2">
+                          <Badge variant="outline" className="bg-brand/5 text-brand border-brand/20">
+                            {item.brand || "Без бренда"}
+                          </Badge>
                         </div>
-                        <Button 
-                          size="sm" 
-                          onClick={() => handleAddToCart(item)}
-                          disabled={!item.inStock}
-                          className="gap-2"
-                        >
-                          <ShoppingCart className="h-4 w-4" />
-                          {item.inStock ? "В корзину" : "Нет в наличии"}
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
+                        <h3 className="text-lg font-medium line-clamp-2 mb-2 flex-grow">
+                          {item.name}
+                        </h3>
+                        <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
+                          {item.description}
+                        </p>
+                        <div className="flex justify-between items-center mt-auto">
+                          <div className="font-semibold text-lg">
+                            {item.price.toLocaleString()} ₽
+                          </div>
+                          <Button 
+                            size="sm" 
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              handleAddToCart(item);
+                            }}
+                            disabled={!item.inStock}
+                            className="gap-2"
+                          >
+                            <ShoppingCart className="h-4 w-4" />
+                            {item.inStock ? "В корзину" : "Нет в наличии"}
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
                 ))}
               </div>
 
