@@ -34,8 +34,8 @@ export const accessories: Accessory[] = [
     id: 103,
     name: "Батарейка для слуховых аппаратов Тип 312",
     category: "batteries",
-    price: 75,
-    image: "/lovable-uploads/43b812ea-e3bb-4636-968c-558304ee622e.png",
+    price: 300,
+    image: "/lovable-uploads/b12dd58f-bb90-4d69-96ff-2c2bffafe0da.png",
     brand: "audifon",
     description: "Высококачественные батарейки для слуховых аппаратов тип 312 (коричневые)",
     inStock: true
