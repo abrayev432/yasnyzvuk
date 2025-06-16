@@ -3,14 +3,14 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { HelpingHand, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
-import CallRequestForm from "@/components/CallRequestForm";
+import AppointmentForm from "@/components/AppointmentForm";
 
 const CtaSection = () => {
-  const [isCallFormOpen, setIsCallFormOpen] = useState(false);
+  const [isAppointmentOpen, setIsAppointmentOpen] = useState(false);
 
   const handleAppointmentClick = () => {
-    console.log("Appointment button clicked");
-    setIsCallFormOpen(true);
+    console.log("CTA Appointment button clicked");
+    setIsAppointmentOpen(true);
   };
 
   return (
@@ -62,7 +62,7 @@ const CtaSection = () => {
         </div>
       </section>
 
-      <CallRequestForm open={isCallFormOpen} onOpenChange={setIsCallFormOpen} />
+      <AppointmentForm open={isAppointmentOpen} onOpenChange={setIsAppointmentOpen} />
     </>
   );
 };

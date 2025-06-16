@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -111,113 +112,108 @@ ${data.comments ? `Комментарии: ${data.comments}` : ''}
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[450px] max-h-[85vh] overflow-y-auto p-4">
-        <DialogHeader className="pb-3">
-          <DialogTitle className="flex items-center gap-2 text-lg">
-            <Calendar className="h-4 w-4 text-brand" />
+      <DialogContent className="sm:max-w-[450px] max-h-[90vh] overflow-y-auto">
+        <DialogHeader>
+          <DialogTitle className="flex items-center gap-2 text-xl">
+            <Calendar className="h-5 w-5 text-brand" />
             Записаться на прием
           </DialogTitle>
         </DialogHeader>
         
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
-            {/* Контактная информация */}
-            <div className="grid grid-cols-1 gap-3">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="flex items-center gap-2">
+                    <User className="h-4 w-4" />
+                    Имя
+                  </FormLabel>
+                  <FormControl>
+                    <Input placeholder="Введите ваше имя" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            
+            <div className="grid grid-cols-2 gap-4">
               <FormField
                 control={form.control}
-                name="name"
+                name="phone"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="flex items-center gap-1 text-xs">
-                      <User className="h-3 w-3" />
-                      Имя
+                    <FormLabel className="flex items-center gap-2">
+                      <Phone className="h-4 w-4" />
+                      Телефон
                     </FormLabel>
                     <FormControl>
-                      <Input placeholder="Введите ваше имя" className="h-8" {...field} />
+                      <Input placeholder="+7 (999) 123-45-67" {...field} />
                     </FormControl>
-                    <FormMessage className="text-xs" />
+                    <FormMessage />
                   </FormItem>
                 )}
               />
               
-              <div className="grid grid-cols-2 gap-2">
-                <FormField
-                  control={form.control}
-                  name="phone"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="flex items-center gap-1 text-xs">
-                        <Phone className="h-3 w-3" />
-                        Телефон
-                      </FormLabel>
-                      <FormControl>
-                        <Input placeholder="+7 (999) 123-45-67" className="h-8" {...field} />
-                      </FormControl>
-                      <FormMessage className="text-xs" />
-                    </FormItem>
-                  )}
-                />
-                
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="flex items-center gap-1 text-xs">
-                        <Mail className="h-3 w-3" />
-                        Email
-                      </FormLabel>
-                      <FormControl>
-                        <Input placeholder="your@email.com" type="email" className="h-8" {...field} />
-                      </FormControl>
-                      <FormMessage className="text-xs" />
-                    </FormItem>
-                  )}
-                />
-              </div>
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="flex items-center gap-2">
+                      <Mail className="h-4 w-4" />
+                      Email
+                    </FormLabel>
+                    <FormControl>
+                      <Input placeholder="your@email.com" type="email" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             </div>
             
-            {/* Услуга */}
             <FormField
               control={form.control}
               name="service"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-xs">Услуга</FormLabel>
+                  <FormLabel>Услуга</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
-                      <SelectTrigger className="h-8">
+                      <SelectTrigger>
                         <SelectValue placeholder="Выберите услугу" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
                       {services.map((service) => (
-                        <SelectItem key={service} value={service} className="text-xs">
+                        <SelectItem key={service} value={service}>
                           {service}
                         </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
-                  <FormMessage className="text-xs" />
+                  <FormMessage />
                 </FormItem>
               )}
             />
             
-            {/* Дата и время */}
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-4">
               <FormField
                 control={form.control}
                 name="preferredDate"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="flex items-center gap-1 text-xs">
-                      <Calendar className="h-3 w-3" />
+                    <FormLabel className="flex items-center gap-2">
+                      <Calendar className="h-4 w-4" />
                       Дата
                     </FormLabel>
                     <FormControl>
-                      <Input type="date" className="h-8" {...field} />
+                      <Input type="date" {...field} />
                     </FormControl>
-                    <FormMessage className="text-xs" />
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -227,66 +223,64 @@ ${data.comments ? `Комментарии: ${data.comments}` : ''}
                 name="preferredTime"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="flex items-center gap-1 text-xs">
-                      <Clock className="h-3 w-3" />
+                    <FormLabel className="flex items-center gap-2">
+                      <Clock className="h-4 w-4" />
                       Время
                     </FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
-                        <SelectTrigger className="h-8">
-                          <SelectValue placeholder="Время" />
+                        <SelectTrigger>
+                          <SelectValue placeholder="Выберите время" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
                         {timeSlots.map((time) => (
-                          <SelectItem key={time} value={time} className="text-xs">
+                          <SelectItem key={time} value={time}>
                             {time}
                           </SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
-                    <FormMessage className="text-xs" />
+                    <FormMessage />
                   </FormItem>
                 )}
               />
             </div>
             
-            {/* Комментарии */}
             <FormField
               control={form.control}
               name="comments"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="flex items-center gap-1 text-xs">
-                    <MessageSquare className="h-3 w-3" />
+                  <FormLabel className="flex items-center gap-2">
+                    <MessageSquare className="h-4 w-4" />
                     Комментарии
                   </FormLabel>
                   <FormControl>
                     <Textarea 
                       placeholder="Дополнительные пожелания..."
-                      className="min-h-[60px] text-xs"
+                      className="min-h-[80px]"
                       {...field} 
                     />
                   </FormControl>
-                  <FormMessage className="text-xs" />
+                  <FormMessage />
                 </FormItem>
               )}
             />
             
-            {/* Кнопки */}
-            <div className="flex gap-2 pt-3">
+            <div className="flex gap-3 pt-4">
               <Button
                 type="button"
                 variant="outline"
                 onClick={() => onOpenChange(false)}
-                className="flex-1 h-8 text-xs"
+                className="flex-1"
               >
                 Отменить
               </Button>
               <Button 
                 type="submit" 
                 disabled={isSubmitting} 
-                className="flex-1 h-8 text-xs bg-brand hover:bg-brand-dark"
+                className="flex-1 bg-brand hover:bg-brand-dark"
               >
                 {isSubmitting ? "Отправка..." : "Записаться"}
               </Button>
