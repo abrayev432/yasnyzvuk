@@ -1,3 +1,4 @@
+
 import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -203,6 +204,10 @@ const ProductDetail = () => {
     if (productId && productsDatabase[productId]) {
       console.log("Product found:", productsDatabase[productId]);
       setProduct(productsDatabase[productId]);
+      
+      // Set document title based on product
+      const foundProduct = productsDatabase[productId];
+      document.title = `Слуховой аппарат ${foundProduct.name}`;
     } else {
       console.log("Product not found for productId:", productId);
     }
