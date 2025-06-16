@@ -1,11 +1,20 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { HelpingHand, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import CallRequestForm from "@/components/CallRequestForm";
+
 const CtaSection = () => {
   const [isCallFormOpen, setIsCallFormOpen] = useState(false);
-  return <>
+
+  const handleAppointmentClick = () => {
+    console.log("Appointment button clicked");
+    setIsCallFormOpen(true);
+  };
+
+  return (
+    <>
       <section className="bg-gradient-to-r from-brand to-brand-dark text-white py-20">
         <div className="container px-4 md:px-6">
           <div className="grid gap-8 md:grid-cols-2 md:gap-12 items-center">
@@ -22,7 +31,11 @@ const CtaSection = () => {
                 возможностях коррекции слуха
               </p>
               <div className="flex flex-col gap-3 sm:flex-row">
-                <Button variant="outline" className="bg-white text-brand border-white hover:bg-white/90 hover:text-brand rounded-full shadow-lg shadow-brand-dark/20" onClick={() => setIsCallFormOpen(true)}>
+                <Button 
+                  variant="outline" 
+                  className="bg-white text-brand border-white hover:bg-white/90 hover:text-brand rounded-full shadow-lg shadow-brand-dark/20" 
+                  onClick={handleAppointmentClick}
+                >
                   <Phone className="mr-2 h-4 w-4" />
                   Связаться с нами
                 </Button>
@@ -33,7 +46,11 @@ const CtaSection = () => {
             </div>
             <div className="flex justify-center order-first md:order-last">
               <div className="relative h-[350px] w-full max-w-[450px] overflow-hidden rounded-2xl shadow-2xl">
-                <img alt="Консультация специалиста" className="h-full w-full object-cover" src="/lovable-uploads/57ed4636-4548-4c8a-8039-d027b3b445a2.jpg" />
+                <img 
+                  alt="Консультация специалиста" 
+                  className="h-full w-full object-cover" 
+                  src="/lovable-uploads/57ed4636-4548-4c8a-8039-d027b3b445a2.jpg" 
+                />
                 
                 <div className="absolute bottom-6 left-6 right-6 rounded-xl bg-white/95 p-4 backdrop-blur shadow-lg">
                   <p className="font-medium text-brand">Бесплатная консультация</p>
@@ -46,6 +63,8 @@ const CtaSection = () => {
       </section>
 
       <CallRequestForm open={isCallFormOpen} onOpenChange={setIsCallFormOpen} />
-    </>;
+    </>
+  );
 };
+
 export default CtaSection;

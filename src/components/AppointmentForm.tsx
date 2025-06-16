@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -32,6 +31,8 @@ interface AppointmentFormProps {
 const AppointmentForm = ({ open, onOpenChange }: AppointmentFormProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+
+  console.log("AppointmentForm rendered, open:", open);
 
   const form = useForm<AppointmentFormData>({
     resolver: zodResolver(appointmentFormSchema),
@@ -67,6 +68,7 @@ const AppointmentForm = ({ open, onOpenChange }: AppointmentFormProps) => {
   ];
 
   const onSubmit = async (data: AppointmentFormData) => {
+    console.log("Form submission started", data);
     setIsSubmitting(true);
     
     try {
@@ -96,6 +98,7 @@ ${data.comments ? `Комментарии: ${data.comments}` : ''}
       form.reset();
       onOpenChange(false);
     } catch (error) {
+      console.error("Form submission error:", error);
       toast({
         title: "Ошибка",
         description: "Не удалось отправить заявку. Попробуйте еще раз.",
