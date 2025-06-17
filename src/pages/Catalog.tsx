@@ -12,6 +12,7 @@ import { ShoppingCart, Package, Filter } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useToast } from "@/hooks/use-toast";
 import { useIsMobile } from "@/hooks/use-mobile";
+import SEOHead from "@/components/SEOHead";
 
 // Product database
 const products = [
@@ -189,8 +190,36 @@ const Catalog = () => {
     </div>
   );
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Каталог слуховых аппаратов",
+    "description": "Широкий выбор слуховых аппаратов от ведущих производителей",
+    "numberOfItems": sortedProducts.length,
+    "itemListElement": sortedProducts.map((product, index) => ({
+      "@type": "Product",
+      "position": index + 1,
+      "name": product.name,
+      "brand": product.brand,
+      "offers": {
+        "@type": "Offer",
+        "price": product.price,
+        "priceCurrency": "RUB",
+        "availability": "https://schema.org/InStock"
+      }
+    }))
+  };
+
   return (
     <Layout>
+      <SEOHead
+        title={`Каталог слуховых аппаратов - купить в Москве | Ясный звук`}
+        description="Большой выбор слуховых аппаратов: заушные, внутриушные, внутриканальные. Oticon, Phonak, ReSound. Профессиональная консультация и настройка. Доставка по Москве."
+        keywords="каталог слуховых аппаратов, купить слуховой аппарат Москва, заушные слуховые аппараты, внутриушные аппараты, цены на слуховые аппараты"
+        structuredData={structuredData}
+        url="https://yasniy-zvuk.ru/catalog"
+      />
+      
       <div className="bg-gray-50 py-8">
         <div className="container px-4 md:px-6">
           <div className="mb-8">
