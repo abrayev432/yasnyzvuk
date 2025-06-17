@@ -1,220 +1,372 @@
-import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
-import SEOHead from "@/components/seo/SEOHead";
-import { Badge } from "@/components/ui/badge";
+import { useState, useEffect } from "react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { ShoppingCart } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useCart } from "@/contexts/CartContext";
-import { toast } from "sonner";
-import { Link } from "react-router-dom";
-
-const products = [
-  {
-    id: "phonak-audeo-p50",
-    name: "Phonak Audeo P50",
-    brand: "Phonak",
-    type: "behind-ear",
-    price: 85000,
-    image: "/lovable-uploads/38ee5e38-602d-45ae-8ee4-ea16bcb0520f.png",
-    description: "Современный заушный слуховой аппарат с превосходным качеством звука",
-    features: ["Водостойкость IP68", "Bluetooth подключение", "Перезаряжаемый аккумулятор"]
-  },
-  {
-    id: "oticon-opn-s1",
-    name: "Oticon Opn S1",
-    brand: "Oticon",
-    type: "behind-ear",
-    price: 92000,
-    image: "/lovable-uploads/d24e5916-884c-424d-a991-0991c5986c39.png",
-    description: "Премиальный слуховой аппарат с открытой платформой и 360° звуком",
-    features: ["OpenSound Navigator", "Bluetooth", "Made for iPhone"]
-  },
-  {
-    id: "resound-linx-quattro-9",
-    name: "ReSound LiNX Quattro 9",
-    brand: "ReSound",
-    type: "behind-ear",
-    price: 98000,
-    image: "/lovable-uploads/49157797-08a8-4a49-a608-8cb209a9199d.png",
-    description: "Интеллектуальный слуховой аппарат с расширенным динамическим диапазоном",
-    features: ["Spatial Sense", "Direct streaming", "Rechargeable"]
-  },
-  {
-    id: "signia-silk-7x",
-    name: "Signia Silk 7x",
-    brand: "Signia",
-    type: "in-ear",
-    price: 110000,
-    image: "/lovable-uploads/6e93515d-b95d-4a97-8869-88112b397ca3.png",
-    description: "Невидимый внутриушной слуховой аппарат с высоким качеством звука",
-    features: ["miniReceiver", "Directional microphones", "Wireless connectivity"]
-  },
-  {
-    id: "widex-evoke-440",
-    name: "Widex Evoke 440",
-    brand: "Widex",
-    type: "in-ear",
-    price: 105000,
-    image: "/lovable-uploads/c92c939d-9801-424a-891c-4a59b9919145.png",
-    description: "Самообучающийся слуховой аппарат с искусственным интеллектом",
-    features: ["Fluid Sound Analyzer", "Real-time processing", "Personalization"]
-  },
-  {
-    id: "starkey-livio-edge-ai",
-    name: "Starkey Livio Edge AI",
-    brand: "Starkey",
-    type: "behind-ear",
-    price: 120000,
-    image: "/lovable-uploads/5995095d-8c13-454d-a94f-e5149a0998b9.png",
-    description: "Первый в мире слуховой аппарат с искусственным интеллектом и датчиками здоровья",
-    features: ["Brain Tracking", "Fall Detection", "Language Translation"]
-  }
-];
+import { useToast } from "@/hooks/use-toast";
+import { motion } from "framer-motion";
+import { ShoppingCart, Search, Filter } from "lucide-react";
+import { Link, useSearchParams } from "react-router-dom";
+import SEOHead from "@/components/seo/SEOHead";
 
 const Catalog = () => {
   const [searchParams] = useSearchParams();
-  const [filteredProducts, setFilteredProducts] = useState(products);
-  const { addToCart } = useCart();
-
-  const category = searchParams.get('category');
-  const type = searchParams.get('type');
+  const typeFilter = searchParams.get('type');
+  
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedType, setSelectedType] = useState(typeFilter || "all");
+  const [selectedBrand, setSelectedBrand] = useState("all");
+  const [priceRange, setPriceRange] = useState("all");
+  
+  const { addItem } = useCart();
+  const { toast } = useToast();
 
   useEffect(() => {
-    let filtered = products;
-    
-    if (category) {
-      filtered = filtered.filter(product => 
-        product.type === category || product.brand.toLowerCase() === category.toLowerCase()
-      );
-    }
-    
-    if (type) {
-      filtered = filtered.filter(product => product.type === type);
-    }
-    
-    setFilteredProducts(filtered);
-  }, [category, type]);
+    window.scrollTo(0, 0);
+  }, []);
+
+  const products = [
+    {
+      id: "1",
+      name: "Phonak Audéo Paradise P90",
+      type: "behind-ear",
+      brand: "Phonak",
+      price: 85000,
+      originalPrice: 95000,
+      description: "Премиальный заушный слуховой аппарат с Bluetooth",
+      image: "/lovable-uploads/083d6d65-028b-48bf-8d3e-636baa2a7a6b.png",
+      features: ["Bluetooth", "Водозащита", "Перезаряжаемый"],
+      discount: 10
+    },
+    {
+      id: "2",
+      name: "Oticon More 1",
+      type: "behind-ear",
+      brand: "Oticon",
+      price: 92000,
+      originalPrice: 102000,
+      description: "Инновационный слуховой аппарат с технологией BrainHearing",
+      image: "/lovable-uploads/5543292b-184c-4549-a519-930399a1f504.png",
+      features: ["BrainHearing", "OpenSound Navigator", "Bluetooth"],
+      discount: 10
+    },
+    {
+      id: "3",
+      name: "ReSound ONE 9",
+      type: "behind-ear",
+      brand: "ReSound",
+      price: 88000,
+      description: "Слуховой аппарат с уникальным расположением микрофонов",
+      image: "/lovable-uploads/49548ab1-e091-4999-8467-1299954829ba.png",
+      features: ["M&RIE", "Direct Streaming", "Rechargeable"],
+    },
+    {
+      id: "4",
+      name: "Signia Styletto X",
+      type: "behind-ear",
+      brand: "Signia",
+      price: 95000,
+      description: "Стильный и современный слуховой аппарат",
+      image: "/lovable-uploads/6e9f0954-9f1d-4a93-859f-5a854ff1549b.png",
+      features: ["Own Voice Processing", "Bluetooth", "Rechargeable"],
+    },
+    {
+      id: "5",
+      name: "Widex Moment 440",
+      type: "in-ear",
+      brand: "Widex",
+      price: 90000,
+      description: "Слуховой аппарат с технологией PureSound",
+      image: "/lovable-uploads/f629999c-843b-497a-8344-34dd5a5999ca.png",
+      features: ["PureSound", "ZeroDelay", "Bluetooth"],
+    },
+    {
+      id: "6",
+      name: "Starkey Livio Edge AI",
+      type: "in-canal",
+      brand: "Starkey",
+      price: 98000,
+      description: "Слуховой аппарат с искусственным интеллектом",
+      image: "/lovable-uploads/44992899-4a15-44a1-a929-9c97f5a6c79d.png",
+      features: ["AI", "Healthable", "Fall Detection"],
+    },
+    {
+      id: "7",
+      name: "Unitron Discover Next",
+      type: "behind-ear",
+      brand: "Unitron",
+      price: 82000,
+      description: "Гибкий и адаптивный слуховой аппарат",
+      image: "/lovable-uploads/4e990515-584a-4999-8999-6edc12244549.png",
+      features: ["Remote Adjust", "Flex:trial", "Anti-Static"],
+    },
+    {
+      id: "8",
+      name: "Bernafon Viron 9",
+      type: "in-ear",
+      brand: "Bernafon",
+      price: 86000,
+      description: "Слуховой аппарат с технологией DECS",
+      image: "/lovable-uploads/69979993-6551-456f-91a9-c5ca6aa56c45.png",
+      features: ["DECS", "TrueEnvironment", "Rechargeable"],
+    },
+  ];
 
   const handleAddToCart = (product: any) => {
-    addToCart({
+    const cartItem = {
       id: product.id,
       name: product.name,
       price: product.price,
       image: product.image,
-      quantity: 1
+      type: 'hearing-aid' as const
+    };
+    
+    addItem(cartItem, 1);
+    
+    toast({
+      title: "Товар добавлен в корзину",
+      description: `${product.name} добавлен в корзину`,
     });
-    toast.success(`${product.name} добавлен в корзину`);
   };
 
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Каталог слуховых аппаратов",
-    "description": "Широкий выбор слуховых аппаратов от ведущих производителей",
-    "url": "https://yasniy-zvuk.ru/catalog",
-    "mainEntity": {
-      "@type": "ItemList",
-      "itemListElement": filteredProducts.map((product, index) => ({
-        "@type": "Product",
-        "position": index + 1,
-        "name": product.name,
-        "description": product.description,
-        "image": product.image,
-        "offers": {
-          "@type": "Offer",
-          "price": product.price,
-          "priceCurrency": "RUB",
-          "availability": "https://schema.org/InStock"
-        }
-      }))
+  const productTypes = ["all", "behind-ear", "in-ear", "in-canal"];
+  const productBrands = ["all", "Phonak", "Oticon", "ReSound", "Signia", "Widex", "Starkey", "Unitron", "Bernafon"];
+  const priceRanges = ["all", "0-50000", "50000-100000", "100000+"];
+
+  const filteredProducts = products.filter((product) => {
+    const searchTermLower = searchTerm.toLowerCase();
+    const matchesSearch = product.name.toLowerCase().includes(searchTermLower) || product.description.toLowerCase().includes(searchTermLower);
+    const matchesType = selectedType === "all" || product.type === selectedType;
+    const matchesBrand = selectedBrand === "all" || product.brand === selectedBrand;
+    
+    let matchesPrice = true;
+    if (priceRange !== "all") {
+      const [minStr, maxStr] = priceRange.split("-");
+      const min = parseInt(minStr, 10);
+      const max = parseInt(maxStr, 10) || Infinity;
+      matchesPrice = product.price >= min && product.price <= max;
     }
+
+    return matchesSearch && matchesType && matchesBrand && matchesPrice;
+  });
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleTypeChange = (value: string) => {
+    setSelectedType(value);
+  };
+
+  const handleBrandChange = (value: string) => {
+    setSelectedBrand(value);
+  };
+
+  const handlePriceChange = (value: string) => {
+    setPriceRange(value);
   };
 
   return (
     <Layout>
-      <SEOHead
-        title="Каталог слуховых аппаратов - купить в Москве"
-        description="Широкий выбор слуховых аппаратов от ведущих производителей Phonak, Oticon, ReSound. Профессиональный подбор и настройка. Доставка по Москве."
-        keywords="каталог слуховых аппаратов, купить слуховой аппарат Москва, Phonak, Oticon, ReSound, заушные, внутриушные"
-        structuredData={structuredData}
-        url="https://yasniy-zvuk.ru/catalog"
+      <SEOHead 
+        title="Каталог слуховых аппаратов - Ясный звук"
+        description="Широкий выбор слуховых аппаратов от ведущих производителей. Заушные, внутриушные и внутриканальные модели. Профессиональная консультация и настройка."
+        keywords="слуховые аппараты, каталог, купить слуховой аппарат, Phonak, Oticon, ReSound, заушные, внутриушные"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Каталог слуховых аппаратов",
+          "description": "Широкий выбор слуховых аппаратов от ведущих производителей",
+          "url": "https://yasnyzvuk.ru/catalog",
+          "mainEntity": {
+            "@type": "ItemList",
+            "numberOfItems": filteredProducts.length,
+            "itemListElement": filteredProducts.map((product, index) => ({
+              "@type": "Product",
+              "position": index + 1,
+              "name": product.name,
+              "image": product.image,
+              "offers": {
+                "@type": "Offer",
+                "price": product.price,
+                "priceCurrency": "RUB"
+              }
+            }))
+          }
+        }}
       />
       
-      <div className="bg-gray-50 py-12">
-        <div className="container px-4 md:px-6">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold tracking-tighter md:text-4xl mb-4">
-              Каталог слуховых аппаратов
-            </h1>
-            <p className="text-muted-foreground max-w-3xl">
-              Выберите подходящий слуховой аппарат из нашего каталога. 
-              Все устройства сертифицированы и имеют официальную гарантию.
-            </p>
-          </div>
+      <div className="bg-gradient-to-b from-gray-50 to-white">
+        <section className="bg-white py-12 md:py-20 border-b border-gray-200">
+          <div className="container px-4 md:px-6">
+            <div className="grid gap-4 md:gap-6 md:grid-cols-2 lg:grid-cols-4 items-center">
+              <div className="col-span-2">
+                <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
+                  Каталог слуховых аппаратов
+                </h1>
+                <p className="text-muted-foreground">
+                  Выберите слуховой аппарат, подходящий именно вам
+                </p>
+              </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {filteredProducts.map((product) => (
-              <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                <CardHeader className="p-0">
-                  <div className="aspect-square overflow-hidden">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                </CardHeader>
-                <CardContent className="p-4">
-                  <div className="flex items-start justify-between mb-2">
-                    <Badge variant="secondary" className="mb-2">
-                      {product.brand}
-                    </Badge>
-                  </div>
-                  <CardTitle className="text-lg mb-2">
-                    <Link 
-                      to={`/catalog/${product.id}`}
-                      className="hover:text-brand transition-colors"
-                    >
-                      {product.name}
-                    </Link>
-                  </CardTitle>
-                  <p className="text-muted-foreground text-sm mb-3">
-                    {product.description}
-                  </p>
-                  {product.features && (
-                    <ul className="text-xs text-muted-foreground mb-3">
-                      {product.features.slice(0, 2).map((feature, index) => (
-                        <li key={index} className="flex items-center gap-1">
-                          <span className="w-1 h-1 bg-brand rounded-full"></span>
+              <div className="col-span-2 lg:col-span-1 flex items-center">
+                <Input
+                  type="search"
+                  placeholder="Поиск по названию"
+                  value={searchTerm}
+                  onChange={handleSearchChange}
+                  className="w-full"
+                />
+                <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-gray-50 py-6 md:py-8 border-b border-gray-200">
+          <div className="container px-4 md:px-6">
+            <div className="grid gap-4 md:grid-cols-4 items-center">
+              <div>
+                <Label htmlFor="type">Тип аппарата</Label>
+                <Select onValueChange={handleTypeChange} defaultValue={selectedType}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Все типы" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {productTypes.map((type) => (
+                      <SelectItem key={type} value={type}>
+                        {type === "all" ? "Все типы" : type.replace("-", " ")}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div>
+                <Label htmlFor="brand">Производитель</Label>
+                <Select onValueChange={handleBrandChange} defaultValue={selectedBrand}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Все бренды" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {productBrands.map((brand) => (
+                      <SelectItem key={brand} value={brand}>
+                        {brand === "all" ? "Все бренды" : brand}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div>
+                <Label htmlFor="price">Цена</Label>
+                <Select onValueChange={handlePriceChange} defaultValue={priceRange}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Любая" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">Любая</SelectItem>
+                    <SelectItem value="0-50000">до 50 000 ₽</SelectItem>
+                    <SelectItem value="50000-100000">50 000 - 100 000 ₽</SelectItem>
+                    <SelectItem value="100000+">от 100 000 ₽</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <Button variant="outline" className="hidden md:flex">
+                <Filter className="mr-2 h-4 w-4" />
+                Сбросить фильтры
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        <div className="container px-4 py-12 md:px-6">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {filteredProducts.map((product, index) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+              >
+                <Card className="h-full hover:shadow-lg transition-shadow">
+                  <CardHeader className="p-0">
+                    <div className="relative">
+                      <img 
+                        src={product.image} 
+                        alt={product.name} 
+                        className="w-full h-48 object-cover rounded-t-lg"
+                      />
+                      {product.discount && (
+                        <Badge className="absolute top-2 right-2 bg-red-500">
+                          -{product.discount}%
+                        </Badge>
+                      )}
+                    </div>
+                  </CardHeader>
+                  <CardContent className="p-4">
+                    <CardTitle className="text-lg mb-2">
+                      <Link 
+                        to={`/catalog/${product.id}`}
+                        className="hover:text-brand transition-colors"
+                      >
+                        {product.name}
+                      </Link>
+                    </CardTitle>
+                    <CardDescription className="mb-3">
+                      {product.description}
+                    </CardDescription>
+                    
+                    <div className="flex flex-wrap gap-1 mb-3">
+                      {product.features.map((feature) => (
+                        <Badge key={feature} variant="secondary" className="text-xs">
                           {feature}
-                        </li>
+                        </Badge>
                       ))}
-                    </ul>
-                  )}
-                </CardContent>
-                <CardFooter className="p-4 pt-0 flex items-center justify-between">
-                  <div className="text-xl font-bold text-brand">
-                    {product.price.toLocaleString()} ₽
-                  </div>
-                  <Button 
-                    size="sm" 
-                    onClick={() => handleAddToCart(product)}
-                    className="gap-2"
-                  >
-                    <ShoppingCart className="h-4 w-4" />
-                    В корзину
-                  </Button>
-                </CardFooter>
-              </Card>
+                    </div>
+                    
+                    <div className="flex items-center justify-between mb-3">
+                      <div>
+                        <span className="text-2xl font-bold text-brand">
+                          {product.price.toLocaleString()} ₽
+                        </span>
+                        {product.originalPrice && (
+                          <span className="text-sm text-gray-500 line-through ml-2">
+                            {product.originalPrice.toLocaleString()} ₽
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    
+                    <div className="flex gap-2">
+                      <Button 
+                        className="flex-1"
+                        onClick={() => handleAddToCart(product)}
+                      >
+                        <ShoppingCart className="mr-2 h-4 w-4" />
+                        В корзину
+                      </Button>
+                      <Button variant="outline" asChild>
+                        <Link to={`/catalog/${product.id}`}>
+                          Подробнее
+                        </Link>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
-
+          
           {filteredProducts.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-muted-foreground">
-                По выбранным критериям товары не найдены.
+              <p className="text-lg text-muted-foreground">
+                По вашему запросу товары не найдены
               </p>
             </div>
           )}
