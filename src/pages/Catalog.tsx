@@ -22,7 +22,7 @@ const Catalog = () => {
   const [selectedBrand, setSelectedBrand] = useState("all");
   const [priceRange, setPriceRange] = useState("all");
   
-  const { addItem } = useCart();
+  const { addToCart } = useCart();
   const { toast } = useToast();
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const Catalog = () => {
 
   const products = [
     {
-      id: "1",
+      id: 1,
       name: "Phonak Audéo Paradise P90",
       type: "behind-ear",
       brand: "Phonak",
@@ -40,10 +40,11 @@ const Catalog = () => {
       description: "Премиальный заушный слуховой аппарат с Bluetooth",
       image: "/lovable-uploads/083d6d65-028b-48bf-8d3e-636baa2a7a6b.png",
       features: ["Bluetooth", "Водозащита", "Перезаряжаемый"],
-      discount: 10
+      discount: 10,
+      category: "hearing-aid"
     },
     {
-      id: "2",
+      id: 2,
       name: "Oticon More 1",
       type: "behind-ear",
       brand: "Oticon",
@@ -52,10 +53,11 @@ const Catalog = () => {
       description: "Инновационный слуховой аппарат с технологией BrainHearing",
       image: "/lovable-uploads/5543292b-184c-4549-a519-930399a1f504.png",
       features: ["BrainHearing", "OpenSound Navigator", "Bluetooth"],
-      discount: 10
+      discount: 10,
+      category: "hearing-aid"
     },
     {
-      id: "3",
+      id: 3,
       name: "ReSound ONE 9",
       type: "behind-ear",
       brand: "ReSound",
@@ -63,9 +65,10 @@ const Catalog = () => {
       description: "Слуховой аппарат с уникальным расположением микрофонов",
       image: "/lovable-uploads/49548ab1-e091-4999-8467-1299954829ba.png",
       features: ["M&RIE", "Direct Streaming", "Rechargeable"],
+      category: "hearing-aid"
     },
     {
-      id: "4",
+      id: 4,
       name: "Signia Styletto X",
       type: "behind-ear",
       brand: "Signia",
@@ -73,9 +76,10 @@ const Catalog = () => {
       description: "Стильный и современный слуховой аппарат",
       image: "/lovable-uploads/6e9f0954-9f1d-4a93-859f-5a854ff1549b.png",
       features: ["Own Voice Processing", "Bluetooth", "Rechargeable"],
+      category: "hearing-aid"
     },
     {
-      id: "5",
+      id: 5,
       name: "Widex Moment 440",
       type: "in-ear",
       brand: "Widex",
@@ -83,9 +87,10 @@ const Catalog = () => {
       description: "Слуховой аппарат с технологией PureSound",
       image: "/lovable-uploads/f629999c-843b-497a-8344-34dd5a5999ca.png",
       features: ["PureSound", "ZeroDelay", "Bluetooth"],
+      category: "hearing-aid"
     },
     {
-      id: "6",
+      id: 6,
       name: "Starkey Livio Edge AI",
       type: "in-canal",
       brand: "Starkey",
@@ -93,9 +98,10 @@ const Catalog = () => {
       description: "Слуховой аппарат с искусственным интеллектом",
       image: "/lovable-uploads/44992899-4a15-44a1-a929-9c97f5a6c79d.png",
       features: ["AI", "Healthable", "Fall Detection"],
+      category: "hearing-aid"
     },
     {
-      id: "7",
+      id: 7,
       name: "Unitron Discover Next",
       type: "behind-ear",
       brand: "Unitron",
@@ -103,9 +109,10 @@ const Catalog = () => {
       description: "Гибкий и адаптивный слуховой аппарат",
       image: "/lovable-uploads/4e990515-584a-4999-8999-6edc12244549.png",
       features: ["Remote Adjust", "Flex:trial", "Anti-Static"],
+      category: "hearing-aid"
     },
     {
-      id: "8",
+      id: 8,
       name: "Bernafon Viron 9",
       type: "in-ear",
       brand: "Bernafon",
@@ -113,6 +120,7 @@ const Catalog = () => {
       description: "Слуховой аппарат с технологией DECS",
       image: "/lovable-uploads/69979993-6551-456f-91a9-c5ca6aa56c45.png",
       features: ["DECS", "TrueEnvironment", "Rechargeable"],
+      category: "hearing-aid"
     },
   ];
 
@@ -122,10 +130,11 @@ const Catalog = () => {
       name: product.name,
       price: product.price,
       image: product.image,
-      type: 'hearing-aid' as const
+      brand: product.brand,
+      category: product.category
     };
     
-    addItem(cartItem, 1);
+    addToCart(cartItem);
     
     toast({
       title: "Товар добавлен в корзину",
