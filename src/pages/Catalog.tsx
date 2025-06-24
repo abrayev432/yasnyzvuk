@@ -77,51 +77,7 @@ const Catalog = () => {
       image: "/lovable-uploads/6e9f0954-9f1d-4a93-859f-5a854ff1549b.png",
       features: ["Own Voice Processing", "Bluetooth", "Rechargeable"],
       category: "hearing-aid"
-    },
-    {
-      id: 5,
-      name: "Widex Moment 440",
-      type: "in-ear",
-      brand: "Widex",
-      price: 90000,
-      description: "Слуховой аппарат с технологией PureSound",
-      image: "/lovable-uploads/f629999c-843b-497a-8344-34dd5a5999ca.png",
-      features: ["PureSound", "ZeroDelay", "Bluetooth"],
-      category: "hearing-aid"
-    },
-    {
-      id: 6,
-      name: "Starkey Livio Edge AI",
-      type: "in-canal",
-      brand: "Starkey",
-      price: 98000,
-      description: "Слуховой аппарат с искусственным интеллектом",
-      image: "/lovable-uploads/44992899-4a15-44a1-a929-9c97f5a6c79d.png",
-      features: ["AI", "Healthable", "Fall Detection"],
-      category: "hearing-aid"
-    },
-    {
-      id: 7,
-      name: "Unitron Discover Next",
-      type: "behind-ear",
-      brand: "Unitron",
-      price: 82000,
-      description: "Гибкий и адаптивный слуховой аппарат",
-      image: "/lovable-uploads/4e990515-584a-4999-8999-6edc12244549.png",
-      features: ["Remote Adjust", "Flex:trial", "Anti-Static"],
-      category: "hearing-aid"
-    },
-    {
-      id: 8,
-      name: "Bernafon Viron 9",
-      type: "in-ear",
-      brand: "Bernafon",
-      price: 86000,
-      description: "Слуховой аппарат с технологией DECS",
-      image: "/lovable-uploads/69979993-6551-456f-91a9-c5ca6aa56c45.png",
-      features: ["DECS", "TrueEnvironment", "Rechargeable"],
-      category: "hearing-aid"
-    },
+    }
   ];
 
   const handleAddToCart = (product: any) => {
@@ -143,7 +99,7 @@ const Catalog = () => {
   };
 
   const productTypes = ["all", "behind-ear", "in-ear", "in-canal"];
-  const productBrands = ["all", "Phonak", "Oticon", "ReSound", "Signia", "Widex", "Starkey", "Unitron", "Bernafon"];
+  const productBrands = ["all", "Phonak", "Oticon", "ReSound", "Signia"];
   const priceRanges = ["all", "0-50000", "50000-100000", "100000+"];
 
   const filteredProducts = products.filter((product) => {
