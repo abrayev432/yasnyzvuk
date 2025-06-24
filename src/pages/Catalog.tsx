@@ -1,340 +1,334 @@
-import Layout from "@/components/layout/Layout";
 import { useState, useEffect } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { Link, useLocation } from "react-router-dom";
+import Layout from "@/components/layout/Layout";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
+import { ShoppingCart, Package, Filter } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useToast } from "@/hooks/use-toast";
-import { motion } from "framer-motion";
-import { ShoppingCart, Search, Filter } from "lucide-react";
-import { Link, useSearchParams } from "react-router-dom";
-import SEOHead from "@/components/seo/SEOHead";
+import { useIsMobile } from "@/hooks/use-mobile";
+
+// Product database
+const products = [
+  {
+    id: 1,
+    name: "Слуховой аппарат ReSound KEY KE277-DWH",
+    category: "behind-the-ear",
+    price: 40500,
+    image: "https://vitaurum.ru/wa-data/public/shop/products/16/74/127416/images/7816/7816.450x0.png",
+    brand: "ReSound",
+    isNew: true,
+    isBestseller: false,
+    slug: "resound-key-ke277"
+  },
+  {
+    id: 2,
+    name: "Слуховой аппарат Oticon Zircon 1 miniRITE T",
+    category: "behind-the-ear",
+    price: 122000,
+    image: "https://www.radugazvukov.ru/upload/iblock/8a5/7nnm96djgygm4qqeedewiy4dxbll18ea/Zircon_miniRITE_600.jpg",
+    brand: "Oticon",
+    isNew: false,
+    isBestseller: true,
+    slug: "oticon-zircon-1"
+  },
+  {
+    id: 3,
+    name: "Слуховой аппарат Oticon Ruby 2 BTE PP 13",
+    category: "behind-the-ear",
+    price: 83000,
+    image: "https://vitaurum.ru/wa-data/public/shop/products/68/73/127368/images/7136/7136.450x0.png",
+    brand: "Oticon",
+    isNew: true,
+    isBestseller: false,
+    slug: "oticon-ruby-2"
+  },
+  {
+    id: 5,
+    name: "Слуховой аппарат Oticon Xceed 3 BTE SP",
+    category: "behind-the-ear",
+    price: 80000,
+    image: "https://vitaurum.ru/wa-data/public/shop/products/57/76/127657/images/7092/7092.450x0.jpg",
+    brand: "Oticon",
+    isNew: false,
+    isBestseller: true,
+    slug: "oticon-xceed-3"
+  },
+  {
+    id: 6,
+    name: "Слуховой аппарат Phonak Audeo P50-312",
+    category: "behind-the-ear",
+    price: 126000,
+    image: "https://www.radugazvukov.ru/upload/iblock/e73/wwa3mzrbty1e204dcruafye6h31fxlph/Phonak_Audeo_P-312.jpg",
+    brand: "Phonak",
+    isNew: true,
+    isBestseller: false,
+    slug: "phonak-audeo-p50"
+  },
+];
 
 const Catalog = () => {
-  const [searchParams] = useSearchParams();
-  const typeFilter = searchParams.get('type');
-  
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedType, setSelectedType] = useState(typeFilter || "all");
-  const [selectedBrand, setSelectedBrand] = useState("all");
-  const [priceRange, setPriceRange] = useState("all");
-  
+  const location = useLocation();
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [sortBy, setSortBy] = useState<string>("popular");
   const { addToCart } = useCart();
   const { toast } = useToast();
-
+  const isMobile = useIsMobile();
+  
+  // Scroll to top when component mounts
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Use setTimeout to ensure DOM is ready and smooth scrolling
+    const timer = setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+    }, 100);
+    
+    return () => clearTimeout(timer);
   }, []);
-
-  const products = [
-    {
-      id: 1,
-      name: "Phonak Audéo Paradise P90",
-      type: "behind-ear",
-      brand: "Phonak",
-      price: 85000,
-      originalPrice: 95000,
-      description: "Премиальный заушный слуховой аппарат с Bluetooth",
-      image: "/lovable-uploads/083d6d65-028b-48bf-8d3e-636baa2a7a6b.png",
-      features: ["Bluetooth", "Водозащита", "Перезаряжаемый"],
-      discount: 10,
-      category: "hearing-aid"
-    },
-    {
-      id: 2,
-      name: "Oticon More 1",
-      type: "behind-ear",
-      brand: "Oticon",
-      price: 92000,
-      originalPrice: 102000,
-      description: "Инновационный слуховой аппарат с технологией BrainHearing",
-      image: "/lovable-uploads/5543292b-184c-4549-a519-930399a1f504.png",
-      features: ["BrainHearing", "OpenSound Navigator", "Bluetooth"],
-      discount: 10,
-      category: "hearing-aid"
-    },
-    {
-      id: 3,
-      name: "ReSound ONE 9",
-      type: "behind-ear",
-      brand: "ReSound",
-      price: 88000,
-      description: "Слуховой аппарат с уникальным расположением микрофонов",
-      image: "/lovable-uploads/49548ab1-e091-4999-8467-1299954829ba.png",
-      features: ["M&RIE", "Direct Streaming", "Rechargeable"],
-      category: "hearing-aid"
-    },
-    {
-      id: 4,
-      name: "Signia Styletto X",
-      type: "behind-ear",
-      brand: "Signia",
-      price: 95000,
-      description: "Стильный и современный слуховой аппарат",
-      image: "/lovable-uploads/6e9f0954-9f1d-4a93-859f-5a854ff1549b.png",
-      features: ["Own Voice Processing", "Bluetooth", "Rechargeable"],
-      category: "hearing-aid"
+  
+  // Parse URL parameters on component mount and when URL changes
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const categoryParam = queryParams.get('category');
+    if (categoryParam) {
+      setSelectedCategory(categoryParam);
     }
-  ];
+  }, [location.search]);
+  
+  const filteredProducts = products.filter((product) => {
+    // Filter by category
+    if (selectedCategory !== "all" && product.category !== selectedCategory) {
+      return false;
+    }
+    
+    // Filter by search query
+    if (searchQuery && !product.name.toLowerCase().includes(searchQuery.toLowerCase()) && 
+        !product.brand.toLowerCase().includes(searchQuery.toLowerCase())) {
+      return false;
+    }
+    
+    return true;
+  });
+  
+  // Sort products
+  const sortedProducts = [...filteredProducts].sort((a, b) => {
+    switch (sortBy) {
+      case "price-low":
+        return a.price - b.price;
+      case "price-high":
+        return b.price - a.price;
+      case "name":
+        return a.name.localeCompare(b.name);
+      default: // popular
+        if (a.isBestseller && !b.isBestseller) return -1;
+        if (!a.isBestseller && b.isBestseller) return 1;
+        if (a.isNew && !b.isNew) return -1;
+        if (!a.isNew && b.isNew) return 1;
+        return 0;
+    }
+  });
 
   const handleAddToCart = (product: any) => {
-    const cartItem = {
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      image: product.image,
-      brand: product.brand,
-      category: product.category
-    };
-    
-    addToCart(cartItem);
-    
+    addToCart(product);
     toast({
       title: "Товар добавлен в корзину",
-      description: `${product.name} добавлен в корзину`,
+      description: `Слуховой аппарат ${product.name} успешно добавлен в корзину.`,
     });
   };
 
-  const productTypes = ["all", "behind-ear", "in-ear", "in-canal"];
-  const productBrands = ["all", "Phonak", "Oticon", "ReSound", "Signia"];
-  const priceRanges = ["all", "0-50000", "50000-100000", "100000+"];
+  const FilterContent = () => (
+    <div className="space-y-6">
+      <div>
+        <h3 className="text-sm font-medium mb-3">Категории</h3>
+        <Tabs 
+          defaultValue="all" 
+          orientation="vertical" 
+          value={selectedCategory}
+          onValueChange={setSelectedCategory}
+          className="w-full"
+        >
+          <TabsList className="flex flex-col h-auto bg-muted/50 rounded-md w-full">
+            <TabsTrigger value="all" className="justify-start">
+              Все категории
+            </TabsTrigger>
+            <TabsTrigger value="behind-the-ear" className="justify-start">
+              Заушные аппараты
+            </TabsTrigger>
+            <TabsTrigger value="in-the-ear" className="justify-start">
+              Внутриушные аппараты
+            </TabsTrigger>
+            <TabsTrigger value="in-the-canal" className="justify-start">
+              Внутриканальные аппараты
+            </TabsTrigger>
+          </TabsList>
+        </Tabs>
+      </div>
 
-  const filteredProducts = products.filter((product) => {
-    const searchTermLower = searchTerm.toLowerCase();
-    const matchesSearch = product.name.toLowerCase().includes(searchTermLower) || product.description.toLowerCase().includes(searchTermLower);
-    const matchesType = selectedType === "all" || product.type === selectedType;
-    const matchesBrand = selectedBrand === "all" || product.brand === selectedBrand;
-    
-    let matchesPrice = true;
-    if (priceRange !== "all") {
-      const [minStr, maxStr] = priceRange.split("-");
-      const min = parseInt(minStr, 10);
-      const max = parseInt(maxStr, 10) || Infinity;
-      matchesPrice = product.price >= min && product.price <= max;
-    }
+      <div>
+        <Button variant="outline" className="w-full" onClick={() => {
+          setSelectedCategory("all");
+          setSearchQuery("");
+          setSortBy("popular");
+        }}>Сбросить фильтры</Button>
+      </div>
 
-    return matchesSearch && matchesType && matchesBrand && matchesPrice;
-  });
-
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(e.target.value);
-  };
-
-  const handleTypeChange = (value: string) => {
-    setSelectedType(value);
-  };
-
-  const handleBrandChange = (value: string) => {
-    setSelectedBrand(value);
-  };
-
-  const handlePriceChange = (value: string) => {
-    setPriceRange(value);
-  };
+      <div className="pt-4 border-t">
+        <h3 className="text-sm font-medium mb-2">Нужна помощь?</h3>
+        <p className="text-sm text-muted-foreground mb-2">Позвоните нам для консультации:</p>
+        <a href="tel:+74957990926" className="text-brand font-medium">+7 (495) 799-09-26</a>
+      </div>
+    </div>
+  );
 
   return (
     <Layout>
-      <SEOHead 
-        title="Каталог слуховых аппаратов - Ясный звук"
-        description="Широкий выбор слуховых аппаратов от ведущих производителей. Заушные, внутриушные и внутриканальные модели. Профессиональная консультация и настройка."
-        keywords="слуховые аппараты, каталог, купить слуховой аппарат, Phonak, Oticon, ReSound, заушные, внутриушные"
-        structuredData={{
-          "@context": "https://schema.org",
-          "@type": "CollectionPage",
-          "name": "Каталог слуховых аппаратов",
-          "description": "Широкий выбор слуховых аппаратов от ведущих производителей",
-          "url": "https://yasnyzvuk.ru/catalog",
-          "mainEntity": {
-            "@type": "ItemList",
-            "numberOfItems": filteredProducts.length,
-            "itemListElement": filteredProducts.map((product, index) => ({
-              "@type": "Product",
-              "position": index + 1,
-              "name": product.name,
-              "image": product.image,
-              "offers": {
-                "@type": "Offer",
-                "price": product.price,
-                "priceCurrency": "RUB"
-              }
-            }))
-          }
-        }}
-      />
-      
-      <div className="bg-gradient-to-b from-gray-50 to-white">
-        <section className="bg-white py-12 md:py-20 border-b border-gray-200">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-4 md:gap-6 md:grid-cols-2 lg:grid-cols-4 items-center">
-              <div className="col-span-2">
-                <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
-                  Каталог слуховых аппаратов
-                </h1>
-                <p className="text-muted-foreground">
-                  Выберите слуховой аппарат, подходящий именно вам
-                </p>
-              </div>
-
-              <div className="col-span-2 lg:col-span-1 flex items-center">
-                <Input
-                  type="search"
-                  placeholder="Поиск по названию"
-                  value={searchTerm}
-                  onChange={handleSearchChange}
-                  className="w-full"
-                />
-                <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
-              </div>
-            </div>
+      <div className="bg-gray-50 py-8">
+        <div className="container px-4 md:px-6">
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold tracking-tighter md:text-4xl mb-2">
+              Каталог слуховых аппаратов
+            </h1>
+            <p className="text-muted-foreground max-w-3xl">
+              Выберите и закажите слуховой аппарат, который подходит именно вам. Наши специалисты помогут с выбором и настройкой.
+            </p>
           </div>
-        </section>
 
-        <section className="bg-gray-50 py-6 md:py-8 border-b border-gray-200">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-4 md:grid-cols-4 items-center">
-              <div>
-                <Label htmlFor="type">Тип аппарата</Label>
-                <Select onValueChange={handleTypeChange} defaultValue={selectedType}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Все типы" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {productTypes.map((type) => (
-                      <SelectItem key={type} value={type}>
-                        {type === "all" ? "Все типы" : type.replace("-", " ")}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+          <div className="flex flex-col gap-8 lg:flex-row">
+            {/* Desktop Filters */}
+            {!isMobile && (
+              <div className="w-full lg:w-1/4">
+                <div className="bg-white rounded-xl shadow-sm p-6 sticky top-24">
+                  <h2 className="text-lg font-semibold mb-4">Фильтры</h2>
+                  <FilterContent />
+                </div>
               </div>
-
-              <div>
-                <Label htmlFor="brand">Производитель</Label>
-                <Select onValueChange={handleBrandChange} defaultValue={selectedBrand}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Все бренды" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {productBrands.map((brand) => (
-                      <SelectItem key={brand} value={brand}>
-                        {brand === "all" ? "Все бренды" : brand}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+            )}
+            
+            <div className="w-full lg:w-3/4">
+              <div className="flex flex-col sm:flex-row gap-4 justify-between mb-6">
+                <div className="flex gap-2">
+                  {/* Mobile Filter Button */}
+                  {isMobile && (
+                    <Drawer>
+                      <DrawerTrigger asChild>
+                        <Button variant="outline" size="sm">
+                          <Filter className="h-4 w-4 mr-2" />
+                          Фильтры
+                        </Button>
+                      </DrawerTrigger>
+                      <DrawerContent>
+                        <DrawerHeader>
+                          <DrawerTitle>Фильтры</DrawerTitle>
+                        </DrawerHeader>
+                        <div className="p-4">
+                          <FilterContent />
+                        </div>
+                      </DrawerContent>
+                    </Drawer>
+                  )}
+                  
+                  <div className="relative flex-1">
+                    <Input
+                      placeholder="Поиск по названию или бренду"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="max-w-sm"
+                    />
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-2">
+                  <span className="text-sm text-muted-foreground whitespace-nowrap">Сортировать:</span>
+                  <Select value={sortBy} onValueChange={setSortBy}>
+                    <SelectTrigger className="w-[180px]">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="popular">По популярности</SelectItem>
+                      <SelectItem value="price-low">Цена (по возрастанию)</SelectItem>
+                      <SelectItem value="price-high">Цена (по убыванию)</SelectItem>
+                      <SelectItem value="name">По названию</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
-
-              <div>
-                <Label htmlFor="price">Цена</Label>
-                <Select onValueChange={handlePriceChange} defaultValue={priceRange}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Любая" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">Любая</SelectItem>
-                    <SelectItem value="0-50000">до 50 000 ₽</SelectItem>
-                    <SelectItem value="50000-100000">50 000 - 100 000 ₽</SelectItem>
-                    <SelectItem value="100000+">от 100 000 ₽</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <Button variant="outline" className="hidden md:flex">
-                <Filter className="mr-2 h-4 w-4" />
-                Сбросить фильтры
-              </Button>
-            </div>
-          </div>
-        </section>
-
-        <div className="container px-4 py-12 md:px-6">
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filteredProducts.map((product, index) => (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-              >
-                <Card className="h-full hover:shadow-lg transition-shadow">
-                  <CardHeader className="p-0">
-                    <div className="relative">
-                      <img 
-                        src={product.image} 
-                        alt={product.name} 
-                        className="w-full h-48 object-cover rounded-t-lg"
-                      />
-                      {product.discount && (
-                        <Badge className="absolute top-2 right-2 bg-red-500">
-                          -{product.discount}%
-                        </Badge>
-                      )}
-                    </div>
-                  </CardHeader>
-                  <CardContent className="p-4">
-                    <CardTitle className="text-lg mb-2">
-                      <Link 
-                        to={`/catalog/${product.id}`}
-                        className="hover:text-brand transition-colors"
-                      >
-                        {product.name}
-                      </Link>
-                    </CardTitle>
-                    <CardDescription className="mb-3">
-                      {product.description}
-                    </CardDescription>
-                    
-                    <div className="flex flex-wrap gap-1 mb-3">
-                      {product.features.map((feature) => (
-                        <Badge key={feature} variant="secondary" className="text-xs">
-                          {feature}
-                        </Badge>
-                      ))}
-                    </div>
-                    
-                    <div className="flex items-center justify-between mb-3">
-                      <div>
-                        <span className="text-2xl font-bold text-brand">
-                          {product.price.toLocaleString()} ₽
-                        </span>
-                        {product.originalPrice && (
-                          <span className="text-sm text-gray-500 line-through ml-2">
-                            {product.originalPrice.toLocaleString()} ₽
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                    
-                    <div className="flex gap-2">
-                      <Button 
-                        className="flex-1"
-                        onClick={() => handleAddToCart(product)}
-                      >
-                        <ShoppingCart className="mr-2 h-4 w-4" />
-                        В корзину
-                      </Button>
-                      <Button variant="outline" asChild>
-                        <Link to={`/catalog/${product.id}`}>
-                          Подробнее
+              
+              {sortedProducts.length === 0 ? (
+                <div className="bg-white rounded-xl shadow-sm p-12 text-center">
+                  <Package className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
+                  <h3 className="text-xl font-medium mb-2">Товары не найдены</h3>
+                  <p className="text-muted-foreground">
+                    Попробуйте изменить параметры поиска или сбросить фильтры
+                  </p>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {sortedProducts.map((product) => (
+                    <Card key={product.id} className="overflow-hidden transition-all hover:shadow-md group">
+                      <div className="relative">
+                        <Link to={`/catalog/${product.slug}`}>
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="w-full aspect-[4/3] object-cover transition-transform duration-300 group-hover:scale-105"
+                          />
+                          {product.isNew && (
+                            <Badge className="absolute top-2 right-2 bg-brand text-white">Новинка</Badge>
+                          )}
+                          {product.isBestseller && (
+                            <Badge variant="outline" className="absolute top-2 right-2 border-brand bg-white text-brand">
+                              Хит продаж
+                            </Badge>
+                          )}
                         </Link>
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-          
-          {filteredProducts.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-lg text-muted-foreground">
-                По вашему запросу товары не найдены
-              </p>
+                      </div>
+                      <CardContent className="p-4">
+                        <div className="mb-2">
+                          <Badge variant="outline" className="bg-brand/5 text-brand border-brand/20">
+                            {product.brand}
+                          </Badge>
+                        </div>
+                        <Link to={`/catalog/${product.slug}`}>
+                          <h3 className="text-lg font-medium line-clamp-2 mb-2">
+                            {product.name}
+                          </h3>
+                        </Link>
+                        <div className="text-sm text-muted-foreground mb-3">
+                          {product.category === "behind-the-ear" && "Заушный"}
+                          {product.category === "in-the-ear" && "Внутриушной"}
+                          {product.category === "in-the-canal" && "Внутриканальный"}
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <div className="font-semibold text-lg">
+                            {product.price.toLocaleString()} ₽
+                          </div>
+                          <div className="flex gap-2">
+                            <Button size="sm" variant="outline" asChild>
+                              <Link to={`/catalog/${product.slug}`}>
+                                Подробнее
+                              </Link>
+                            </Button>
+                            <Button size="sm" onClick={() => handleAddToCart(product)}>
+                              <ShoppingCart className="h-4 w-4" />
+                            </Button>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
       </div>
     </Layout>
